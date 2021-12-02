@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="Prices.css">
+    <link rel="stylesheet" type="text/css" href="css/Prices.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <div class="header" id="topheader">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #525252;">
+    <div class="header1" id="topheader">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #525252;" id="tp">
             <a class="navbar-brand" href="#">
                 <img src="images/white-logo-transparent-background.png" style="  width: 73px; height: 54px;">
             </a>
@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <div class="nav-btn-blue">
+                        <div class="nav-btn-color">
                             <a class="nav-link py-3" href="#">Book now</a>
                         </div>
                     </li>
@@ -36,27 +36,27 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="nav-btnn">
+                        <div class="nav-btn1">
                             <a class="nav-link py-3" href="#">Warranty</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="nav-btnn">
+                        <div class="nav-btn1">
                             <a class="nav-link py-3" href="#">Blog</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="nav-btnn">
+                        <div class="nav-btn1">
                             <a class="nav-link py-3" href="#">Contact</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="nav-btn-blue">
+                        <div class="nav-btn-color">
                             <a class="nav-link py-3" href="#">Login</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="nav-btn-blue">
+                        <div class="nav-btn-color">
                             <a class="nav-link py-3" href="#">Become a Helper</a>
                         </div>
                     </li>
@@ -65,323 +65,459 @@
         </nav>
     </div>
 
-    <section id="banner">
+    <section id="boxx">
         <img class="img-fluid w-100" src="images/group-18.png" />
     </section>
 
-    <section id="faq-text-and-design">
-        <div class="text-center" style="margin-top: 31px;">
-            <h1 style="color: #4F4F4F;">Prices</h1>
+    <div class="card mb-3 mx-auto mt-5 prices_card">
+      <div class="card-header w-100 text-white text-center">One Time</div>
+      <div class="card-body">
+        <h2 class="card-title text-center">
+          <span class="card_euro fw-bold">€ 20</span>/hr
+        </h2>
+        <ul class="price_card_list mt-4">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24">
+              <path fill-rule="evenodd" fill="#1D7A8C"
+                d="M20.335 22.153H1.86V3.691h13.627l1.153-1.846H1.86c-1.019 0-1.74.827-1.74 1.846v18.462c0 1.018.721 1.846 1.74 1.846h18.475c1.02 0 1.848-.828 1.848-1.846V9.963l-1.848 2.959v9.231zM23.446.21c-.22.46-.466-.21-.707-.21-.421 0-.834.205-1.083.584L11.613 15.62l-3.886-4.989a1.294 1.294 0 0 0-1.828.07c-.486.524-.453 1.729.072 1.826l4.67 5.326.113.13.118.135.048.029.26.097.091.115.058.028.396.068.018-.004c1.197.002.701-.128.957.009l.104-.584.006-.007L23.821 1.998c.39-.596.609-1.397-.375-1.788z" />
+            </svg>
+            <p>Lower prices</p>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24">
+              <path fill-rule="evenodd" fill="#1D7A8C"
+                d="M20.335 22.153H1.86V3.691h13.627l1.153-1.846H1.86c-1.019 0-1.74.827-1.74 1.846v18.462c0 1.018.721 1.846 1.74 1.846h18.475c1.02 0 1.848-.828 1.848-1.846V9.963l-1.848 2.959v9.231zM23.446.21c-.22.46-.466-.21-.707-.21-.421 0-.834.205-1.083.584L11.613 15.62l-3.886-4.989a1.294 1.294 0 0 0-1.828.07c-.486.524-.453 1.729.072 1.826l4.67 5.326.113.13.118.135.048.029.26.097.091.115.058.028.396.068.018-.004c1.197.002.701-.128.957.009l.104-.584.006-.007L23.821 1.998c.39-.596.609-1.397-.375-1.788z" />
+            </svg>
+            <p>Easy online & secure payment</p>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24">
+              <path fill-rule="evenodd" fill="#1D7A8C"
+                d="M20.335 22.153H1.86V3.691h13.627l1.153-1.846H1.86c-1.019 0-1.74.827-1.74 1.846v18.462c0 1.018.721 1.846 1.74 1.846h18.475c1.02 0 1.848-.828 1.848-1.846V9.963l-1.848 2.959v9.231zM23.446.21c-.22.46-.466-.21-.707-.21-.421 0-.834.205-1.083.584L11.613 15.62l-3.886-4.989a1.294 1.294 0 0 0-1.828.07c-.486.524-.453 1.729.072 1.826l4.67 5.326.113.13.118.135.048.029.26.097.091.115.058.028.396.068.018-.004c1.197.002.701-.128.957.009l.104-.584.006-.007L23.821 1.998c.39-.596.609-1.397-.375-1.788z" />
+            </svg>
+            <p>Easy amendment</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="prices_heading position-relative">
+      <h1>Extra services</h1>
+      <div class="prices_box">
+        <div class="left_line"></div>
+        <img src="images/separator.png" alt="" />
+        <div class="right_line"></div>
+      </div>
+    </div>
+    <div class="
+          services_cover
+          align-items-center
+          justify-content-center
+          w-100
+        ">
+      <div class="
+            services_inner
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          ">
+        <div class="
+              services_icon
+              rounded-circle
+              d-flex
+              align-items-center
+              justify-content-center
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="48">
+            <path fill-rule="evenodd" fill="#646464"
+              d="M34.744 0H2.254C1.11 0 0 1.16 0 2.264v45.735h36.999V2.264C36.999 1.16 35.987 0 34.744 0zm-9.078 21.995a2.8 2.8 0 0 1-2.791 2.804h-8.751a2.8 2.8 0 0 1-2.791-2.804v-1.196a.797.797 0 1 1 1.592 0v1.196c0 .664.538 1.204 1.199 1.204h8.751c.661 0 1.855-.54 1.855-1.204v-1.196c0-.443-.301-.8.14-.8.44 0 .796.357.796.8v1.196z" />
+          </svg>
         </div>
-        <div class="faq-divider text-center d-flex align-items-center justify-content-center">
-            <img src="images/forma-1-copy-5.png">
+        <div class="
+              services_content
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            ">
+          <p class="m-0 text-center">Inside cabinets</p>
+          <h5>30 minutes</h5>
         </div>
-
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="card mb-4 shadow-sm" style="width: 553px; height: 304px;">
-                <div class="card-header text-center" style="background-color: #1D7A8C;">
-                    <h4 class="my-0 font-weight-normal" style="color: white; size: 28px; font-weight: bold;">One Time
-                    </h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title text-center" style="color: #646464;">€20 <small
-                            class="text-muted">/ hr</small>
-                    </h1>
-                    <div class="container img-text-class">
-                        <p style="margin-left: 150px;"><img src="images/forma-1-tick.png" style="margin-right: 15px;">Lower
-                            prices</p>
-                        <p style="margin-left: 150px;"><img src="images/forma-1-tick.png" style="margin-right: 15px;">Easy
-                            online & secure payment
-                        </p>
-                        <p style="margin-left: 150px;"><img src="images/forma-1-tick.png" style="margin-right: 15px;">Easy
-                            amendment</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="
+            services_inner
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          ">
+        <div class="
+              services_icon
+              rounded-circle
+              d-flex
+              align-items-center
+              justify-content-center
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="56">
+            <path fill-rule="evenodd" fill="#646464"
+              d="M25.406 52.934v3.065h-5.302v-3.065H7.883v3.065H2.581v-3.065H0V20.313h27.999v32.621h-2.593zM5.749 25.7c0-1.293-.54-1.784-1.159-1.784-.666 0-1.16.537-1.16 1.784v6.748c0 .664.54 1.156 1.16 1.156.665 0 1.159.056 1.159-1.156V25.7zM0 18.2V0h27.999v18.2H0zm3.43-4.201c0 .663.54 1.155 1.16 1.155.665 0 1.158-.538 1.158-1.155V6.621c0-.663-.539-1.155-1.158-1.155-.666 0-1.16.934-1.16 1.155v7.378z" />
+          </svg>
         </div>
-
-        <div class="container-fluid extra-services">
-            <div class="text-center" style="margin-top: 41px;">
-                <h1 style="color: #4F4F4F; margin-top: 41px;">Extra services</h1>
-            </div>
-            <div class="faq-divider text-center d-flex align-items-center justify-content-center">
-                <img src="images/forma-1-copy-5.png">
-            </div>
-            <div class="d-flex justify-content-center align-items-center extra-services-img"
-                style="padding-bottom: 41px; padding-top: 30px;">
-                <div class="flex-column col d-flex justify-content-center align-items-center">
-                    <div class="img-col d-flex justify-content-center align-items-center">
-                        <img src="images/301.png">
-                    </div>
-                    <div class="text-center" style="margin-top: 15px;">
-                        <h6 style="color: #4F4F4F;">Inside cabinets</h6>
-                        <p style="color: #1D7A8C; font-weight: bold;">30 minutes</p>
-                    </div>
-                </div>
-                <div class="flex-column col d-flex justify-content-center align-items-center">
-                    <div class="img-col d-flex justify-content-center align-items-center">
-                        <img src="images/501.png">
-                    </div>
-                    <div class="text-center" style="margin-top: 15px;">
-                        <h6 style="color: #4F4F4F;">Inside fridge</h6>
-                        <p style="color: #1D7A8C; font-weight: bold;">30 minutes</p>
-                    </div>
-                </div>
-                <div class="flex-column col d-flex justify-content-center align-items-center">
-                    <div class="img-col d-flex justify-content-center align-items-center">
-                        <img src="images/401.png">
-                    </div>
-                    <div class="text-center" style="margin-top: 15px;">
-                        <h6 style="color: #4F4F4F;">Inside oven</h6>
-                        <p style="color: #1D7A8C; font-weight: bold;">30 minutes</p>
-                    </div>
-                </div>
-                <div class="flex-column col d-flex justify-content-center align-items-center">
-                    <div class="img-col d-flex justify-content-center align-items-center">
-                        <img src="images/201.png">
-                    </div>
-                    <div class="text-center" style="margin-top: 15px;">
-                        <h6 style="color: #4F4F4F;">Laundry wash & dry</h6>
-                        <p style="color: #1D7A8C; font-weight: bold;">30 minutes</p>
-                    </div>
-                </div>
-                <div class="flex-column col d-flex justify-content-center align-items-center">
-                    <div class="img-col d-flex justify-content-center align-items-center">
-                        <img src="images/101.png">
-                    </div>
-                    <div class="text-center" style="margin-top: 15px;">
-                        <h6 style="color: #4F4F4F;">Interior windows</h6>
-                        <p style="color: #1D7A8C; font-weight: bold;">30 minutes</p>
-                    </div>
-                </div>
-            </div>
-
+        <div class="
+              services_content
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            ">
+          <p class="m-0 text-center">Inside fridge</p>
+          <h5>30 minutes</h5>
         </div>
-
-    </section>
-
-
-
-    <section class="what-include-in-cleaning" style="background-color: #F6F6F6;">
-        <div class="container-fluid home-container-2 container">
-            <div class="col-md-12 text-center" style="padding-top: 73px;">
-                <h1 class="text-40 font-weight-bold whyhl-head" style="color: #4F4F4F;">What we include in cleaning</h1>
-            </div>
-            <div class="faq-divider text-center d-flex align-items-center justify-content-center">
-                <img src="images/forma-1-copy-5.png">
-            </div>
-            <div class="row whyhl-row justify-content-center justify-content-between align-items-start small-src-padding-top" style="margin-top: 30px;">
-                <div class="col whyhl-col p-0 include-cleaning why-helperland-content">
-                    <img src="images/701.png" alt="">
-                    <div class="d-flex whyhl-content flex-column justify-content-between  why-helperland-content">
-                        <h4 style="margin-top: 30px;">Bedroom and Living Room</h4>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline">
-                            </ion-icon>
-                            <p>Dust all accessible surfaces</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>Wipe down all mirrors and glass fixtures</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>Clean all floor surfaces</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>Take out garbage and recycling</p>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="col whyhl-col why-helperland-content-mid include-cleaning  why-helperland-content small-src-padding-top">
-                    <img src="images/801.png" alt="">
-                    <div class="d-flex whyhl-content flex-column justify-content-between  why-helperland-content">
-                        <h4 style="margin-top: 30px;">Bathrooms</h4>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small
-                            " class="up-arrow" style="margin-right: 15px;" name="chevron-forward-circle-outline">
-                            </ion-icon>
-                            <p>Dust all accessible surfaces</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Empty sink and load up dishwasher</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Wipe down exterior of stove, oven and fridge</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Clean all floor surfaces</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Take out garbage and recycling</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col whyhl-col p-0 include-cleaning  why-helperland-content small-src-padding-top">
-                    <img src="images/601.png" alt="">
-                    <div class="d-flex flex-column whyhl-col justify-content-between  why-helperland-content">
-                        <h4 style="margin-top: 30px;">Dedicated Customer Service</h4>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small
-                            " class="up-arrow" style="margin-right: 15px;" name="chevron-forward-circle-outline">
-                            </ion-icon>
-                            <p>Wash and sanitize the toilet, shower, tub, sink</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Dust all accessible surfaces</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Wipe down all mirrors and glass fixtures</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Clean all floor surfaces</p>
-                        </div>
-                        <div class="flex-row d-flex  why-helperland-content">
-                            <ion-icon size="small" class="up-arrow" style="margin-right: 15px;"
-                                name="chevron-forward-circle-outline"></ion-icon>
-                            <p>
-                                Take out garbage and recycling</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="
+            services_inner
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          ">
+        <div class="
+              services_icon
+              rounded-circle
+              d-flex
+              align-items-center
+              justify-content-center
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="33">
+            <path fill-rule="evenodd" fill="#646464"
+              d="M50.119.981H1.879A1.881 1.881 0 0 0 0 2.863v28.246c0 1.037.842 1.881 1.879 1.881h48.24c1.039 0 1.88-.844 1.88-1.881V2.863a1.88 1.88 0 0 0-1.88-1.882zM41.814 8.68h2.936v3.22h-2.936V8.68zm0 3.045h2.936v2.941h-2.936v-2.941zm0 3.654h2.936v2.941h-2.936v-2.941zM38.6 8.68h2.399v3.22H38.6V8.68zm0 3.045h2.399v2.941H38.6v-2.941zm-3.829 17.5H31.52c.83-.292.876-.974.876-1.77h-6.111c3.125-1.913 5.172-5.054 5.172-8.611H7.21c0 3.557 2.46 6.7 4.981 8.611H6.82c0 .796-.377 1.478.134 1.77H3.758V4.746h31.013v24.479zM38.6 15.379h2.399v2.941H38.6v-2.941zm4.604 12.878c-1.774 0-3.212-1.44-3.212-2.837 0-2.155 1.438-3.595 3.212-3.595 1.772 0 3.209 1.44 3.209 3.595 0 1.397-1.437 2.837-3.209 2.837zm5.297-9.937h-2.936v-2.941h2.936v2.941zm0-3.654h-2.936v-2.941h2.936v2.941zm0-2.766h-2.936V8.68h2.936v3.22z" />
+          </svg>
         </div>
-    </section>
-
-    <section id="Why-helperland">
-        <div class="container">
-            <div class="col-md-12 text-center" style="margin-top: 50px;">
-                <h1 class="text-40 font-weight-bold whyhl-head" style="color: #4F4F4F;">Why Helperland</h1>
-            </div>
-            <div class="faq-divider text-center d-flex align-items-center justify-content-center">
-                <img src="images/forma-1-copy-5.png">
-            </div>
-            <div class="d-flex flex-row Why-Helperland-img-text" style="margin-top: 42px;">
-                <div class="col content-first" style="color: #4F4F4F;">
-                    <div class="text-right">
-                        <h4>Experienced and vetted professionals</h4>
-                        <p>dominate the industry in scale and scope with an adaptable, extensive network that
-                            consistently delivers exceptional results.</p>
-                    </div>
-                    <div class="text-right second-in-class">
-                        <h4 style="margin-top: 30px;">Dedicated customer service</h4>
-                        <p>to our customers and are guided in all we do by their needs. The team is always happy to
-                            support you and offer all the information. you need.</p>
-                    </div>
-                </div>
-                <div class="col content-second">
-                    <img src="images/the-best-img-1.png" class="img-fluid" alt="Responsive image">
-                </div>
-                <div class="col content-third" style="color: #4F4F4F;">
-                    <div class="text-left">
-                        <h4>Every cleaning is insured</h4>
-                        <p>and seek to provide exceptional service and engage in proactive behavior. We‘d be happy to
-                            clean your homes.</p>
-                    </div>
-                    <div class="textleft second-in-class">
-                        <h4 style="margin-top: 45px;">Secure online payment</h4>
-                        <p>Payment is processed securely online. Customers pay safely online and manage the booking.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="
+              services_content
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            ">
+          <p class="m-0 text-center">Inside oven</p>
+          <h5>30 minutes</h5>
         </div>
-    </section>
+      </div>
+      <div class="
+            services_inner
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          ">
+        <div class="
+              services_icon
+              rounded-circle
+              d-flex
+              align-items-center
+              justify-content-center
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="39" height="46">
+            <path fill-rule="evenodd" fill="#646464"
+              d="M0 45.999V8.987h38.999v37.012H0zm19.499-30.76c-6.798 0-12.329 5.497-12.329 12.254s5.531 12.255 12.329 12.255c6.798 0 12.329-5.498 12.329-12.255 0-6.757-5.53-12.254-12.329-12.254zm0 22.233c-5.535 0-10.039-4.477-10.039-9.979 0-5.502 4.504-9.978 10.039-9.978 5.851 0 10.04 4.476 10.04 9.978s-4.189 9.979-10.04 9.979zm7.985-9.979c0-4.383-3.575-7.936-7.985-7.936-3.609 0-7.984 3.553-7.984 7.936l.002.09c.379.326.796.637 2.283.637.115 0 .537-.368.944-.724.405-.354.788-.689 1.57-.689 1.636 0 1.164.335 1.569.689.408.356.829.724 1.664.724s1.256-.368 1.663-.724c.406-.354.789-.689 1.57-.689.782 0 1.165.335 1.57.689.408.356.829.724 1.79.724.576 0 .985-.26 1.34-.554.001-.058.004-.115.004-.173zm8.961-20.764c0 .624-.508 1.13-1.136 1.13a1.133 1.133 0 0 1-1.136-1.13c0-.623.509-1.129 1.136-1.129.628 0 1.136.506 1.136 1.129zm-3.645 0c0 .624-.509 1.13-1.137 1.13-.303 0-1.136-.506-1.136-1.13 0-.623.833-1.129 1.136-1.129.628 0 1.137.506 1.137 1.129zm-3.646 0c0 .624-.509 1.13-.974 1.13-.79 0-1.298-.506-1.298-1.13 0-.623.508-1.129 1.298-1.129.465 0 .974.506.974 1.129zm-20.683 0c0 .624-.508 1.13-1.136 1.13a1.133 1.133 0 0 1-1.136-1.13c0-.623.509-1.129 1.136-1.129.628 0 1.136.506 1.136 1.129zm-3.645 0c0 .624-.509 1.13-1.136 1.13-.07 0-1.137-.506-1.137-1.13C2.553 6.106 3.62 5.6 3.69 5.6c.627 0 1.136.506 1.136 1.129zM0 0h38.999v3.982H0V0z" />
+          </svg>
+        </div>
+        <div class="
+              services_content
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            ">
+          <p class="m-0 text-center">Laundry wash & dry</p>
+          <h5>30 minutes</h5>
+        </div>
+      </div>
+      <div class="
+            services_inner
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          ">
+        <div class="
+              services_icon
+              rounded-circle
+              d-flex
+              align-items-center
+              justify-content-center
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47">
+            <path fill-rule="evenodd" fill="#646464"
+              d="M45.699 46.999H1.3a1.3 1.3 0 0 1-1.3-1.3v-44.4A1.3 1.3 0 0 1 1.3 0h44.399c.719 0 1.3.581 1.3 1.299v44.4a1.3 1.3 0 0 1-1.3 1.3zM42.996 4.1H4.3v38.896h38.696V4.1zM21.68 21.68H7.642V7.641H21.68V21.68zm0 17.676H7.642V25.319H21.68v14.037zM39.358 21.68H25.319V7.641h14.039V21.68zm0 17.676H25.319V25.319h14.039v14.037z" />
+          </svg>
+        </div>
+        <div class="
+              services_content
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            ">
+          <p class="m-0 text-center">Interior windows</p>
+          <h5>30 minutes</h5>
+        </div>
+      </div>
+    </div>
+    <div class="
+          prices_areas
+          d-flex
+          flex-column
+          align-items-center
+          justify-content-center
+        ">
+      <div class="prices_heading position-relative mb-4">
+        <h1 class="text-center">What we include in cleaning</h1>
+        <div class="prices_box">
+          <div class="left_line"></div>
+          <img src="images/separator.png" alt="" />
+          <div class="right_line"></div>
+        </div>
+      </div>
+      <div class="card-group d-flex justify-content-center mt-3">
+        <div class="card border-0 services_card mx-3">
+          <img class="card-img-top" src="images/price-1.jpg" alt="Card image cap" height="210" width="360" />
+          <h5 class="mt-4">Bedroom and Living Room</h5>
+          <ul class="w-100 p-0 services_card_list">
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Dust all accessible surfaces</p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">
+                Wipe down all mirrors and glass fixtures
+              </p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Clean all floor surfaces</p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Take out garbage and recycling</p>
+            </li>
+          </ul>
+        </div>
+        <div class="card border-0 services_card mx-3">
+          <img class="card-img-top" src="images/price-2.jpg" alt="Card image cap" height="210" width="360" />
+          <h5 class="mt-4">Bathrooms</h5>
+          <ul class="w-100 p-0 services_card_list">
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">
+                Wash and sanitize the toilet, shower, tub, sink
+              </p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Dust all accessible surfaces</p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">
+                Wipe down all mirrors and glass fixtures
+              </p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Clean all floor surfaces</p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Take out garbage and recycling</p>
+            </li>
+          </ul>
+        </div>
+        <div class="card border-0 services_card mx-3">
+          <img class="card-img-top" src="images/price-3.jpg" alt="Card image cap" height="210" width="360" />
+          <h5 class="mt-4">Kitchen</h5>
+          <ul class="w-100 p-0 services_card_list">
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Dust all accessible surfaces</p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Empty sink and load up dishwasher</p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">
+                Wipe down exterior of stove, oven and fridge
+              </p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Clean all floor surfaces</p>
+            </li>
+            <li class="d-flex align-items-center">
+              <img src="images/arr.png" alt="" height="22" width="22" />
+              <p class="mb-0 ms-2">Take out garbage and recycling</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid whyhelperland">
+    <div class="prices_heading position-relative">
+      <h1>Why Helperland</h1>
+      <div class="prices_box">
+        <div class="left_line"></div>
+        <img src="images/separator.png" alt="" />
+        <div class="right_line"></div>
+      </div>
+    </div>
+    <div class="why_cover d-flex align-items-center justify-content-center w-100 position-relative">
+      <div class="why_left text-end d-flex flex-column justify-content-between position-relative h-100">
+        <div class="left_up">
+          <h5 class="m-0">Experienced and vetted professionals</h5>
+          <p class="m-0">
+            dominate the industry in scale and scope with <br> an adaptable,
+            extensive network that <br> consistently delivers exceptional results.
+          </p>
+        </div>
+        <div class="left_down">
+          <h5 class="m-0">Dedicated customer service</h5>
+          <p class="m-0">
+            to our customers and are guided in all we do <br> by their needs. The
+            team is always happy to <br> support you and offer all the information.
+            you need.
+          </p>
+        </div>
+      </div>
+      <div class="why_mid">
+        <img src="images/thebest.png" alt="" width="329" height="236" />
+      </div>
+      <div class="why_right d-flex flex-column justify-content-between">
+        <div class="right_up">
+          <h5 class="m-0">Every cleaning is insured</h5>
+          <p class="m-0">
+            and seek to provide exceptional service and <br> engage in proactive behavior. We‘d be happy <br> to clean
+            your homes.
+          </p>
+        </div>
+        <div class="right_down">
+          <h5 class="m-0">Secure online payment</h5>
+          <p class="m-0">
+            Payment is processed securely online.<br> Customers pay safely online and manage<br> the booking.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <section id="get-news-letter">
+     <section id="get_letter">
         <div class="d-flex flex-row justify-content-between">
             <div class="news-letter-arrow-img">
-                <div class="news-letter-up-arrow justify-content-center text-center"
+                <div class="news_arrow justify-content-center text-center"
                     style="border-radius: 50%; width: 48px; height: 48px; background-color: #525252; margin-top: 45px; ">
+                    <a href="#tp">
                     <img src="images/uparrow.svg" class="img-fluid" alt="Responsive image" style="margin-top: 15px;">
+                    </a>
                 </div>
             </div>
-            <div class="news-letter-news-letters-email-submit d-flex flex-column">
-                <div class="news-letter-news-letters text-center" style="margin-top: 45px; margin-left: -15px;">
+            <div class="d-flex flex-column">
+                <div class="text-center" style="margin-top: 45px; margin-left: -15px;">
                     <h5>GET OUR NEWSLETTER</h5>
                 </div>
-                <div class="email-submit-btn d-flex flex-row justify-content-center" style="margin-top: 15px; margin-bottom: 30px;">
+                <div class="d-flex flex-row justify-content-center" style="margin-top: 15px; margin-bottom: 30px;">
                     <input type="email" class="text-md-left" style="border-radius: 20px;" id="exampleInputEmail1"
                         aria-describedby="emailHelp" placeholder="Enter email">
                     <button class="btn">Submit</button>
                 </div>
             </div>
-            <div class="news-letter-img">
-                <img src="images/layer-598.png"
+            <div class="news_img">
+                <img src="images/layer-598.png" class="img-fluid" alt="Responsive image"
                     style="margin-top: 30px; float: right;">
             </div>
         </div>
     </section>
 
-    <div class="footer_section w-100">
-        <div class="footer_main d-flex justify-content-around align-items-center">
-            <div class="footer_left">
-                <img src="images/white-logo-transparent-background.png" alt="" height="78" width="106">
-            </div>
-            <div class="footer_mid">
-                <ul class="d-flex p-0 text-center">
-                    <li>
-                        <a href="" class="text-decoration-none">HOME</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-decoration-none">ABOUT</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-decoration-none">TESTIMONIAL</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-decoration-none">FAQS</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-decoration-none">INSURANCE POLICY</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-decoration-none">IMPRESSUM</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer_right d-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18">
-                    <path fill-rule="evenodd" fill="#CCC"
-                        d="M1.947 3.48v2.481H0v3.033h1.947V18.1h4.001V8.995h2.685S8.885 7.541 9.7 5.95H5.963V3.876c0-.31.437-.728.868-.728H9.11V.9H6.46C1.848.9 1.947 3.27 1.947 3.48z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                    <path fill-rule="evenodd" fill="#CCC"
-                        d="M14.48 20H5.519A5.524 5.524 0 0 1 0 14.482V5.52C0 2.477 2.475.2 5.519.2h8.961c3.043 0 5.519 2.277 5.519 5.32v8.962A5.525 5.525 0 0 1 14.48 20zm3.744-5.518V5.52a3.748 3.748 0 0 0-3.744-3.744H5.519A3.749 3.749 0 0 0 1.774 5.52v8.962a3.749 3.749 0 0 0 3.745 3.744h8.961a3.748 3.748 0 0 0 3.744-3.744zm-2.855-8.536c-.099 0-.678-.14-.92-.381-.242-.243.221-.578.221-.921 0-.342-.463-.678-.221-.92.242-.242.821-.381.92-.381.343 0 1.111.139.92.381.242.242.381.578.381.92 0 .342-.139.678-.381.921.171.241-.577.381-.92.381zm-5.37 9.208c-2.841 0-5.153-2.312-5.153-5.054 0-2.941 2.312-5.252 5.153-5.252 2.842 0 5.153 2.311 5.153 5.252 0 2.742-2.311 5.054-5.153 5.054zm0-8.532c-1.863 0-3.379 1.516-3.379 3.478 0 1.764 1.516 3.28 3.379 3.28s3.379-1.516 3.379-3.28c0-1.962-1.516-3.478-3.379-3.478z" />
-                </svg>
-            </div>
+    <footer class="font-small Rectangle-12">
+
+
+
+    
+    <div class="container d-flex flex-row justify-content-between align-items-center"
+      style="max-width: 1800px;">
+
+      <div class="footer-logo">
+        <img src="images/white-logo-transparent-background.png" style="
+        margin-top: 25px; float: left; margin-left: 15px;" class="img-fluid" alt="Responsive image">
+      </div>
+      <div class="footer-links">
+      
+        <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+          
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase">
+              <a href="#!" style="color: #F1F1F1;">HOME</a>
+            </h6>
+          </div>
+          
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase">
+              <a href="#!" style="color: #F1F1F1;">ABOUT</a>
+            </h6>
+          </div>
+          
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase">
+              <a href="#!" style="color: #F1F1F1;">TESTIMONIALS</a>
+            </h6>
+          </div>
+        
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase">
+              <a href="#!" style="color: #F1F1F1;">FAQS</a>
+            </h6>
+          </div>
+          
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase">
+              <a href="#!" style="color: #F1F1F1;">INSURANCE POLICY</a>
+            </h6>
+          </div>
+          
+
+          
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase">
+              <a href="#!" style="color: #F1F1F1;">IMPRESSUM</a>
+            </h6>
+          </div>
+          
+
         </div>
-        <div class="footer_end d-flex align-items-center justify-content-center">
-            <p class="m-0 text-center">©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy
-            </p>
-        </div>
+
+      </div>
+      <div class="footer-insta-facebook d-flex flex-row" style="margin-top: -75px;">
+        <img src="images/facebook.svg" class="Forma-1">
+        <img src="images/instagram.svg" class="Forma-2">
+
+      </div>
     </div>
+    
+    <div class="footer-copyright text-center py-3 text-white text-center position-relative">Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Sed nisi at nihil aperiam nesciunt deserunt odit fuga?
+      <a href="#" class="text-decoration-none"> Privacy Policy</a>
+      
+    </div>
+    
+
+  </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
