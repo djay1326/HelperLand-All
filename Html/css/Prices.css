@@ -22,7 +22,7 @@ li{ list-style: none; }
     margin-top: 5px;
 }
 
-.nav-btn-blue a{
+.nav-btn-color a{
     border: 1px solid #fff;
     border-radius: 100px;
     margin: 0 15px;
@@ -38,7 +38,7 @@ li{ list-style: none; }
 }
 
 
-.nav-btnn a{
+.nav-btn1 a{
     margin: 0 5px;
     padding: 5px 15px;
     outline: none;
@@ -48,26 +48,6 @@ li{ list-style: none; }
     line-height: 1.4;
     text-align: center;
     margin-top: 5px;
-}
-
-.Customersay-part.email-btn{
-    top: 0;
-    bottom: 0;
-    width: 99px;    
-    border-radius: 20px;
-    opacity: 1;
-    background-color: #FF7B6D;
-}
-
-.Ellipse-649 {
-    width: 48px;
-    height: 48px;
-    margin: 57px 83px 76px 70px;
-    padding: 18px 14px 20px;
-    background-color: #525252;
-}
-.image-text.col {   
-    width: 33.333%;
 }
 
 .Rectangle-12 {
@@ -207,99 +187,6 @@ li{ list-style: none; }
 }
 
 
-.extra-services{
-    max-width: 1140px;
-    min-height: 325px;
-    margin-top: 51px;
-    border-top: 1px solid #646464;
-}
-
-.img-col{
-    width: 108px;
-    height: 108px;
-    border: 1px solid #646464;
-    border-radius: 50%;
-}
-
-@media (max-width: 700px){
-    .extra-services-img{
-        flex-direction: column !important;
-    }
-}
-
-@media (max-width: 600px){
-    .img-text-class p{
-        margin-left: 0px !important;
-    }
-}
-
-.include-cleaning img{
-    width: 360px;
-    height: 210px;
-}
-
-.include-cleaning h4{
-    size: 20px;
-}
-
-.include-cleaning p{
-    size: 16px;
-}
-
-@media screen and (max-width: 800px){
-    #Why-helperland .Why-Helperland-img-text{
-        flex-direction: column !important;
-    }
-    #Why-helperland .content-first >div{
-        text-align: left !important;
-    }
-    #Why-helperland .content-first{
-        order: 2;
-    }
-    #Why-helperland .content-second{
-        text-align: center;
-        order: 1;
-    }
-    #Why-helperland .content-third{
-        text-align: left !important;
-        order: 3;
-    }
-    #Why-helperland .second-in-class h4{
-        margin-top: 0px !important;
-    }  
-}
-
-.why-helperland-content{
-     max-width: 360px !important;   
-}
-
-.why-helperland-content-mid{
-    padding: 0px !important;
-}
-
-@media (max-width: 991px){
-    .why-helperland-content-mid{
-        padding-left: 15px !important;
-    }
-}
-
-@media (max-width: 766px){
-    .why-helperland-content-mid{
-        padding-left: 0px !important;
-    }
-    .small-src-padding-top{
-        margin-top: 41px;
-    }
-}
-
-@media (max-width: 360px){
-    .small-src-padding-top img{
-        width: 280px !important;
-        padding: 15px;
-    }
-}
-
-
 @media (max-width: 450px){
 
     #get-news-letter .email-submit-btn{
@@ -317,3 +204,180 @@ li{ list-style: none; }
     }
 }
 
+.main_image img{
+    height: auto;
+    width: 100vw;
+}
+
+.prices_heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #4f4f4f;
+    margin-top: 30px;
+}
+.prices_heading h1{
+    font-size: 36px;
+}
+.prices_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.left_line , .right_line{
+    width: 62px;
+    height: 1px;
+    background-color: #CCCCCC;
+    margin: 0px 8px;
+}
+
+.prices_card{
+    max-width: 553px;
+    align-items: center;
+    border: solid 1px #b0c9ce !important;
+    border-radius: 0 !important;
+}
+
+.prices_card .card-header{
+    background-color: #1d7a8c;
+    font-size: 28px;
+}
+.prices_card .card-title{
+    color: #646464;
+    font-size: 30px;
+    font-weight: normal;
+    margin-top: 13px;
+}
+.card_euro{
+    font-size: 48px;
+}
+.price_card_list{
+    list-style: none;
+}
+.price_card_list li{
+    display: flex;
+    color: #646464;
+}
+.price_card_list li p{
+    margin-left: 10px;
+}
+
+hr{
+    margin: 50px auto !important;
+    width: 75vw;
+    align-self: center;
+}
+.services_cover{
+    display: flex;
+}
+.services_icon{
+    height: 108px;
+    width: 108px;
+    border: solid 1px #b0c9ce;
+}
+.services_inner{
+    width: 145px;
+    margin: 40px 3vw;
+}
+.services_content{
+    margin-top: 17px !important;
+}
+.services_content p{
+    color: #646464;
+    margin-bottom: 12px !important;
+}
+.services_content h5{
+    color: #1d7a8c;
+}
+
+.prices_areas{
+    background-color: #f6f6f6;
+    min-height: 707px;
+}
+
+.services_card{
+    background-color: transparent !important;
+    flex: none !important;
+}
+.services_card_list li{
+    margin-bottom: 14px;
+}
+.services_card_list li p{
+    font-size: 16px;
+    color: #4f4f4f;
+}
+
+.services_card h5{
+    margin-bottom: 18px;
+}
+
+.whyhelperland .prices_heading{
+    margin-bottom: 15px;
+}
+.why_cover{
+    color: #646464;
+}
+.why_left , .why_right{
+    width: 360px;
+    margin: 0 45px;
+}
+
+.why_left p , .why_right p{
+    font-size: 14px;
+    margin-top: 13px;
+}
+
+.left_up , .right_up{
+    margin-bottom: 40px;
+}
+
+
+@media (max-width: 1024px){
+    .why_cover{
+        height: fit-content;
+        flex-direction: column;
+    }
+    .why_left , .why_right{
+        margin: 0px 0px;
+    }
+    .left_up , .right_up , .left_down , .right_down{
+        margin-bottom: 25px;
+        text-align: center !important;
+    }
+    /* .why_cover br{
+        display: none;  
+    } */
+    .services_inner{
+        width: fit-content;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+
+}
+
+@media(max-width: 768px){
+    .services_cover{
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+    }
+    .prices_areas .card-group{
+        flex-direction: column;
+    }
+    .services_cover{
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+}
+
+@media (max-width : 425px){
+    .why_left , .why_right{
+        width: fit-content;
+    }
+    .why_mid img{
+        max-width: 95vw;
+    }
+}
