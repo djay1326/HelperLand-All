@@ -226,8 +226,174 @@ function notifications(){
   }
 }
 
+// ............................................For Sidenav Popup.................................................
+function dash1(){
+  var p = document.getElementById("DashboardTable");
+  var aa =document.getElementById("newServiceRequestTable");
+  var ab =document.getElementById("upcomingService");
+  var ac =document.getElementById("serviceHistory");
+  var ad =document.getElementById("myRatings");
+  var ae =document.getElementById("blockCustomerTable");
+  var af = document.getElementById("NotificationsTable");
+  // var aa = document.getElementById("Dif (x.style.display === "block") {
+    p.style.display = "block";
+    if(p.style.display === "block") {
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    }
+    
+}
 
-// .......sidenav...........
+function neww1(){
+  var p = document.getElementById("DashboardTable");
+  var aa =document.getElementById("newServiceRequestTable");
+  var ab =document.getElementById("upcomingService");
+  var ac =document.getElementById("serviceHistory");
+  var ad =document.getElementById("myRatings");
+  var ae =document.getElementById("blockCustomerTable");
+  var af = document.getElementById("NotificationsTable");
+  // var aa = document.getElementById("Dif (x.style.display === "block") {
+    // p.style.display = "block";
+    
+    if (aa.style.display === "none") {
+    aa.style.display = "block";
+    p.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    } 
+  else {
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    p.style.display = "block";
+  }
+}
+
+function upcomingg1(){
+  var p = document.getElementById("DashboardTable");
+  var aa =document.getElementById("newServiceRequestTable");
+  var ab =document.getElementById("upcomingService");
+  var ac =document.getElementById("serviceHistory");
+  var ad =document.getElementById("myRatings");
+  var ae =document.getElementById("blockCustomerTable");
+  var af = document.getElementById("NotificationsTable");
+  // var aa = document.getElementById("Dif (x.style.display === "block") {
+    // p.style.display = "block";
+    
+    if (ab.style.display === "none") {
+    ab.style.display = "block";
+    p.style.display = "none";
+    aa.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    } 
+  else {
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    p.style.display = "block";
+  }
+}
+
+function schedulee1(){
+  var p = document.getElementById("DashboardTable");
+  var aa =document.getElementById("newServiceRequestTable");
+  var ab =document.getElementById("upcomingService");
+  var ac =document.getElementById("serviceHistory");
+  var ad =document.getElementById("myRatings");
+  var ae =document.getElementById("blockCustomerTable");
+  var af = document.getElementById("NotificationsTable");
+  // var aa = document.getElementById("Dif (x.style.display === "block") {
+    // p.style.display = "block";
+    
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    p.style.display = "none";
+}
+
+function history1(){
+  var p = document.getElementById("DashboardTable");
+  var aa =document.getElementById("newServiceRequestTable");
+  var ab =document.getElementById("upcomingService");
+  var ac =document.getElementById("serviceHistory");
+  var ad =document.getElementById("myRatings");
+  var ae =document.getElementById("blockCustomerTable");
+  var af = document.getElementById("NotificationsTable");
+  // var aa = document.getElementById("Dif (x.style.display === "block") {
+    // p.style.display = "block";
+    
+    if (ac.style.display === "none") {
+    ac.style.display = "block";
+    p.style.display = "none";
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    } 
+  else {
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    p.style.display = "block";
+  }
+}
+
+function ratee1(){
+  var p = document.getElementById("DashboardTable");
+  var aa =document.getElementById("newServiceRequestTable");
+  var ab =document.getElementById("upcomingService");
+  var ac =document.getElementById("serviceHistory");
+  var ad =document.getElementById("myRatings");
+  var ae =document.getElementById("blockCustomerTable");
+  var af = document.getElementById("NotificationsTable");
+  // var aa = document.getElementById("Dif (x.style.display === "block") {
+    // p.style.display = "block";
+    
+    if (ad.style.display === "none") {
+    ad.style.display = "block";
+    p.style.display = "none";
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    } 
+  else {
+    aa.style.display = "none";
+    ab.style.display = "none";
+    ac.style.display = "none";
+    ad.style.display = "none";
+    ae.style.display = "none";
+    af.style.display = "none";
+    p.style.display = "block";
+  }
+}
+
+
+// .......................sidenav......................
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
