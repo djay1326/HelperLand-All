@@ -80,7 +80,13 @@ li{ list-style: none; }
   margin-bottom: 30px;
   border-bottom: 1px solid #e1e1e1;
 }
-
+.clrr a{
+    color: grey;
+}
+.hrr{
+    height: 1px;
+    background-color: grey;
+}
 /*..........Welcome Sandip......*/
 .Rectangle-622 {
   width: 1560px;
@@ -127,7 +133,10 @@ li{ list-style: none; }
   width: 262px;
   cursor: pointer;
 }
-
+/*.stickyy{
+    position: fixed-top;
+    top: 0;
+}*/
 /*...........All Tables list.......*/
 .whole_tables {
   width: 80%;
@@ -589,8 +598,15 @@ li{ list-style: none; }
     .topNavbar{
         visibility: none;
     }
-
-
+/*.........For Bottom.........*/
+@media (max-width: 580px){
+    .firstPart{
+    display: none;
+}
+    .secondPart{
+        margin-bottom: 20px;
+    }
+}
 
 /*.............For sidenav...............*/
 .rtt{
@@ -698,14 +714,3 @@ li{ list-style: none; }
   background-color: #1d7a8c;
   padding: 11px 34px;
 }
-
-
-/*......Dropdown.....*/
-.home-navbar .dropdown-menu[data-bs-popper] {
-  left: -115px;
-}
-
-.bg-become-helper .dropdown-menu[data-bs-popper] {
-  left: -115px;
-}
-
