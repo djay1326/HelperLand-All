@@ -2,7 +2,9 @@
 
 a{ text-decoration: none;}
 
-
+a:hover{
+    text-decoration: none !important; 
+}
 html{
     overflow-x: hidden;
 }
@@ -593,5 +595,3 @@ li{ list-style: none; }
         margin-bottom: 20px;
     }
 }
-
-
