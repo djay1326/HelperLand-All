@@ -115,6 +115,19 @@ li{ list-style: none; }
     border-radius:20px ;
     padding: 10px;
 }
+.prices_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.left_line , .right_line{
+    width: 62px;
+    height: 1px;
+    background-color: #CCCCCC;
+    margin: 0px 8px;
+}
 
 
 
@@ -215,7 +228,7 @@ li{ list-style: none; }
 .accordion-item{
     background-color: #fff;
     border-radius: .4rem;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     padding: 5px;
 }
 
@@ -245,23 +258,13 @@ li{ list-style: none; }
     transition: 300ms;
 }
 
-.answer::before{
-    content: "";
-    position: absolute;
-    width: .6rem;
-    height: 90%;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-}
-
 .answer p{
     font-size: 1rem;
     padding: 2rem;
 }
 
 .accordion-item:target .answer{
-    max-height: 20rem;
+    max-height: 10rem;
 }
 
 .accordion-item:target .accordion-link .up-arrow{
@@ -486,8 +489,6 @@ img.Forma-2 {
     width: 33.333%;
 }
 .HelperLand .helperland-img{flex-wrap: wrap;}
-/* .cols{display:flex;align-items: center;justify-content: center;flex-wrap: wrap;}
-.cols.cols4 .col{width:25%;} */
 .header-text .text-md-left{border: none;}
 
 @media only screen and (max-width: 767px) {
