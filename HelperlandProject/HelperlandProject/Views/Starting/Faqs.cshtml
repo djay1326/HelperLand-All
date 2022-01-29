@@ -1,0 +1,505 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/images/favicon_img.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="~/css/faqstyle.css?v=101">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script type="text/javascript" src="~/js/cal.js"></script>
+    <title>FAQs</title>
+</head>
+
+<body>
+    <div class="header1" id="topheader">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #525252;" id="navbar11">
+            <a class="navbar-brand" asp-controller="Starting" asp-action="Index">
+                <img src="~/images/white-logo-transparent-background.png" style="  width: 73px; height: 54px;" id="imgg2">
+            </a>
+            <!-- ............RightSidenav............. -->
+            <div>
+                <span style="font-size:35px;cursor:pointer" onclick="openNav()" class="rtt mr-3 mt-0"> &#9776</span>
+                <div id="mySidenav" class="sidenav">
+
+                    <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#">Book now</a>
+                    <a asp-controller="Starting" asp-action="prices">Prices and Services</a>
+                    <a href="#">Warranty</a>
+                    <a href="#">Blog</a>
+                    <a asp-controller="Starting" asp-action="Contact">Contact</a>
+                    <a class="text-decoration-none" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
+                    <a href="ServiceProvider.html">Become a helper</a>
+                    <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                    <a href="" class="ml-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" class=" ml-3 mr-3">
+                            <path fill-rule="evenodd" fill="#000" d="M1.947 3.48v2.481H0v3.033h1.947V18.1h4.001V8.995h2.685S8.885 7.541 9.7 5.95H5.963V3.876c0-.31.437-.728.868-.728H9.11V.9H6.46C1.848.9 1.947 3.27 1.947 3.48z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ms-3">
+                            <path fill-rule="evenodd" fill="#000" d="M14.48 20H5.519A5.524 5.524 0 0 1 0 14.482V5.52C0 2.477 2.475.2 5.519.2h8.961c3.043 0 5.519 2.277 5.519 5.32v8.962A5.525 5.525 0 0 1 14.48 20zm3.744-5.518V5.52a3.748 3.748 0 0 0-3.744-3.744H5.519A3.749 3.749 0 0 0 1.774 5.52v8.962a3.749 3.749 0 0 0 3.745 3.744h8.961a3.748 3.748 0 0 0 3.744-3.744zm-2.855-8.536c-.099 0-.678-.14-.92-.381-.242-.243.221-.578.221-.921 0-.342-.463-.678-.221-.92.242-.242.821-.381.92-.381.343 0 1.111.139.92.381.242.242.381.578.381.92 0 .342-.139.678-.381.921.171.241-.577.381-.92.381zm-5.37 9.208c-2.841 0-5.153-2.312-5.153-5.054 0-2.941 2.312-5.252 5.153-5.252 2.842 0 5.153 2.311 5.153 5.252 0 2.742-2.311 5.054-5.153 5.054zm0-8.532c-1.863 0-3.379 1.516-3.379 3.478 0 1.764 1.516 3.28 3.379 3.28s3.379-1.516 3.379-3.28c0-1.962-1.516-3.478-3.379-3.478z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <div class="nav-btn-color">
+                            <a class="nav-link py-3 " href="#">Book now</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" asp-controller="Starting" asp-action="prices">Prices & services</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" href="#">Warranty</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" href="#">Blog</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" asp-controller="Starting" asp-action="Contact">Contact</a>
+                        </div>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <div class="nav-btn">
+                            <a class="nav-btn-item text-decoration-none p-3 m-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn-color">
+                            <a class="nav-link py-3" href="ServiceProvider.html">Become a Helper</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <section id="main_banner">
+        <img class="img-fluid w-100" src="~/images/faq-banner.png" />
+    </section>
+
+    <section id="faq_design">
+        <div class="text-center" style="margin-top: 30px;">
+            <h1>FAQs</h1>
+        </div>
+        <div class="prices_box">
+            <div class="left_line"></div>
+            <img src="~/images/separator.png" alt="" />
+            <div class="right_line"></div>
+        </div>
+        <div class="text-center" style="margin-top: 15px; color: grey; font-weight: 600;">
+            <p>
+                Whether you are Customer or Service provider,<br>
+                We have tried our best to solve all your queries and questions.
+            </p>
+        </div>
+
+    </section>
+
+    <section class="faq_list container ">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item text-center text-dark">
+                <a class="nav-link active w-100" data-toggle="tab" href="#home">For Customer</a>
+            </li>
+            <li class="nav-item text-center text-dark">
+                <a class="nav-link w-100" data-toggle="tab" href="#menu">For Service Provider</a>
+            </li>
+        </ul>
+
+
+        <div class="tab-content">
+            <div id="home" class="container tab-pane active">
+                <br>
+                <div class="accordion">
+                    <div class="accordion-item" id="question1">
+                        <a class="accordion-link" href="#question1">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                What's included in cleaning?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>Bedroom, Living Room & Common Areas,Bathrooms,Kitchen,Extras.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question2">
+                        <a class="accordion-link" href="#question2">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                testQA??
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla
+                                ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit
+                                tortor. Integer tempus massa in gravida tincidunt.
+                                Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac
+                                ante ipsum primis in faucibus.Donec id massa vel velit
+                                ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo
+                                luctus dictum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question3">
+                        <a class="accordion-link" href="#question3">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                Which Helperland Professinal will come to my place?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>Helperland has a vast network of experienced, top-rated cleaners. Based on the time and date of your request, we work to assign the best professional available.Like working with a specific pro? Add them to your Pro Team from the mobile app and they'll be requested first for all future bookings.You will receive an email with details about your professional prior to your appointment.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question4">
+                        <a class="accordion-link" href="#question4">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                Can I skip or reschedule bookings?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>You can reschedule any booking for free at least 24 hours in advance of the scheduled start time. If you need to skip a booking within the minimum commitment, we’ll credit the value of the booking to your account. You can use this credit on future cleanings and other Helperland services.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="question5">
+                        <a class="accordion-link" href="#question5" style="color: #4f4f4f;">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1">
+                                Lorem ipsum dolor sit amet,
+                                mattis tellus ac ut non imperdiet velit?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla
+                                ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit
+                                tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu
+                                dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt.
+                                Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac
+                                ante ipsum primis in faucibus.Donec id massa vel velit
+                                ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo
+                                luctus dictum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question6">
+                        <a class="accordion-link" href="#question6" style="color: #4f4f4f;">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1">
+                                Lorem ipsum dolor sit amet,
+                                mattis tellus ac ut non imperdiet velit?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla
+                                ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit
+                                tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu
+                                dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt.
+                                Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac
+                                ante ipsum primis in faucibus.Donec id massa vel velit
+                                ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo
+                                luctus dictum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question7">
+                        <a class="accordion-link" href="#question7" style="color: #4f4f4f;">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1">
+                                Do I need to be home for booking?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>We strongly recommend that you are home for the first clean of your booking to show your cleaner around. Some customers choose to give a spare key to their cleaner, but this decision is based on individual preferences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="menu" class="container tab-pane fade">
+                <br>
+                <div class="accordion">
+                    <div class="accordion-item" id="question8">
+                        <a class="accordion-link" href="#question8">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                How much do service providers earn?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>The self-employed service providers working with Helperland set their own payouts, this means that they decide how much they earn per hour.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question9">
+                        <a class="accordion-link" href="#question9">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                What support do you provide to the service providers?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>Our call-centre is available to assist the service providers with all queries or issues in regards to their bookings during office hours. Before a service provider starts receiving jobs, every individual partner receives an orientation session to familiarise with the online platform and their profile.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question10">
+                        <a class="accordion-link" href="#question10">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                Lorem ipsum dolor sit amet,
+                                mattis tellus ac ut non imperdiet velit?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla
+                                ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit
+                                tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu
+                                dui vel lacus porta eleifend eget quis dui.
+                                Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac
+                                ante ipsum primis in faucibus.Donec id massa vel velit
+                                ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo
+                                luctus dictum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question11">
+                        <a class="accordion-link" href="#question11" style="color: #4f4f4f;">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1">
+                                Lorem ipsum dolor sit amet,
+                                mattis tellus ac ut non imperdiet velit?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla
+                                ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit
+                                tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu
+                                dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt.
+                                Fusce in libero tristique, euismod nisi vel, luctus urna. Donec id massa vel velit
+                                ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo
+                                luctus dictum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item" id="question12">
+                        <a class="accordion-link" href="#question12">
+                            <img src="~/images/arr.png">
+                            <span class="font-weight-bold ml-1" style="color: #4f4f4f;">
+                                Lorem ipsum dolor sit amet,
+                                mattis tellus ac ut non imperdiet velit?
+                            </span>
+                        </a>
+                        <div class="answer">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla
+                                ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit
+                                tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu
+                                dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt.
+                                Fusce in libero tristique, euismod nisi vel, luctus urna. Donec id massa vel velit
+                                ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo
+                                luctus dictum.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- .............................Login Popup Modal .............................. -->
+    <div>
+        <div class="modal fade" id="loginPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle">Login to your account</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body loginPopup p-2">
+                        <form action="">
+                            <div class="form-group position-relative my-3">
+                                <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
+                                <img src="~/images/userr.png" alt="" height="21" width="20">
+                            </div>
+                            <div class="form-group position-relative my-3">
+                                <input type="password" placeholder="Password" name="password" class="emaill brdr">
+                                <img src="~/images/lock.png" alt="" height="21" width="20">
+                            </div>
+                            <div class="form-group d-flex">
+                                <input type="checkbox" value="rememberme" id="rememberme" class="abb">
+                                <label for="rememberme" class="control-label ml-2">Remember me</label>
+                            </div>
+                            <button type="submit" class="my-3 btn submitButton text-light w-100 rounded-pill">
+                                Login
+                            </button>
+                        </form>
+                        <div class="text-center mt-2">
+                            <a href="forgotPassword" class="forgotPwd text-decoration-none" data-target="#forgotPasswordModal" data-toggle="modal" data-dismiss="modal">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            Don't have account? <span> <a class="forgotPwd text-decoration-none" asp-controller="Starting" asp-action="NewAccount">Create an account? </a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ...............................Forgot Password Popup Modal.......................... -->
+        <div class="modal fade" id="forgotPasswordModal" aria-hidden="true" aria-labelledby="forgotPasswordModalLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title me-3" id="forgotPasswordModalLabel2">Forgot Password</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <form action="">
+                            <div class="d-flex mb-3">
+                                <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
+                            </div>
+                            <button type="submit" class="my-3 btn submitButton text-light w-100 rounded-pill">
+                                Send
+                            </button>
+                        </form>
+                        <div class="text-center mt-2">
+                            <a href="loginPopup" class="forgotPwd text-decoration-none" data-target="#loginPopup" data-toggle="modal" data-dismiss="modal">Login now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section id="get_letter">
+        <div class="d-flex flex-row justify-content-center">
+            <div class="d-flex flex-column">
+                <div class="text-center" style="margin-top: 45px; margin-left: -15px;">
+                    <h5>GET OUR NEWSLETTER</h5>
+                </div>
+                <div class="d-flex flex-row justify-content-center" style="margin-top: 15px; margin-bottom: 30px;">
+                    <input type="email" class="text-md-left" style="border-radius: 20px;" id="exampleInputEmail1"
+                           aria-describedby="emailHelp" placeholder="Enter email">
+                    <button class="btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="font-small Rectangle-12">
+        <div class="container d-flex flex-row justify-content-between align-items-center"
+             style="max-width: 1800px;">
+
+            <div class="footer-logo">
+                <img src="~/images/white-logo-transparent-background.png" style="
+        margin-top: 25px; float: left; margin-left: 15px;" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="footer-links">
+
+                <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="Index" style="color: #F1F1F1;" class="text-decoration-none">HOME</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="About" style="color: #F1F1F1;" class="text-decoration-none">ABOUT</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;" class="text-decoration-none">TESTIMONIALS</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="Faqs" style="color: #F1F1F1;" class="text-decoration-none">FAQS</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;" class="text-decoration-none">INSURANCE POLICY</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;" class="text-decoration-none">IMPRESSUM</a>
+                        </h6>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="footer-insta-facebook d-flex flex-row" style="margin-top: -75px;">
+                <img src="~/images/facebook.svg" class="Forma-1">
+                <img src="~/images/instagram.svg" class="Forma-2">
+
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3 text-white text-center position-relative">
+            Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Sed nisi at nihil aperiam nesciunt deserunt odit fuga?
+            <a href="#"> Privacy Policy</a>
+            <button class="position-absolute btn footer-btn text-dark">
+                OK!
+            </button>
+        </div>
+
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+            integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+            crossorigin="anonymous"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

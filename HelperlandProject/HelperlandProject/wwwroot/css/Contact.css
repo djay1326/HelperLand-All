@@ -1,0 +1,480 @@
+*{margin: 0;padding: 0;box-sizing: border-box; font-family: 'Roboto';}
+
+a{ text-decoration: none;}
+
+a:hover{
+    text-decoration: none !important; 
+}
+html{
+    overflow-x: hidden;
+}
+li{ list-style: none; }
+
+.nav-btn a{
+    border: 1px solid #fff;
+    border-radius: 100px;
+    margin: 0 15px;
+    padding: 5px 10px;
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.nav-btn-color a{
+    border: 1px solid #fff;
+    border-radius: 100px;
+    margin: 0 15px;
+    padding: 5px 10px;
+    outline: none;
+    color: #fff;
+    background-color: #29626D;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+.nav-btn1 a{
+    margin: 0 5px;
+    padding: 5px 15px;
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.Rectangle-12 {
+    background-color: #111;
+  }
+
+.d-flex button.btn{background-color: #FF7B6D;
+    border-radius: 20px;
+    width: 99px;
+    margin-left: 15px;}
+    .d-flex button.btn:hover{background:#000;color: #fff;}
+.nav-item a{
+    color: #fff !important;
+    font-size: 17px;
+}
+.text-md-left {
+    text-align: left !important;
+    background: transparent;
+    border: 1px solid #565656;
+    border-radius:20px ;
+    padding: 10px;
+}
+
+.main-img{
+    height: auto;
+    width: 100vw;
+}
+
+.footer_section{
+    background-color: #111111;
+}
+
+.footer_main{
+    height: 130px;
+}
+.footer_mid ul li{
+    margin: 12px;
+    list-style: none;
+}
+.footer_mid ul li a{
+    color: #f1f1f1;
+    font-size: 14px;
+}
+.footer_right svg{
+    margin: 0 10px;
+}
+
+.footer_end{
+    background-color: #292929;
+    height: fit-content;
+}
+
+.footer_end p{
+    color: #f1f1f1;
+    padding: 26px 0px;
+    font-size: 14px;
+}
+.footer_end p span a{
+    color: #6eabef;
+}
+
+.footer_btn{
+    background-color: #eed507 !important;
+    padding: 10px 35px !important;
+    position: absolute !important;
+    right: 15px;
+    /* margin-top: 1px; */
+}
+.img-fluid{
+    height: 25vh;
+    width: 100%;
+}
+
+
+@media (max-width: 1024px){
+    .footer_btn{
+        position: relative !important;
+        right: 0;
+        margin-left: 5px;
+    }
+    
+}
+
+
+@media (max-width: 768px){
+    .footer_mid ul{
+        display: grid !important;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 0px 10px;
+        padding: 20px 0 !important;
+        margin: 0;
+    }
+    .footer_main{
+        flex-direction: column;
+        height: fit-content !important;
+        padding: 20px 0px;
+        justify-content: space-between !important;
+    }
+    
+}
+
+@media (max-width: 425px){
+    .footer_end{
+        flex-direction: column;
+        padding: 0 10px;
+    }
+}
+
+.faq-divider::before,.faq-divider::after{
+    content: "";
+    width: 62px;
+    height: 2px;
+    background-color: #cccccc;
+    display: block;
+}
+
+.faq-divider img{
+    padding: 8px;
+}
+
+.main_image img{
+    height: auto;
+    width: 100vw;
+}
+
+.prices_heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #4f4f4f;
+    margin-top: 30px;
+}
+.prices_heading h1{
+    font-size: 36px;
+}
+.prices_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.left_line , .right_line{
+    width: 62px;
+    height: 1px;
+    background-color: #CCCCCC;
+    margin: 0px 8px;
+}
+
+.logos_img{
+    margin-top: 50px;
+    color: #4f4f4f;
+}
+.inner_portion{
+    width: 130px;
+    min-height: 106px;
+    margin: 0 4.5vw;
+}
+.logoData{
+    margin-top: 20px;
+}
+.main_logo{
+    min-height: 54px;
+}
+
+hr{
+    margin: 75px auto !important;
+    width: 75vw;
+    align-self: center;
+}
+form{
+    min-width: fit-content;
+}
+
+.formm .mainn{
+    max-width: 300px;
+    min-height: 46px;
+    margin: 7px;
+    padding: 0;
+}
+.ww{
+    width: 19.5vw;
+}
+button:focus , input:focus , textarea:focus , select:focus{
+    box-shadow: none !important;
+    border: 2px solid darkgreen !important;
+    outline: 1px #1d7a8c  !important;
+}
+.Areacode{
+    max-width: 57px;
+    background-color: #c8c8c8;
+}
+.form_data::placeholder , .placeholder{
+    color: #a0a0a0;
+}
+.form_data {
+    border: solid 1px #c8c8c8;  
+    padding-left: 16px;
+}
+.formm .textarea , .formm .formSelect {
+    min-width: 614px;
+    padding: 0;
+    min-height: 46px;
+    margin: 7px 0px;
+}
+.formSelect select{
+    min-height: 46px;
+    padding: 0 16px !important;
+    color: #a0a0a0;
+}
+.formm .textarea textarea{
+    min-height: 146px;
+    padding-left: 16px !important;
+    padding-top: 10px !important;
+}
+.submitBtn{
+    min-width: 163px;
+    min-height: 46px;
+    background-color: #1d7a8c !important;
+    border: none !important;
+    font-size: 20px;
+}
+.Heading{
+    font-size: 28px;
+    color: #4f4f4f;
+    margin-bottom: 20px;
+}
+.map_position{
+    position: absolute !important;
+    top: 12vw;
+    left: 45vw;
+    z-index: 11;
+}
+.main_map{
+    margin-top: 80px;
+}
+.Imagee{
+    width: 100vw;
+    height: auto;
+}
+form input, form .Dropdown-select{
+    height: 46px !important;
+}
+.map2{
+    width: 100%;
+}
+
+@media (max-width:768px){
+    .map_position{
+        top: 8vw;
+        left: 43vw;
+    }
+    .logos_inner{
+        margin: 0 1vw;
+    }
+}
+
+@media (max-width: 644px){
+    .formm{
+        max-width: 90vw;
+    }
+    .formm form{
+        max-width: 90vw;
+        align-items: center;
+    }
+    .textarea , .formSelect{
+        min-width: 90vw !important;
+    }
+    .formm .row{
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .formm .row .col:first-child{
+        margin-left: 0;
+    }
+    .formm .row .col:nth-child(2){
+        margin-right: 0;
+    }
+    .Areacode{
+        max-width: 40px;
+    }
+    .form_data{
+        padding-left: 7px !important;
+    }
+    .contact_logos{
+        flex-direction: column;
+    }
+    hr{
+        margin: 30px !important;
+    }
+    .logos_inner{
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 600px){
+    .logos_img{
+        flex-direction: column;
+        margin: 10px;
+    }
+    #box.img{
+        height: 105vh;
+    }
+    .img-fluid{
+        height: 25vh;
+    }
+    .neww{
+        align-content: left;
+
+    }
+    .form_data1{
+        width: 40vw;
+    }
+    .form_data2{
+        width: 40vw;
+        margin-left: 7%;
+    }
+    .form_data3{
+        width: 40vw;
+    }
+
+}
+
+
+/*.............For sidenav...............*/
+.rtt{
+    visibility: hidden;
+}
+.leftt , .rightt{
+    padding-top: 5px;
+    width:1px; 
+    height:45px;
+    background-color: white !important;
+    margin: 1px 0px 5px 30px;
+}
+.bellImg{
+
+}
+.topnav{
+    background-color: white;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a , .sidenav p ,.sidenav span {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 10px;}
+  .sidenav a {font-size: 15px;}
+
+}
+@media screen and (max-width: 992px){
+    .rtt, .bellImg{
+        visibility: visible;
+    }
+}
+@media screen and (min-width: 992px){
+    .rtt, .bellImg1{
+        display: none;
+    }
+}
+
+/*...........login and forget pwd............*/
+#loginPopup .modal-content{
+    padding: 20px;
+    padding-top: 0;
+    color: #646464;
+}
+.emaill{
+    padding: 5px 40px 5px 15px;
+    width: 100%;
+}
+.brdr{
+    height: 46px;
+    border: 1px solid #e1e1e1;
+}
+
+.loginPopup .form-group img{
+    position: absolute;
+    left: auto;
+    right: 10px;
+    top: 10px;
+}
+.submitButton{
+    padding: 15px 30px !important;
+    background-color: #1d7a8c !important;
+}
+.forgotPwd{
+    color: #1d7a8c;
+    text-decoration: none;
+}
+.abb{
+    height: 20px;
+    width: 20px;
+}
+/*.......sticky nav........*/
+
+  nav.scrolled {
+    background-color: grey;
+    opacity: 0.8;
+    height:78px;
+  }
