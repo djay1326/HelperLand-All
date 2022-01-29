@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/manage.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl sticky-top navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center b11">
+                <a class="navbar-brand nameTag text-white fw-bold p-0" href="#">helperland</a>
+            </div>
+            <div class="d-flex align-items-center b22">
+                <img src="images/user.png" alt="" height="36" width="36">
+                <p class="mb-0 mx-3 text-white">James Smith</p>
+                <img src="images/logout.png" alt="" height="29" width="26">
+            </div>
+        </div>
+    </nav>
+    <div class="offcanvas offcanvas-start sideNav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-body">
+            <a href="#" class="text-decoration-none text-dark ">
+                <p class="text-decoration-none mb-0 ca mt-2" href="">Service Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Role Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Coupon Code Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Escalation Management</p>
+            </a>
+            <a href="serviceRequests.html" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Service Request</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Service Providers</p>
+            </a>
+            <a href="userManagement.html" class="text-decoration-none">
+                <p class="clr text-decoration-none mb-0">User Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Finance Module</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Zip Code Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Rating Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Inquiry Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Newsletter Management</p>
+            </a>
+            <a href="#" class="text-decoration-none text-dark">
+                <p class="text-decoration-none mb-0 ca" href="">Content Management</p>
+            </a>
+        </div>
+    </div>
+    <section class="userManagementBlock position-relative w-100" id="userManagement">
+        <div class="managee d-flex justify-content-between mb-2">
+            <h1 class="m-0">User Management</h1>
+            <a href="#" role="button" class="text-white text-decoration-none">
+                <img src="images/addNew.png" alt="" height="16" width="16">
+                <span class="ms-1">Add New User</span>
+            </a>
+        </div>
+        <div class="inputBlock position-relative">
+            <form action="#">
+                <ul class="inputBlock1">
+                    <li>
+                        <input type="text" name="username" placeholder="User name" class="blockb1 h-100 gapp mb-3 ">
+                    </li>
+                    <li>
+                        <select name="userrole" id="userrole" class="blockb1 gapp h-100 da">
+                            <option value="" disabled selected>User Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="callcenter">Call Center</option>
+                            <option value="customer">Customer</option>
+                            <option value="serviceprovider">Service Provicer</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="gapp d-flex h-100 mb-3">
+                            <input type="text" name="phonecode" class="f49" placeholder="+49" value="+49" disabled>
+                            <input type="text" name="phonenumber" placeholder="Phone Number">
+                        </div>
+                    </li>
+                    <li>
+                        <input type="text" name="zipcode" placeholder="Zip Code" class="mb-3 h-100 gapp">
+                    </li>
+                    <li>
+                        <button type="submit" class="text-white gapp searchBtn h-100 mb-3"> Search </button>
+                    </li>
+                    <li>
+                        <button type="reset" class="gapp clearBtn h-100 mb-3">Clear</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div id="Mainnn" class="mt-5 Mainnn position-relative">
+            <table class="table p-3">
+                <thead>
+                    <tr class="za">
+                        <th scope="col">User name
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                                    <path fill-rule="evenodd" fill="#9B9B9B" d="m13.829 9.159-4.67 4.67c.261.116-.233.571-.409.571-.116 0-.291-.455-.408-.571a.53.53 0 0 1-.175-.409V.579c0-.292.292-.179.583-.179h1.168c.292 0 .584-.113.584.179v7.88c0 .291.35.408.768.233l.924-1.167a.53.53 0 0 1 .409-.175c.117 0 .292.058.507.175l.719.817c.116.117.571.233.571.408 0 .176-.455.67-.571.409zM5.248 14.4H4.81c-1.021 0-1.313-.688-1.313-.98V5.54c0-.292-.35-.408-.525-.233L1.804 6.474a.527.527 0 0 1-.408.175.63.63 0 0 1-.409-.175L.17 5.657c.36-.117.23-.234.23-.409 0 .482.13-.292-.23-.408L4.84.17c.116.36.89.23.408.23.175 0 .292.13.409-.23a.53.53 0 0 1 .175.409V13.42c0 .292-.292.98-.584.98z" />
+                                </svg>
+                            </span>
+                        </th>
+                        <th scope="col">User Type</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Postal Code
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                                    <path fill-rule="evenodd" fill="#9B9B9B" d="m13.829 9.159-4.67 4.67c.261.116-.233.571-.409.571-.116 0-.291-.455-.408-.571a.53.53 0 0 1-.175-.409V.579c0-.292.292-.179.583-.179h1.168c.292 0 .584-.113.584.179v7.88c0 .291.35.408.768.233l.924-1.167a.53.53 0 0 1 .409-.175c.117 0 .292.058.507.175l.719.817c.116.117.571.233.571.408 0 .176-.455.67-.571.409zM5.248 14.4H4.81c-1.021 0-1.313-.688-1.313-.98V5.54c0-.292-.35-.408-.525-.233L1.804 6.474a.527.527 0 0 1-.408.175.63.63 0 0 1-.409-.175L.17 5.657c.36-.117.23-.234.23-.409 0 .482.13-.292-.23-.408L4.84.17c.116.36.89.23.408.23.175 0 .292.13.409-.23a.53.53 0 0 1 .175.409V13.42c0 .292-.292.98-.584.98z" />
+                                </svg>
+                            </span>
+                        </th>
+                        <th scope="col">City</th>
+                        <th scope="col" class="text-center">Radius
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                                    <path fill-rule="evenodd" fill="#9B9B9B" d="m13.829 9.159-4.67 4.67c.261.116-.233.571-.409.571-.116 0-.291-.455-.408-.571a.53.53 0 0 1-.175-.409V.579c0-.292.292-.179.583-.179h1.168c.292 0 .584-.113.584.179v7.88c0 .291.35.408.768.233l.924-1.167a.53.53 0 0 1 .409-.175c.117 0 .292.058.507.175l.719.817c.116.117.571.233.571.408 0 .176-.455.67-.571.409zM5.248 14.4H4.81c-1.021 0-1.313-.688-1.313-.98V5.54c0-.292-.35-.408-.525-.233L1.804 6.474a.527.527 0 0 1-.408.175.63.63 0 0 1-.409-.175L.17 5.657c.36-.117.23-.234.23-.409 0 .482.13-.292-.23-.408L4.84.17c.116.36.89.23.408.23.175 0 .292.13.409-.23a.53.53 0 0 1 .175.409V13.42c0 .292-.292.98-.584.98z" />
+                                </svg>
+                            </span>
+                        </th>
+                        <th scope="col" class="text-center">User Status
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                                    <path fill-rule="evenodd" fill="#9B9B9B" d="m13.829 9.159-4.67 4.67c.261.116-.233.571-.409.571-.116 0-.291-.455-.408-.571a.53.53 0 0 1-.175-.409V.579c0-.292.292-.179.583-.179h1.168c.292 0 .584-.113.584.179v7.88c0 .291.35.408.768.233l.924-1.167a.53.53 0 0 1 .409-.175c.117 0 .292.058.507.175l.719.817c.116.117.571.233.571.408 0 .176-.455.67-.571.409zM5.248 14.4H4.81c-1.021 0-1.313-.688-1.313-.98V5.54c0-.292-.35-.408-.525-.233L1.804 6.474a.527.527 0 0 1-.408.175.63.63 0 0 1-.409-.175L.17 5.657c.36-.117.23-.234.23-.409 0 .482.13-.292-.23-.408L4.84.17c.116.36.89.23.408.23.175 0 .292.13.409-.23a.53.53 0 0 1 .175.409V13.42c0 .292-.292.98-.584.98z" />
+                                </svg>
+                            </span>
+                        </th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="rowww">
+                        <td scope="row">Lyum Watson</td>
+                        <td scope="row">Call Center</td>
+                        <td scope="row">Inquiry Manager</td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">John Smith</td>
+                        <td scope="row">Service Provider</td>
+                        <td scope="row"></td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center">10 km</td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">Lyum Watson</td>
+                        <td scope="row">Call Center</td>
+                        <td scope="row">Inquiry Manager</td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">John Smith</td>
+                        <td scope="row">Customer</td>
+                        <td scope="row"></td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">Lyum Watson</td>
+                        <td scope="row">Call Center</td>
+                        <td scope="row">Content Manager</td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">John Smith</td>
+                        <td scope="row">Customer</td>
+                        <td scope="row"></td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="inActivee">Inactive</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                    <li><button class="dropdown-item" type="button">Service History</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">Lyum Watson</td>
+                        <td scope="row">Service Provider</td>
+                        <td scope="row"></td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center">10 km</td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">John Smith</td>
+                        <td scope="row">Call Center</td>
+                        <td scope="row">Finance Manager</td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">Lyum Watson</td>
+                        <td scope="row">Customer</td>
+                        <td scope="row"></td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="rowww">
+                        <td scope="row">John Smith</td>
+                        <td scope="row">Customer</td>
+                        <td scope="row"></td>
+                        <td scope="row">113143</td>
+                        <td scope="row">Berlin</td>
+                        <td scope="row" class="text-center"></td>
+                        <td scope="row" class="text-center">
+                            <span class="activee">Active</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    &#8942
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="va">
+                        <div>
+                            <span class="fw-bold">Show&nbsp;&nbsp;</span>
+                            <select class="drp" name="table-rows" id="table-rows">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <span>&nbsp;&nbsp;entries&nbsp;</span>
+                            <span>Total Record: 10</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-1">
+                        <div class="bdrr mr-1">
+                            <img src="images/group-100.png" alt="">
+                        </div>
+                        <div class="bdrr mr-1">
+                            <img src="images/keyboard-right-arrow-button-copy.png" alt="">
+                        </div>
+                        <div class="bdrr1 mr-1">1</div>
+                        <div class="bdrr mr-1">2</div>
+                        <div class="bdrr mr-1">3</div>
+                        <div class="bdrr mr-1">4</div>
+                        <div class="bdrr bdrr2 mr-1">
+                            <img src="images/keyboard-right-arrow-button-copy.png" alt="">
+                        </div>
+                        <div class="bdrr bdrr2">
+                            <img src="images/group-100.png" alt="">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <footer class="lt"> ©2018 Helperland. All rights reserved. </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>
