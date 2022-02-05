@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProjectFiles\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {}
+    "G:\\rough\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {}
   },
   "projects": {
-    "C:\\ProjectFiles\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {
+    "G:\\rough\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProjectFiles\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+        "projectUniqueName": "G:\\rough\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
         "projectName": "HelperlandProject",
-        "projectPath": "C:\\ProjectFiles\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+        "projectPath": "G:\\rough\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
         "packagesPath": "C:\\Users\\djay1\\.nuget\\packages\\",
-        "outputPath": "C:\\ProjectFiles\\HelperlandProject\\HelperlandProject\\obj\\",
+        "outputPath": "G:\\rough\\HelperlandProject\\HelperlandProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,6 +43,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
             "Microsoft.Bcl.AsyncInterfaces": {
               "target": "Package",
               "version": "[1.1.1, )"

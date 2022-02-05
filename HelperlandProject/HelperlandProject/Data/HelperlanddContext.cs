@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using HelperlandProject.Models;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace HelperlandProject.Data
 {
@@ -18,22 +20,21 @@ namespace HelperlandProject.Data
         {
         }
 
-        public virtual DbSet<Ayy> Ayys { get; set; }
+        public virtual DbSet<Ayy> Ayy { get; set; }
         public virtual DbSet<Contactu> Contactus { get; set; }
+        public virtual DbSet<Userr> Userr { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("server=DESKTOP-H353LBS; database=Helperlandd; trusted_connection=true;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
             modelBuilder.Entity<Ayy>(entity =>
             {
                 entity.ToTable("ayy");
@@ -42,48 +43,73 @@ namespace HelperlandProject.Data
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
-                    .HasMaxLength(30)
-                    .HasColumnName("firstName");
+                    .HasColumnName("firstName")
+                    .HasMaxLength(30);
             });
 
             modelBuilder.Entity<Contactu>(entity =>
             {
-                entity.HasKey(e => e.ContactusId)
-                    .HasName("PK__contactu__E7F1FC0DF5C2E6F3");
-
                 entity.ToTable("contactus");
 
                 entity.Property(e => e.ContactusId).HasColumnName("contactusID");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
-                    .HasMaxLength(30)
-                    .HasColumnName("email");
+                    .HasColumnName("email")
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("firstName");
+                    .HasColumnName("firstName")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("lastName");
+                    .HasColumnName("lastName")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.MobileNo)
                     .IsRequired()
-                    .HasMaxLength(20)
-                    .HasColumnName("mobileNo");
+                    .HasColumnName("mobileNo")
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.Msg)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("msg");
+                    .HasColumnName("msg")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.SubjectType)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("subjectType");
+                    .HasColumnName("subjectType")
+                    .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Userr>(entity =>
+            {
+                entity.HasKey(e => e.UserId)
+                    .HasName("PK_User");
+
+                entity.ToTable("userr");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Mobile)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Password).HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);

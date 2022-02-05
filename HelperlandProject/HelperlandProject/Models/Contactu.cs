@@ -9,6 +9,7 @@ namespace HelperlandProject.Models
 {
     public partial class Contactu
     {
+        [Key]
         public int ContactusId { get; set; }
 
         

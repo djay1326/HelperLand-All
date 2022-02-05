@@ -40,7 +40,7 @@
                     <a href="#">Blog</a>
                     <a asp-controller="Starting" asp-action="Contact">Contact</a>
                     <a class="text-decoration-none" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
-                    <a href="ServiceProvider.html">Become a helper</a>
+                    <a asp-controller="Starting" asp-action="ServiceProvider">Become a helper</a>
                     <hr style="height: 5px; color: black;" class="mt-1 mb-1">
                     <a href="" class="ml-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" class=" ml-3 mr-3">
@@ -86,7 +86,7 @@
                     </li>
                     <li class="nav-item">
                         <div class="nav-btn-color">
-                            <a class="nav-link py-3" href="ServiceProvider.html">Become a Helper</a>
+                            <a class="nav-link py-3" asp-controller="Starting" asp-action="ServiceProvider">Become a Helper</a>
                         </div>
                     </li>
                 </ul>
@@ -190,7 +190,7 @@
             </div>
             <div class="inner_portion d-flex flex-column align-items-center justify-content-start mb-0">
                 <div class="main_logo">
-                    <img src="~/images/msgg.png" alt="" height="37" width="61px">
+                    <img src="~/images/msgg.png" alt="" height="37" width="61">
                 </div>
                 <div class="logoData">
                     <p class="mb-0 text-center">info@helperland.com <br>&nbsp</p>
