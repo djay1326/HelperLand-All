@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="images/favicon_img.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/bookService.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <script type="text/javascript" src="js/dashh.js"></script>
+    <!-- <script type="text/javascript" src="js/book.js"></script> -->
+    <title>Book Service</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl" id="navbar11">
+        <div class="container-fluid navbarMain">
+            <a class="navbar-brand py-0" href="homepage.html">
+                <img src="images/white-logo-transparent-background.png" alt="MainImg" height="54" width="73">
+            </a>
+            <div>
+                <span style="font-size:35px;cursor:pointer" onclick="openNav()" class="rtt mt-0"> &#9776</span>
+                <div id="mySidenav" class="sidenav">
+                    <hr style="height: 2px; color: black;" class="mt-1 mb-1">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="bookService.html">Book now</a>
+                    <a href="Prices.html">Prices and Services</a>
+                    <a href="#">Warranty</a>
+                    <a href="#">Blog</a>
+                    <a href="ContactUs.html">Contact</a>
+                    <a class="text-decoration-none" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
+                    <a href="ServiceProvider.html">Become a helper</a>
+                    <hr style="height: 2px; color: black;" class="mt-1 mb-1">
+                    <a href="" class="ml-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" class=" ml-3 mr-3">
+                            <path fill-rule="evenodd" fill="#000" d="M1.947 3.48v2.481H0v3.033h1.947V18.1h4.001V8.995h2.685S8.885 7.541 9.7 5.95H5.963V3.876c0-.31.437-.728.868-.728H9.11V.9H6.46C1.848.9 1.947 3.27 1.947 3.48z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ms-3">
+                            <path fill-rule="evenodd" fill="#000" d="M14.48 20H5.519A5.524 5.524 0 0 1 0 14.482V5.52C0 2.477 2.475.2 5.519.2h8.961c3.043 0 5.519 2.277 5.519 5.32v8.962A5.525 5.525 0 0 1 14.48 20zm3.744-5.518V5.52a3.748 3.748 0 0 0-3.744-3.744H5.519A3.749 3.749 0 0 0 1.774 5.52v8.962a3.749 3.749 0 0 0 3.745 3.744h8.961a3.748 3.748 0 0 0 3.744-3.744zm-2.855-8.536c-.099 0-.678-.14-.92-.381-.242-.243.221-.578.221-.921 0-.342-.463-.678-.221-.92.242-.242.821-.381.92-.381.343 0 1.111.139.92.381.242.242.381.578.381.92 0 .342-.139.678-.381.921.171.241-.577.381-.92.381zm-5.37 9.208c-2.841 0-5.153-2.312-5.153-5.054 0-2.941 2.312-5.252 5.153-5.252 2.842 0 5.153 2.311 5.153 5.252 0 2.742-2.311 5.054-5.153 5.054zm0-8.532c-1.863 0-3.379 1.516-3.379 3.478 0 1.764 1.516 3.28 3.379 3.28s3.379-1.516 3.379-3.28c0-1.962-1.516-3.478-3.379-3.478z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <div class="nav-btn-color">
+                            <a class="nav-link py-3 " href="#">Book now</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" href="Prices.html">Prices & services</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" href="#">Warranty</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" href="#">Blog</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn1">
+                            <a class="nav-link py-3" href="ContactUs.html">Contact</a>
+                        </div>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <div class="nav-btn">
+                            <a class="nav-btn-item text-decoration-none p-3 m-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-btn-color">
+                            <a class="nav-link py-3" href="ServiceProvider.html">Become a Helper</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- .............................Login Popup Modal .............................. -->
+    <div>    
+        <div class="modal fade" id="loginPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle">Login to your account</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body loginPopup p-2">
+                        <form action="">
+                            <div class="form-group position-relative my-3">
+                                <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
+                                <img src="images/userr.png" alt="" height="21" width="20">
+                            </div>
+                            <div class="form-group position-relative my-3">
+                                <input type="password" placeholder="Password" name="password" class="emaill brdr">
+                                <img src="images/lock.png" alt="" height="21" width="20">
+                            </div>
+                            <div class="form-group d-flex">
+                                <input type="checkbox" value="rememberme" id="rememberme" class="abb">
+                                <label for="rememberme" class="control-label ml-2">Remember me</label>
+                            </div>
+                            <button type="submit" class="my-3 btn submitButton text-light w-100 rounded-pill">
+                                Login
+                            </button>
+                        </form>
+                        <div class="text-center mt-2">
+                            <a href="forgotPassword" class="forgotPwd text-decoration-none" data-target="#forgotPasswordModal" data-toggle="modal" data-dismiss="modal">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            Don't have account? <span> <a class="forgotPwd text-decoration-none" href="userNewAccount.html">Create an account? </a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ...............................Forgot Password Popup Modal.......................... -->
+        <div class="modal fade" id="forgotPasswordModal" aria-hidden="true" aria-labelledby="forgotPasswordModalLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title me-3" id="forgotPasswordModalLabel2">Forgot Password</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <form action="">
+                            <div class="d-flex mb-3">
+                                <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
+                            </div>
+                            <button type="submit" class="my-3 btn submitButton text-light w-100 rounded-pill" >
+                                Send
+                            </button>
+                        </form>
+                        <div class="text-center mt-2">
+                            <a href="loginPopup" class="forgotPwd text-decoration-none" data-target="#loginPopup" data-toggle="modal" data-dismiss="modal">Login now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="box">
+        <img class="img-fluid w-100" src="images/book-service-banner.jpg" />
+    </section>
+    <div style="min-height: 100vh; padding-bottom: 150px;">
+        <div class="PriceHeader position-relative">
+            <h1 class="text-center">Set up your cleaning service</h1>
+            <div class="prices_box">
+                <div class="left_line"></div>
+                <img src="images/separator.png" alt="" />
+                <div class="right_line"></div>
+            </div>
+        </div>
+        <section class="mt-5">
+            <div class="Mainn row">
+                <div class="leftPart col-sm-7">
+                    <div class="MainnData w-100">
+                        <ul class="nav nav-fill nav-tabs nav-pills justify-content-center mb-3" id="myTab" role="tablist">
+                            <li class="nav-item NavList" role="presentation" onclick="first()">
+                                <a class="nav-link active" id="setupServiceTabController" data-bs-toggle="tab" data-bs-target="#setupServiceTab" type="button" aria-controls="setupService" aria-selected="true">
+                                    <img src="images/setup-service.png" alt="" class="nav_image">
+                                    <span class="titleData">
+                                        <span class="bgData"></span>
+                                        <span class="nav_title">Setup Service</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item NavList" role="presentation" onclick="second()">
+                                <a class="nav-link" id="schedulePlanTabController" data-bs-toggle="tab" data-bs-target="#schedulePlanTab" type="button" aria-controls="schedulePlan" aria-selected="false">
+                                    <!-- data-bs-target="#schedulePlanTab" -->
+                                    <img src="images/schedule.png" alt="" id="ig2">
+                                    <span class="titleData">
+                                        <span class="bgData"></span>
+                                        <span class="ms-2 nav_title">Schedule & Plan</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item NavList" role="presentation">
+                                <a class="nav-link" id="yourDetailsTabController" data-bs-toggle="tab" data-bs-target="#yourDetailsTab" type="button" aria-controls="yourDetails" aria-selected="false">
+                                    <img src="images/details.png" alt="">
+                                    <span class="titleData">
+                                        <span class="bgData"></span>
+                                        <span class="ms-2 nav_title">Your Details</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item NavList" role="presentation">
+                                <a class="nav-link" id="makePaymentTabController" data-bs-toggle="tab" data-bs-target="#makePaymentTab" type="button" aria-controls="makePayment" aria-selected="false">
+                                    <img src="images/payment.png" alt="">
+                                    <span class="titleData">
+                                        <span class="bgData"></span>
+                                        <span class="ms-2 nav_title">Make Payment</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content mt-4" id="myTabContent">
+                            <!-- ------- setup services ---------  -->
+                            <div class="tab-pane fade show mt-3 clrs active" id="setupServiceTab" role="tabpanel" aria-labelledby="setupService">
+                                <form class="row" id="postalCodeForm" onsubmit='
+                                    $("#schedulePlanTabController").prop("disabled" , false);
+                                    document.getElementById("schedulePlanTabController").click();
+                                    return false;
+                                '>
+                                    <!-- <form class="row" id="postalCodeForm"> -->
+                                    <p class="fw-bold mb-1">Enter Your Postal Code</p>
+                                    <div class="d-flex htt postCode">
+                                        <input type="text" class="form-control me-2" required placeholder="Postal code" name="postalcode">
+                                        <button class="nav-link text-light greenBtn rounded-pill form-control" type="submit">Check Availability</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- ------------- Schedule and plan ----------- -->
+                            <div class="tab-pane fade" role="tabpanel" id="schedulePlanTab" aria-labelledby="schedulePlan">
+                                <form action="" id="schedulePlanForm" onsubmit='
+                                    $("#yourDetailsTabController").prop("disabled" , false);
+                                    document.getElementById("yourDetailsTabController").click(); 
+                                    return false;
+                                    '>
+                                    <div class="row bdrbtm pb-3 clrs">
+                                        <div class="col-md-6">
+                                            <p class="fw-bold mb-1">When do you need the cleaner?</p>
+                                            <div>
+                                                <input type="date" name="servicedate" required class="htt pddIn bdrlt clrs mb-1" id="">
+                                                <select name="servicetime" id="" class="htt pddIn bdrlt mb-1 clrs">
+                                                    <option value="8:00">8:00</option>
+                                                    <option value="8:30">8:30</option>
+                                                    <option value="9:00">9:00</option>
+                                                    <option value="9:30">9:30</option>
+                                                    <option value="10:00">10:00</option>
+                                                    <option value="10:30">10:30</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="fw-bold mb-1">How long do you need your cleaner to stay?</p>
+                                            <select name="servicetime" id="" class="htt pddIn bdrlt mb-1 clrs">
+                                                <option value="3hrs">3 Hrs</option>
+                                                <option value="3.5hrs">3.5 Hrs</option>
+                                                <option value="4hrs">4 Hrs</option>
+                                                <option value="4.5hrs">4.5 Hrs</option>
+                                                <option value="5hrs">5 Hrs</option>
+                                                <option value="5.5hrs">5.5 Hrs</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="pt-4 pb-5 clrs bdrbtm">
+                                        <label class="mb-3 fw-bold">Extra Services</label>
+                                        <div class="btn-group avatargrp" role="group" aria-label="Basic checkbox toggle button group">
+                                            <div class="d-flex flex-column align-items-center labelData" onclick="give();sub1();sub2();sub3();">
+                                                <label class="btn btnPrime AvatarData" for="cabinet">
+                                                    <input type="checkbox" name="cabinet" id="cabinet">
+                                                    <div class="imgData rounded-circle">
+                                                        <div class="imgDatas">
+                                                            <img src="images/cab.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <span class="text-center">Clean cabinet interiors</span>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-center labelData">
+                                                <label class="btn btnPrime AvatarData" for="refrigerator">
+                                                    <input type="checkbox" name="refrigerator" id="refrigerator">
+                                                    <div class="imgData rounded-circle">
+                                                        <div class="imgDatas">
+                                                            <img src="images/ref.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <span class="text-center">Cleaning the refrigerator</span>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-center labelData">
+                                                <label class="btn btnPrime AvatarData" for="oven">
+                                                    <input type="checkbox" name="oven" id="oven">
+                                                    <div class="imgData rounded-circle">
+                                                        <div class="imgDatas">
+                                                            <img src="images/ov.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <span class="text-center">Cleaning the oven</span>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-center labelData">
+                                                <label class="btn btnPrime AvatarData" for="laundry">
+                                                    <input type="checkbox" name="laundry" id="laundry">
+                                                    <div class="imgData rounded-circle">
+                                                        <div class="imgDatas">
+                                                            <img src="images/laundry.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <span class="text-center">Wash and dry laundry</span>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-center labelData">
+                                                <label class="btn btnPrime AvatarData" for="windows">
+                                                    <input type="checkbox" name="windows" id="windows">
+                                                    <div class="imgData rounded-circle">
+                                                        <div class="imgDatas">
+                                                            <img src="images/win.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <span class="text-center">Clean windows</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column py-4">
+                                        <label for="comments" class="clrs fw-bold mb-3">Comments</label>
+                                        <textarea name="commnets" id="commnets" maxlength="500" placeholder="Comments" rows="3" class="pddIn"></textarea>
+                                    </div>
+                                    <div class="d-flex align-items-center bdrbtm pb-4">
+                                        <input type="checkbox" name="pets" id="pets">
+                                        <label for="pets" class="ms-2">I have pets at home.</label>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="greenBtn1 my-2 text-light rounded-pill">
+                                            Continue
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- ----------- your details ----------- -->
+                            <div class="tab-pane fade" role="tabpanel" id="yourDetailsTab" aria-labelledby="yourDetails">
+                                <form action="" id="yourDetailsForm" onsubmit='
+                                    $("#makePaymentTabController").prop("disabled" , false);
+                                    document.getElementById("makePaymentTabController").click();
+                                    return false;'>
+                                    <p class="fw-bold">Enter your contact details, so we can serve you in better way!</p>
+                                    <ul class="yourAdd p-0">
+                                        <li class="yourAddData px-3 py-2 my-2">
+                                            <label class="d-flex align-items-center">
+                                                <input type="radio" id="address1" name="address" checked>
+                                                <div class="ms-4">
+                                                    <p class="mb-1">
+                                                        <b style="color: grey;">Address:</b>
+                                                        Street 54, Troisdorf 53844
+                                                    </p>
+                                                    <p class="mb-1">
+                                                        <b style="color: grey;">Phone number:</b>
+                                                        9988556644
+                                                    </p>
+                                                </div>
+                                            </label>
+                                        </li>
+                                        <li class="yourAddData px-3 py-2 my-2">
+                                            <label class="d-flex align-items-center">
+                                                <input type="radio" id="address1" name="address">
+                                                <div class="ms-4">
+                                                    <p class="mb-1">
+                                                        <b style="color: grey;">Address:</b>
+                                                        Street 54, Troisdorf 53844
+                                                    </p>
+                                                    <p class="mb-1">
+                                                        <b style="color: grey;">Phone number:</b>
+                                                        9988556644
+                                                    </p>
+                                                </div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <input type="button" class="btn newAdBtn px-4 mt-3 rounded-pill fw-bolder" value="+ Add New Address" data-bs-toggle="collapse" href="#newAddressCollapse" role="button" aria-expanded="false" aria-controls="newAddressCollapse">
+                                    <hr class="mt-4 mb-3">
+                                </form>
+                                <div class="my-3 collapse multi-collapse newAdd" id="newAddressCollapse">
+                                    <form action="" onsubmit="return false;">
+                                        <div class="row newAddress_form">
+                                            <div class="col-sm-6 mb-4">
+                                                <div class="form-group d-flex flex-column">
+                                                    <label for="streetname">Street Name</label>
+                                                    <input type="text" placeholder="Street Name" name="streetname" class="bdrlt htt pddIn w-100">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 mb-4">
+                                                <div class="form-group d-flex flex-column">
+                                                    <label for="housenumber">House number</label>
+                                                    <input type="text" placeholder="House Number" name="housenumber" class="bdrlt htt pddIn w-100">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 mb-4">
+                                                <div class="form-group d-flex flex-column">
+                                                    <label for="postalcode">Postal Code</label>
+                                                    <input type="text" disabled value="43212" placeholder="Postal Code" name="postalcode" class="bdrlt htt pddIn w-100">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group d-flex flex-column">
+                                                    <label for="city">City</label>
+                                                    <div class="d-inline-block">
+                                                        <select name="city" id="" class="htt bdrlt pddIn w-100">
+                                                            <option value="troisdorf">Troisdorf</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-group d-flex flex-column">
+                                                    <label for="phonenumber"> Phone Number</label>
+                                                    <div class="d-flex">
+                                                        <input type="text" name="phonecode" class="bdrlt htt pddIn" value="+49" disabled style="max-width: 55px;">
+                                                        <input type="text" placeholder="Phone Number" name="phonenumber" class="bdrlt minheight46 pddIn" value="3423423423">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="greenBtn rounded-pill bdrlt text-light px-3 pddIn">
+                                            Save
+                                        </button>
+                                        <a role="button" class="btn border htt pddIn rounded-pill" data-bs-toggle="collapse" href="#newAddressCollapse" aria-expanded="false" aria-controls="newAddressCollapse">
+                                            Cancel
+                                        </a>
+                                    </form>
+                                </div>
+                                <div id="favouriteTable my-3">
+                                    <h4 class="border-bottom pb-2">Your favourite service providers.</h4>
+                                    <p>You can choose your favourite service provider from the below list.</p>
+                                    <div class="favPro">
+                                        <div class="favProData col-sm-12 w-100 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="spProfile mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                                                <img src="images/avatar-car.png">
+                                            </div>
+                                            <p class="mb-3">First</p>
+                                            <button class="btn selectBtn rounded-pill">Select</button>
+                                        </div>
+                                        <div class="favProData col-sm-12 w-100 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="spProfile mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                                                <img src="images/avatar-car.png">
+                                            </div>
+                                            <p class="mb-3">Second</p>
+                                            <button class="btn selectBtn rounded-pill">Select</button>
+                                        </div>
+                                        <div class="favProData col-sm-12 w-100 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="spProfile mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                                                <img src="images/avatar-car.png">
+                                            </div>
+                                            <p class="mb-3">Third</p>
+                                            <button class="btn selectBtn rounded-pill">Select</button>
+                                        </div>
+                                        <div class="favProData col-sm-12 w-100 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="spProfile mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                                                <img src="images/avatar-car.png">
+                                            </div>
+                                            <p class="mb-3">Fourth</p>
+                                            <button class="btn selectBtn rounded-pill">Select</button>
+                                        </div>
+                                        <div class="favProData col-sm-12 w-100 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="spProfile mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                                                <img src="images/avatar-car.png">
+                                            </div>
+                                            <p class="mb-3">Fifth</p>
+                                            <button class="btn selectBtn rounded-pill">Select</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="rounded-pill greenBtn1 my-2 text-light" onclick="$('#yourDetailsForm').submit();">
+                                        Continue
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- --------------- payment --------------  -->
+                            <div class="tab-pane fade" role="tabpanel" id="makePaymentTab" aria-labelledby="makePayment">
+                                <p class="font-weight-bold" style="color: grey;">Pay securely with Helperland payment gateway!</p>
+                                <p>Promo code (optional)</p>
+                                <form action="" id="bookForm" class="">
+                                    <div class="">
+                                        <div class="form-group mx-sm-1 mb-2">
+                                            <label for="inputPassword2" class="sr-only">Promocode</label>
+                                            <input type="password" class="form-control col-sm-4" id="inputPassword2" placeholder="Promo code (optional)">
+                                        </div>
+                                        <button type="submit" class="d-inline-block text-white ml-2 mb-2 rounded-pill applyy">Apply</button>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="cc-number" class="control-label">Card number</label>
+                                            <input id="cr_no" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19"> </div>
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <label for="cc-exp" class="control-label">Expiration</label>
+                                                <input id="exp" name="cc-exp" type="tel" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="MM / YY" autocomplete="cc-exp" minlength="5" maxlength="5">
+                                                <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <label for="x_card_code" class="control-label">CVV</label>
+                                            <div class="input-group">
+                                                <input id="x_card_code" name="x_card_code" type="password" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" autocomplete="off" minlength="3" maxlength="3" placeholder="&#9679;&#9679;&#9679;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="lne">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="d-block"><small>Accepted Cards</small></div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <div>
+                                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex align-items-center">
+                                        <input type="checkbox" name="acceptterms" id="acceptterms" required>
+                                        <label for="acceptterms" class="ms-4 mt-4">
+                                            I accept <a href="" class="grn">terms and conditions</a>,<a href="" class="grn"> the cancellation policy</a> and the <a href="" class="grn">privacy policy</a>. I confirm that Helperland starts to execute the contract before the expiry of the withdrawal period and I lose my right of withdrawal as a consumer with full performance of the contract.
+                                        </label>
+                                    </div>
+                                    <hr class="mt-3 mb-3 lne">
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="greenBtn2 my-2 text-light rounded-pill fw-bolder justify-content-end">
+                                            Complete Booking
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ............................Payment Summary........................... -->
+                <div class="rightPart col-sm-5" id="bookService_Right">
+                    <div class="parts">
+                        <div class="pays">
+                            <h3 class="payHeader"> Payment Summery</h3>
+                            <div class="pdd bdrbtm">
+                                <div>
+                                    <p class="mb-0 fw-bold">Duration</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-0">Basic</p>
+                                        <p class="mb-0">3 Hrs</p>
+                                    </div>
+                                    <hr>
+                                    <table class="w-100" id="extraTable">
+                                        <thead>
+                                            <td class="fw-bold">Extras</td>
+                                            <td width="60px"></td>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <hr>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-0 fw-bold">Total Service Time</p>
+                                    <p class="mb-0 fw-bold"><span id="totalService">3</span>&nbsp;hrs</p>
+                                </div>
+                            </div>
+                            <div class="bdrbtm d-flex justify-content-between pdd">
+                                <p class="mb-0">Per cleaning</p>
+                                <p class="mb-0 fw-bold"><span id="clean">54</span>&nbsp;$</p>
+                            </div>
+                            <div class="pdd">
+                                <div class="d-flex align-items-end justify-content-between">
+                                    <p class="totalPayment mb-0">Total Payment</p>
+                                    <p class="largePay mb-0"><span id="totalPay">54</span>&nbsp;$</p>
+                                </div>
+                                <p class="mb-0 smallsize pt-1">According to § 19 UStG no sales tax is calculated.</p>
+                                <div class="d-flex justify-content-between mt-2 mb-2">
+                                    <p class="mb-0">Effective Price</p>
+                                    <p class="mb-0 fw-bold" id="effect">43,20 $</p>
+                                </div>
+                                <p class="mb-0 smallsize"><span style="color:red" ;>*</span>You will save 20% according to §35a EStG.</p>
+                            </div>
+                            <div class="pdd payBtm">
+                                <a href="" class="text-decoration-none"><span style="font-size: 30px">&#9787;</span>&nbsp;See what is always included</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faqPage clrs mt-4">
+                        <h4 class="text-center">Questions?</h4>
+                        <div class="accordion position-relative w-100" id="accordionCustomer">
+                            <div class="accordion-item border-0 border-bottom">
+                                <div class="accordion-header d-flex align-items-center" id="headingOne">
+                                    <button class="accordion-button btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    </button>
+                                    <p class="mb-0 ms-3">What's included in a cleaning?</p>
+                                </div>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionCustomer">
+                                    <div class="accordion-body fw-bold">
+                                        Bedroom, Living Room & Common Areas,Bathrooms,Kitchen,Extras
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 border-bottom">
+                                <div class="accordion-header d-flex align-items-center" id="headingTwo">
+                                    <button class="accordion-button btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseOne">
+                                    </button>
+                                    <p class="mb-0 ms-3">Which Helperland professional will come to my place?</p>
+                                </div>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionCustomer">
+                                    <div class="accordion-body fw-bold">
+                                        Helperland has a vast network of experienced, top-rated cleaners. Based on the time and date of your request, we work to assign the best professional available.Like working with a specific pro? Add them to your Pro Team from the mobile app and they'll be requested first for all future bookings.You will receive an email with details about your professional prior to your appointment.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 border-bottom">
+                                <div class="accordion-header d-flex align-items-center" id="headingThree">
+                                    <button class="accordion-button btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    </button>
+                                    <p class="mb-0 ms-3">Can I skip or reschedule bookings?</p>
+                                </div>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionCustomer">
+                                    <div class="accordion-body fw-bold">
+                                        You can reschedule any booking for free at least 24 hours in advance of the scheduled start time. If you need to skip a booking within the minimum commitment, we’ll credit the value of the booking to your account. You can use this credit on future cleanings and other Helperland services.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="faq.html" class="fw-bold gotoFaq text-decoration-none"> For more help</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="modal fade" id="successModal" aria-hidden="true" aria-labelledby="successModalLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="completeBook rounded-circle mb-3">
+                            <img src="images/check.png" alt="" height="23" width="23">
+                        </div>
+                        <div class="text-center">
+                            <h4 class="mb-2">Booking submitted successfully</h4>
+                            <p>Service id: 1234</p>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn greenBtn text-white rounded-pill" data-bs-dismiss="modal" aria-label="Close" style="min-width: 60px;">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_section w-100" style="margin-top: -150px;">
+        <div class="footer_main d-flex justify-content-center align-items-center position-relative">
+            <div class="d-flex justify-content-between h-100 align-items-center footer_inner position-relative">
+                <div class="footer_left">
+                    <a href="../Homepage/home.html">
+                        <img src="images/white-logo-transparent-background.png" alt="" height="78" width="106">
+                    </a>
+                </div>
+                <div class="footer_mid">
+                    <ul class="d-flex p-0 text-center m-0">
+                        <li>
+                            <a href="homepage.html" class="text-decoration-none">HOME</a>
+                        </li>
+                        <li>
+                            <a href="About.html" class="text-decoration-none">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none">TESTIMONIAL</a>
+                        </li>
+                        <li>
+                            <a href="faq.html" class="text-decoration-none">FAQS</a>
+                        </li>
+                        <li>
+                            <a href="" class="text-decoration-none">INSURANCE POLICY</a>
+                        </li>
+                        <li>
+                            <a href="" class="text-decoration-none">IMPRESSUM</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer_right d-flex align-items-center justify-content-evenly">
+                    <a href="https://www.facebook.com/TatvaSoft/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18">
+                            <path fill-rule="evenodd" fill="#CCC" d="M1.947 3.48v2.481H0v3.033h1.947V18.1h4.001V8.995h2.685S8.885 7.541 9.7 5.95H5.963V3.876c0-.31.437-.728.868-.728H9.11V.9H6.46C1.848.9 1.947 3.27 1.947 3.48z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                            <path fill-rule="evenodd" fill="#CCC" d="M14.48 20H5.519A5.524 5.524 0 0 1 0 14.482V5.52C0 2.477 2.475.2 5.519.2h8.961c3.043 0 5.519 2.277 5.519 5.32v8.962A5.525 5.525 0 0 1 14.48 20zm3.744-5.518V5.52a3.748 3.748 0 0 0-3.744-3.744H5.519A3.749 3.749 0 0 0 1.774 5.52v8.962a3.749 3.749 0 0 0 3.745 3.744h8.961a3.748 3.748 0 0 0 3.744-3.744zm-2.855-8.536c-.099 0-.678-.14-.92-.381-.242-.243.221-.578.221-.921 0-.342-.463-.678-.221-.92.242-.242.821-.381.92-.381.343 0 1.111.139.92.381.242.242.381.578.381.92 0 .342-.139.678-.381.921.171.241-.577.381-.92.381zm-5.37 9.208c-2.841 0-5.153-2.312-5.153-5.054 0-2.941 2.312-5.252 5.153-5.252 2.842 0 5.153 2.311 5.153 5.252 0 2.742-2.311 5.054-5.153 5.054zm0-8.532c-1.863 0-3.379 1.516-3.379 3.478 0 1.764 1.516 3.28 3.379 3.28s3.379-1.516 3.379-3.28c0-1.962-1.516-3.478-3.379-3.478z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer_end d-flex align-items-center justify-content-center position-relative">
+            <p class="m-0 text-center">©2018 Helperland. All rights reserved. &nbsp;&nbsp;<span><a href="" class="text-decoration-none">Terms and Conditions</a></span> | <span><a href="" class="text-decoration-none">Privacy Policy</a></span></p>
+        </div>
+    </div>
+    <script>
+    var i, hrs = 3,
+        price = 54;
+    $('#cabinet').change(function() {
+        if (this.checked) {
+            extraTableBody = $("#extraTable tbody");
+            extraTableBody.append("<tr id='cabinetRow'><td>Clean cabinet interiors</td><td>30 mins</td></tr>");
+            hrs = hrs + 0.5;
+            $("#totalService").html(hrs);
+            price = price + 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        } else {
+            hrs = hrs - 0.5;
+            price = price - 9;
+            $("#clean").html(price);
+            $("#totalService").html(hrs);
+            $("#cabinetRow").remove();
+            $("#totalPay").html(price);
+        }
+
+    });
+
+    $('#refrigerator').change(function() {
+        if (this.checked) {
+            extraTableBody = $("#extraTable tbody");
+            extraTableBody.append("<tr id='refrigeratorRow'><td>Cleaning the refrigerator</td><td>30 mins</td></tr>");
+            hrs = hrs + 0.5;
+            $("#totalService").html(hrs);
+            price = price + 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        } else {
+            $("#refrigeratorRow").remove();
+            hrs = hrs - 0.5;
+            $("#totalService").html(hrs);
+            price = price - 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        }
+
+    });
+
+    $('#oven').change(function() {
+        if (this.checked) {
+            extraTableBody = $("#extraTable tbody");
+            extraTableBody.append("<tr id='ovenRow'><td>Cleaning the oven</td><td>30 mins</td></tr>");
+            hrs = hrs + 0.5;
+            $("#totalService").html(hrs);
+            price = price + 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        } else if (!this.checked) {
+            $("#ovenRow").remove();
+            hrs = hrs - 0.5;
+            $("#totalService").html(hrs);
+            price = price - 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        }
+
+    });
+
+    $('#laundry').change(function() {
+        if (this.checked) {
+            extraTableBody = $("#extraTable tbody");
+            extraTableBody.append("<tr id='laundryRow'><td>Wash and dry laundry</td><td>30 mins</td></tr>");
+            hrs = hrs + 0.5;
+            $("#totalService").html(hrs);
+            price = price + 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        } else if (!this.checked) {
+            $("#laundryRow").remove();
+            hrs = hrs - 0.5;
+            $("#totalService").html(hrs);
+            price = price - 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        }
+    });
+
+    $('#windows').change(function() {
+        if (this.checked) {
+            extraTableBody = $("#extraTable tbody");
+            extraTableBody.append("<tr id='windowsRow'><td>Clean windows</td><td>30 mins</td></tr>");
+            hrs = hrs + 0.5;
+            $("#totalService").html(hrs);
+            price = price + 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        } else if (!this.checked) {
+            $("#windowsRow").remove();
+            hrs = hrs - 0.5;
+            $("#totalService").html(hrs);
+            price = price - 9;
+            $("#clean").html(price);
+            $("#totalPay").html(price);
+        }
+    });
+
+    $(document).ready(function() {
+        $(document).click(function(event) {
+            var clickover = $(event.target);
+            var _opened = $(".navbar-collapse").hasClass("show");
+            if (_opened === true && !clickover.hasClass("navbar-toggler")) {
+                $(".navbar-toggler").click();
+            }
+        });
+    });
+    $("#bookForm").submit(function(e) {
+        $("#successModal").modal("show");
+        e.preventDefault();
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        //For Card Number formatted input
+        var cardNum = document.getElementById('cr_no');
+        cardNum.onkeyup = function(e) {
+            if (this.value == this.lastValue) return;
+            var caretPosition = this.selectionStart;
+            var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+            var parts = [];
+
+            for (var i = 0, len = sanitizedValue.length; i < len; i += 4) { parts.push(sanitizedValue.substring(i, i + 4)); }
+            for (var i = caretPosition - 1; i >= 0; i--) {
+                var c = this.value[i];
+                if (c < '0' || c > '9') {
+                    caretPosition--;
+                }
+            }
+            caretPosition += Math.floor(caretPosition / 4);
+
+            this.value = this.lastValue = parts.join('-');
+            this.selectionStart = this.selectionEnd = caretPosition;
+        }
+
+        //For Date formatted input
+        var expDate = document.getElementById('exp');
+        expDate.onkeyup = function(e) {
+            if (this.value == this.lastValue) return;
+            var caretPosition = this.selectionStart;
+            var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+            var parts = [];
+
+            for (var i = 0, len = sanitizedValue.length; i < len; i += 2) { parts.push(sanitizedValue.substring(i, i + 2)); }
+            for (var i = caretPosition - 1; i >= 0; i--) {
+                var c = this.value[i];
+                if (c < '0' || c > '9') {
+                    caretPosition--;
+                }
+            }
+            caretPosition += Math.floor(caretPosition / 2);
+
+            this.value = this.lastValue = parts.join('/');
+            this.selectionStart = this.selectionEnd = caretPosition;
+        }
+
+        // Radio button
+        $('.radio-group .radio').click(function() {
+            $(this).parent().find('.radio').removeClass('selected');
+            $(this).addClass('selected');
+        });
+    })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>
