@@ -35,7 +35,7 @@
                 <div id="mySidenav" class="sidenav">
                     <hr style="height: 5px; color: black;" class="mt-1 mb-1">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="#">Book now</a>
+                    <a asp-controller="Starting" asp-action="bookService">Book now</a>
                     <a asp-controller="Starting" asp-action="prices"> Prices and Services</a>
                     <a href="#">Warranty</a>
                     <a href="#">Blog</a>
@@ -57,7 +57,7 @@
                 <ul class="navbar-nav ml-auto nav-ul-margin">
                     <li class="nav-item">
                         <div class="nav-btn " href="#">
-                            <a class="nav-btn-item text-decoration-none py-3 mr-3 " href="#">
+                            <a class="nav-btn-item text-decoration-none py-3 mr-3 " asp-controller="Starting" asp-action="bookService">
                                 Book a cleaner
                             </a>
                         </div>
@@ -560,7 +560,7 @@
 
         });
     <script>*@
-            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 </body>

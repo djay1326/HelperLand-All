@@ -27,7 +27,7 @@ namespace HelperlandProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<HelperlanddContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
+            services.AddDbContext<HelperLand1Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
             //services.AddScoped<HelperlanddContext>();
             services.AddDistributedMemoryCache();
             services.AddSession();

@@ -1,6 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model HelperlandProject.Models.Userr
 @{
     Layout = null;
 }
@@ -35,15 +36,16 @@
             </div>
         </div>
         <div class="my-5">
-            <form method="post" asp-controller="Starting" asp-action="ForgotPwd" class="createNewAccount">
+            <form method="post" asp-controller="Starting" asp-action="resetpassword" class="createNewAccount">
                 <div class="form-group">
-                    <label for="exampleInputEmail1" class="font-weight-bold" style="color: #4f4f4f">New Password</label>
-                    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Password">
+                    <label for="exampleInputEmail1"  class="font-weight-bold" style="color: #4f4f4f">New Password</label>
+                    <input type="password" class="form-control" name="Password" asp-for="Password" id="Password" aria-describedby="emailHelp" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail2" class="font-weight-bold" style="color: #4f4f4f">Confirm Password</label>
                     <input type="password" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Confirm Pwd.">
                 </div>
+                <input type="hidden" asp-for="UserId">
                 <div class="text-center mt-4">
                     <button class="btn submitButton text-light rounded-pill" id="registerButton">Reset</button>
                 </div>

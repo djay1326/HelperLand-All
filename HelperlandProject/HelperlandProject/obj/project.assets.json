@@ -8862,11 +8862,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\rough\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+      "projectUniqueName": "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
       "projectName": "HelperlandProject",
-      "projectPath": "G:\\rough\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+      "projectPath": "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
       "packagesPath": "C:\\Users\\djay1\\.nuget\\packages\\",
-      "outputPath": "G:\\rough\\HelperlandProject\\HelperlandProject\\obj\\",
+      "outputPath": "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

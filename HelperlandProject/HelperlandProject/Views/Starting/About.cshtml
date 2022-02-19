@@ -1,6 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model HelperlandProject.Models.Userr
 @{
     Layout = null;
 }
@@ -32,7 +33,7 @@
 
                     <hr style="height: 5px; color: black;" class="mt-1 mb-1">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="#">Book now</a>
+                    <a asp-controller="Starting" asp-action="bookService">Book now</a>
                     <a asp-controller="Starting" asp-action="prices">Prices and Services</a>
                     <a href="#">Warranty</a>
                     <a href="#">Blog</a>
@@ -55,7 +56,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div class="nav-btn-color">
-                            <a class="nav-link py-3 " href="#">Book now</a>
+                            <a class="nav-link py-3 " asp-controller="Starting" asp-action="bookService">Book now</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -107,7 +108,7 @@
                         </button>
                     </div>
                     <div class="modal-body loginPopup p-2">
-                        <form action="">
+                        <form asp-controller="Starting" asp-action="LoginAdd">
                             <div class="form-group position-relative my-3">
                                 <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
                                 <img src="~/images/userr.png" alt="" height="21" width="20">
@@ -118,7 +119,7 @@
                             </div>
                             <div class="form-group d-flex">
                                 <input type="checkbox" value="rememberme" id="rememberme" class="abb">
-                                <label for="rememberme" class="control-label ml-2">Remember me</label>
+                                <label for="rememberme" class="control-label ml-2 mt-2">Remember me</label>
                             </div>
                             <button type="submit" class="my-3 btn submitButton text-light w-100 rounded-pill">
                                 Login
@@ -134,7 +135,6 @@
                 </div>
             </div>
         </div>
-
         <!-- ...............................Forgot Password Popup Modal.......................... -->
         <div class="modal fade" id="forgotPasswordModal" aria-hidden="true" aria-labelledby="forgotPasswordModalLabel2" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-md">
@@ -146,9 +146,9 @@
                         </button>
                     </div>
                     <div class="modal-body ">
-                        <form action="">
+                        <form method="post" asp-action="ForgotPassword" asp-controller="Starting">
                             <div class="d-flex mb-3">
-                                <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
+                                <input type="email" placeholder="Email Address" asp-for="Email" name="Email" class="emaill brdr">
                             </div>
                             <button type="submit" class="my-3 btn submitButton text-light w-100 rounded-pill">
                                 Send
