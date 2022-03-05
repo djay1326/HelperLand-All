@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -42,7 +43,8 @@ namespace HelperlandProject.Models
         public bool? HasIssue { get; set; }
         public bool? PaymentDone { get; set; }
         public Guid? RecordVersion { get; set; }
-
+        [NotMapped]
+        public int AddressId { get; set; }
         public virtual Userr ServiceProvider { get; set; }
         public virtual Userr User { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }

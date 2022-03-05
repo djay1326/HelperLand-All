@@ -1,0 +1,177 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<HelperlandProject.Models.UserAddress>
+@{
+    Layout = null;
+}
+
+<div id="myAddressesTable">
+    <table class="table tablee1 tb1">
+        <thead>
+            <tr>
+                <th scope="col">Addresses</th>
+                <th scope="col" width="100">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <p class="mb-1"><b>Address:</b> @item.AddressLine1 </p>
+                        <p class="mb-1"><b>Phone Number:</b>@item.Mobile</p>
+                    </td>
+                    <td>
+                        <a href="#editAddressModal" data-toggle="modal" srid="@item.AddressId" class="addId" role="button">
+                            <img src="~/images/edit-icon.png" alt="" height="22" width="22">
+                        </a>
+                        <a href="#deleteAdressModal" data-toggle="modal" role="button" srid="@item.AddressId" class="deleteMenu">
+                            <img src="~/images/delete-icon.png" alt="" height="22" width="22">
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <a href="#addNewAddressModal" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none px-2">Add New address </a>
+</div>
+<!-- ---------------------------Add New Address PopUp Modal----------------------- -->
+<div class="modal fade" id="addNewAddressModal" aria-hidden="true" aria-labelledby="addNewAddressModalLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title me-3 clrr" id="addNewAddressModalLabel2">Add New Address</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <div class="col-sm-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="streetname">Street Name</label>
+                                <input type="text" placeholder="Street Name" id="str1" name="streetname" class="bll ht pdd w-100">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="housenumber">House number</label>
+                                <input type="text" placeholder="House Number" id="str2" name="housenumber" class="bll ht pdd w-100">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="postalcode">Postal Code</label>
+                                <input type="text" placeholder="Postal Code" id="str3" name="postalcode" class="bll ht pdd w-100">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group d-flex flex-column">
+                                <label for="city">City</label>
+                                <div class="d-inline-block">
+                                    <input type="text" name="city" id="str4" class="ht bll pdd w-100" />
+                                    @*<option value="troisdorf">Troisdorf</option>*@
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="phonenumber">Phone Number</label>
+                                <div class="d-flex">
+                                    <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
+                                    <input type="text" placeholder="Phone Number" id="str5" name="phonenumber" class="bll ht pdd">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="str6" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
+                        Add
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------Edit Address PopUp modal-------------------- -->
+<div class="modal fade" id="editAddressModal" aria-hidden="true" aria-labelledby="editAddressModalLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title me-3 clrr" id="editAddressModalLabel2">Edit Address</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                @*<form action="" onsubmit="">
+                    <div class="row">
+                        <div class="col-sm-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="streetname">Street Name</label>
+                                <input type="text" value="" placeholder="Street Name" id="h" name="streetname" class="bll ht pdd w-100">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="housenumber">House number</label>
+                                <input type="text" value="" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="postalcode">Postal Code</label>
+                                <input type="text" value="" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group d-flex flex-column">
+                                <label for="city">City</label>
+                                <div class="d-inline-block">
+                                    <input name="city" placeholder="City" class="ht bll pdd w-100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="phonenumber">Phone Number</label>
+                                <div class="d-flex">
+                                    <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
+                                    <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd" value="3423423423">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
+                        Add
+                    </button>
+                </form>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------Delete Address PopUp Modal---------------------------- -->
+<div class="modal fade" id="deleteAdressModal" aria-hidden="true" aria-labelledby="deleteAdressModalLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title me-3 clrr" id="deleteAdressModalLabel2">Delete Address</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" onsubmit="">
+                    <p class="mb-3 clrr">Are You sure you want to delete this address?</p>
+                    <button type="button" id="del1" class="mt-2 reschedule-btn rounded-pill bll text-light px-3 pdd">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

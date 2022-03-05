@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Session;
 using System.Net.Mail;
 using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace HelperlandProject.Controllers
 {
@@ -69,7 +70,8 @@ namespace HelperlandProject.Controllers
         [HttpPost]
         public IActionResult NewAccount(Userr user)
         {
-            var x = _DbContext.Userr.FirstOrDefault((System.Linq.Expressions.Expression<Func<Userr, bool>>)(p => (bool)p.Email.Equals((string)user.Email)));
+            Userr x = _DbContext.Userr.Where(x => x.Email == user.Email).FirstOrDefault();
+            //var x = _DbContext.Userr.FirstOrDefault((System.Linq.Expressions.Expression<Func<Userr, bool>>)(p => (bool)p.Email.Equals((string)user.Email)));
             if (ModelState.IsValid && x == null)
             {
                 Userr u = new Userr();
@@ -98,7 +100,7 @@ namespace HelperlandProject.Controllers
         [HttpPost]
         public IActionResult HelperAccountAdd(Userr userr)
         {
-            var x = _DbContext.Userr.FirstOrDefault((System.Linq.Expressions.Expression<Func<Userr, bool>>)(p => (bool)p.Email.Equals((string)userr.Email)));
+            var x = _DbContext.Userr.FirstOrDefault(p => p.Email.Equals(userr.Email));
             if (ModelState.IsValid && x == null)
             {
                 Userr u = new Userr();
@@ -120,10 +122,7 @@ namespace HelperlandProject.Controllers
             }
         }
 
-        public IActionResult UpcomingSeventh()
-        {
-            return View();
-        }
+        
 
         [HttpPost]
         public IActionResult LoginAdd(Userr userr)
@@ -135,20 +134,29 @@ namespace HelperlandProject.Controllers
             {
                 ViewBag.Message = String.Format("No matching email");
                 //Session["FirstName"] = ue.UserId.ToString();
-                return RedirectToAction("UpcomingSeventh");
+                HttpContext.Session.SetInt32("userid", ue.UserId);
+                HttpContext.Session.SetString("username", ue.FirstName + " " + ue.LastName);
+                return RedirectToAction("Index");
             }
             
             else if(ue.UserTypeId == 2)
             {
                 ViewBag.Message = String.Format("No matching email");
+                HttpContext.Session.SetInt32("userid", ue.UserId);
+                HttpContext.Session.SetString("username", ue.FirstName + " " + ue.LastName);
                 return RedirectToAction("Faqs");
             }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("About");
             }
         }
 
+        public IActionResult logout()
+        {
+            HttpContext.Session.Remove("userid");
+            return RedirectToAction("Index");
+        }
 
         [HttpPost]
         public IActionResult ForgotPassword(Userr model)
@@ -166,8 +174,8 @@ namespace HelperlandProject.Controllers
             {
                 MailMessage ms = new MailMessage();
                 ms.To.Add(model.Email);
-                ms.From = new MailAddress("ravi.smith.1326@gmail.com");
-                ms.Subject = "hello";
+                ms.From = new MailAddress("rough.java@gmail.com");
+                ms.Subject = "Forgot Password reset link";
                 ms.Body = activationUrl;
 
                 SmtpClient smtp = new SmtpClient();
@@ -176,7 +184,7 @@ namespace HelperlandProject.Controllers
                 smtp.Port = 587;
 
 
-                NetworkCredential NetworkCred = new NetworkCredential("ravi.smith.1326@gmail.com", "Sandwich#");
+                NetworkCredential NetworkCred = new NetworkCredential("rough.java@gmail.com", "Sandwich#");
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
                 smtp.Send(ms);
@@ -210,7 +218,17 @@ namespace HelperlandProject.Controllers
 
         public IActionResult bookService()
         {
-            return View();
+            var xyz = HttpContext.Session.GetInt32("userid");
+            if(xyz != null)
+            {
+                return View();
+            }
+            else
+            {
+                TempData["abc"] = "You need to Login first!";
+                return RedirectToAction("Index");
+            }
+              
         }
 
 
@@ -232,10 +250,22 @@ namespace HelperlandProject.Controllers
 
         public string savebooking([FromBody] ServiceRequest add)
         {
-            add.UserId = 2;
+            add.UserId = (int)HttpContext.Session.GetInt32("userid");
+            //add.UserId = 2;
             add.ServiceId = 12345;
-            add.ServiceHours = 2;
+            //add.ServiceHours = 2;
             _DbContext.ServiceRequest.Add(add);
+            _DbContext.SaveChanges();
+            var ab = _DbContext.UserAddress.Where(x => x.AddressId == add.AddressId).FirstOrDefault();
+            ServiceRequestAddress sa = new ServiceRequestAddress();
+            sa.ServiceRequestId = add.ServiceRequestId;
+            sa.AddressLine1 = ab.AddressLine1;
+            sa.AddressLine2 = ab.AddressLine2;
+            sa.City = ab.City;
+            sa.Mobile = ab.Mobile;
+            sa.State = ab.State;
+            sa.PostalCode = ab.PostalCode;
+            _DbContext.ServiceRequestAddress.Add(sa);
             _DbContext.SaveChanges();
             string message = "true";
             return message;
@@ -244,29 +274,141 @@ namespace HelperlandProject.Controllers
 
         public IActionResult yourDetail()
         {
-            List<UserAddress> u = _DbContext.UserAddress.Where(x => x.UserId == 2).ToList();
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            List<UserAddress> u = _DbContext.UserAddress.Where(x => x.UserId == ty).ToList();
             System.Threading.Thread.Sleep(2000);
             return View(u);
         }
 
 
-        //public IActionResult address()
-        //{
-
-        //    List<UserAddress> u = _DbContext.UserAddress.Where(x => x.UserId == 2).ToList();
-        //    System.Threading.Thread.Sleep(2000);
-        //    return View(u);
-        //}
-
         [HttpPost]
         public string yourDetail([FromBody] UserAddress address)
         {
-            address.UserId = 2;
+            address.UserId = (int)HttpContext.Session.GetInt32("userid");
             _DbContext.UserAddress.Add(address);
             _DbContext.SaveChanges();
             return "true";
         }
 
+        public IActionResult UpcomingSeventh()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            List<ServiceRequest> wt = _DbContext.ServiceRequest.Where(x => x.UserId == ty && x.Status ==null).ToList();
 
+            return View(wt);
+        }
+
+        public IActionResult settingsSeven()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            return View(u);
+        }
+
+        public IActionResult shistorySeven()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            List<ServiceRequest> u = _DbContext.ServiceRequest.Where(x => x.UserId == ty && x.Status != null).ToList();
+            return View(u);
+        }
+
+        public IActionResult favSeven()
+        {
+            return View();
+        }
+
+        public IActionResult notifySeven()
+        {
+            return View();
+        }
+
+        public IActionResult divOpen(int valuess)
+        {
+            var query = (from ServiceRequest in _DbContext.ServiceRequest
+                         join ServiceRequestAddress in _DbContext.ServiceRequestAddress on ServiceRequest.ServiceRequestId equals ServiceRequestAddress.ServiceRequestId
+                         where ServiceRequest.ServiceRequestId == valuess
+                         select new Popup
+                         {
+                             ServiceRequestId = ServiceRequest.ServiceRequestId,
+                             ServiceStartDate = ServiceRequest.ServiceStartDate,
+                             SubTotal = ServiceRequest.SubTotal,
+                             AddressLine1 = ServiceRequestAddress.AddressLine1,
+                         }).Single();
+
+
+            return View(query);
+        }
+
+        public string btnOpen ([FromBody] ServiceRequest test)
+        {
+            ServiceRequest abc = _DbContext.ServiceRequest.Where(x => x.ServiceRequestId == test.ServiceRequestId).FirstOrDefault();
+            abc.Status = 0;
+            abc.Comments = test.Comments;
+            _DbContext.ServiceRequest.Update(abc);
+            _DbContext.SaveChanges();
+            return "true";
+        }
+
+        public string detailsTab([FromBody] Userr test)
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            u.FirstName = test.FirstName;
+            u.LastName = test.LastName;
+            u.Mobile = test.Mobile;
+            _DbContext.Userr.Update(u);
+            _DbContext.SaveChanges();
+            return "true";
+        }
+
+        public string NewPwd([FromBody] Userr pass)
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            if(u.Password == pass.Password)
+            {
+                u.Password = pass.NewPassword;
+                _DbContext.Userr.Update(u);
+                _DbContext.SaveChanges();
+                return "true";
+            }
+            return "false";
+        }
+         
+        public IActionResult addressMenu()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            List<UserAddress> tu = _DbContext.UserAddress.Where(x => x.UserId == ty).ToList();
+            return View(tu);
+        }
+
+        public string deleteTab(int i)
+        {
+            UserAddress u = _DbContext.UserAddress.Where(x => x.AddressId == i).FirstOrDefault();
+            _DbContext.UserAddress.Remove(u);
+            _DbContext.SaveChanges();
+            return "true";
+        }
+
+        public IActionResult editAddress(int edit)
+        {
+            UserAddress u = _DbContext.UserAddress.Where(x => x.AddressId == edit).FirstOrDefault();
+            return View(u);
+        }
+
+        public string editPopup([FromBody] UserAddress change)
+        {
+            UserAddress getaddress = _DbContext.UserAddress.Where(x => x.AddressId == change.AddressId).FirstOrDefault();
+
+            getaddress.AddressLine1 = change.AddressLine1;
+            getaddress.AddressLine2 = change.AddressLine2;
+            getaddress.PostalCode = change.PostalCode;
+            getaddress.City = change.City;
+            getaddress.Mobile = change.Mobile;
+            _DbContext.UserAddress.Update(getaddress);
+            _DbContext.SaveChanges();
+            return "true";
+
+        }
     }
 }

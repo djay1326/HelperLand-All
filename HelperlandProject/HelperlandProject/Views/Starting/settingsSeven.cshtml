@@ -1,0 +1,866 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model HelperlandProject.Models.Userr
+@{
+    Layout = null;
+    var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
+    var y = HttpContextAccessor.HttpContext.Session.GetString("username");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/images/favicon_img.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/Upcoming.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script type="text/javascript" src="~/js/cal.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <title>Upcoming Service</title>
+</head>
+
+<body>
+    <div class="header1" id="topheader">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #525252;" id="navbar11">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Starting" asp-action="Index">
+                    <img src="~/images/white-logo-transparent-background.png" style="width: 73px; height: 54px;" id="imgg2">
+                </a>
+                <div>
+                    <span class="bellImg1">
+                        <a href="">
+                            <span class="leftt"></span>
+                            <img src="~/images/bell.png" alt="" height="32px" width="29px" class="mb-2 bellImg">
+                            <span class="rightt"></span>
+                        </a>
+                    </span>
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="rtt"> &#9776</span>
+                    <div id="mySidenav" class="sidenav">
+                        <span class="nav-link">
+                            Welcome,<br>
+                            <div class="font-weight-bold ml-0">@y</div>
+                        </span>
+                        <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
+                        <a asp-controller="Starting" asp-action="shistorySeven">Service History</a>
+                        <a href="#">Service Schedule</a>
+                        <a asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
+                        <a asp-controller="Starting" asp-action="notifySeven">Notifications</a>
+                        <a asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                        <a asp-controller="Starting" asp-action="logout">Logout</a>
+                        <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                        <a asp-controller="Starting" asp-action="Prices">Prices and Services</a>
+                        <a href="#">Warranty</a>
+                        <a href="#">Blog</a>
+                        <a asp-controller="Starting" asp-action="Contact">Contact</a>
+                        <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                        <a href="" class="ml-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" class=" ml-3 mr-3">
+                                <path fill-rule="evenodd" fill="#000" d="M1.947 3.48v2.481H0v3.033h1.947V18.1h4.001V8.995h2.685S8.885 7.541 9.7 5.95H5.963V3.876c0-.31.437-.728.868-.728H9.11V.9H6.46C1.848.9 1.947 3.27 1.947 3.48z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ms-3">
+                                <path fill-rule="evenodd" fill="#000" d="M14.48 20H5.519A5.524 5.524 0 0 1 0 14.482V5.52C0 2.477 2.475.2 5.519.2h8.961c3.043 0 5.519 2.277 5.519 5.32v8.962A5.525 5.525 0 0 1 14.48 20zm3.744-5.518V5.52a3.748 3.748 0 0 0-3.744-3.744H5.519A3.749 3.749 0 0 0 1.774 5.52v8.962a3.749 3.749 0 0 0 3.745 3.744h8.961a3.748 3.748 0 0 0 3.744-3.744zm-2.855-8.536c-.099 0-.678-.14-.92-.381-.242-.243.221-.578.221-.921 0-.342-.463-.678-.221-.92.242-.242.821-.381.92-.381.343 0 1.111.139.92.381.242.242.381.578.381.92 0 .342-.139.678-.381.921.171.241-.577.381-.92.381zm-5.37 9.208c-2.841 0-5.153-2.312-5.153-5.054 0-2.941 2.312-5.252 5.153-5.252 2.842 0 5.153 2.311 5.153 5.252 0 2.742-2.311 5.054-5.153 5.054zm0-8.532c-1.863 0-3.379 1.516-3.379 3.478 0 1.764 1.516 3.28 3.379 3.28s3.379-1.516 3.379-3.28c0-1.962-1.516-3.478-3.379-3.478z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse dis" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item rounded-pill">
+                            <div class="nav-btn-color ">
+                                <a class="nav-link rounded-pill p-3 mt-2" asp-controller="Starting" asp-action="bookService" style="background-color: #1d7a8c; border: none;">Book Now</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn">
+                                <a class="nav-link1 rounded-pill py-3" asp-controller="Starting" asp-action="Prices">Prices & services</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn">
+                                <a class="nav-link1 rounded-pill py-3" href="#">Warranty</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn">
+                                <a class="nav-link1 rounded-pill py-3 px-3" href="#">Blog</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn ">
+                                <a class="nav-link1 rounded-pill py-3" asp-controller="Starting" asp-action="Contact">Contact</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class=" nav-btn bdr bdl">
+                                <a class="navbar-brand mt-2 ml-3" href="#">
+                                    <img src="~/images/bell.png" alt="" height="32px" width="29px" class="d-flex">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="navbar-brand mt-2 ml-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="~/images/user.png" class="mr-1"><img src="~/images/sp-arrow-down.png" class="">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right clrr" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item mt-1" href="#">Welcome,&nbsp;<span>@y</span></a>
+                                <hr class="hrr">
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="UpcomingSeventh">My Dashboard</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="logout">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="custHeader position-relative d-flex align-items-center justify-content-center">
+        <p class="m-0" style="color: #4f4f4f;">Welcome, <span class="font-weight-bold" style="color: #4f4f4f;">@y</span></p>
+    </div>
+    <div class="Main-dash d-flex justify-content-between m-3">
+        <!-- --------------- Sidebar -------------- -->
+        <div class="sidebar position-relative">
+            <ul class="inner mb-0">
+                <li>
+                    <a class="text-light" aria-current="page" id="dashBoard" asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
+                </li>
+                <li>
+                    <a id="serviceHistory" class="text-light" asp-controller="Starting" asp-action="shistorySeven">Service History</a>
+                </li>
+                <li>
+                    <a id="serviceSchedule" class="text-light">Service Schedule</a>
+                </li>
+                <li>
+                    <a id="favouritePros" class="text-light" asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
+                </li>
+                <li>
+                    <a id="invoices" class="text-light">Invoices</a>
+                </li>
+                <li>
+                    <a id="notifications" class="text-light" asp-controller="Starting" asp-action="notifySeven">Notification</a>
+                </li>
+            </ul>
+        </div>
+        <!-- -------------------All Tables List------------------- -->
+        <div class="whole_tables">
+            <!-- For Dashboard TABLE
+            <!-- Customer My Settings TABLE -->
+            <div class="settingsData w-100 d-block" id="custSettings">
+                <ul class="nav nav-fill nav-tabs" id="myTab" role="tablist" style="border:none">
+                    <li class="nav-item ea">
+                        <a class="nav-link active" id="myDetails" data-toggle="tab" data-target="#myDetailsMenu" type="button" aria-controls="myDetails" aria-selected="true">
+                            <span style="color:#4f4f4f; border: none;">My Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ea">
+                        <a class="nav-link" id="myAddresses" data-toggle="tab" data-target="#myAddressesMenu" type="button"
+                           aria-controls="myAddresses" aria-selected="false">
+                            <span style="color:#4f4f4f;">My Addresses</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ea">
+                        <a class="nav-link" id="changePassword" data-toggle="tab" data-target="#changePasswordTab" type="button" aria-controls="changePassword" aria-selected="false">
+                            <span style="color:#4f4f4f;">Change Password</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-3" id="myTabContent">
+
+
+
+                    <!-- -------------------------------- my details menu -----------------------------------  -->
+                    <div class="tab-pane fade show active" id="myDetailsMenu" role="tabpanel" aria-labelledby="myDetails">
+                        <form>
+                            <input type="hidden" name="UserId" id="just" asp-for="UserId" />
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <label for="firstname">First Name</label>
+                                    <input type="text" name="firstname" placeholder="First" id="just1" asp-for="FirstName" class="ht bll pdd form-control" required>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <label for="firstname">Last Name</label>
+                                    <input type="text" name="firstname" placeholder="Last" id="just2" asp-for="LastName" class="ht bll pdd form-control" required>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <label for="firstname">Email Address</label>
+                                    <input type="email" name="address" value="cust@gmail.com" id="just3" asp-for="Email" disabled class="ht bll pdd form-control">
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="firstname">Mobile Number</label>
+                                        <div class="d-flex">
+                                            <input type="text" value="+91" disabled style="max-width: 52px;" class="ht bll pdd form-control">
+                                            <input type="text" name="mobilenumber" id="just4" asp-for="Mobile" placeholder="9848291932" class="ht bll pdd form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="form-group">
+                                        <div class="d-flex flex-column">
+                                            <label for="birthdate">Date Of Birth</label>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-inline-block w-100 mr-2">
+                                                    <select name="birthdate" class="ht bll pdd w-100">
+                                                        <option value="" class="font-weight-bold">Day</option>
+                                                        <option value="01">01</option>
+                                                        <option value="02">02</option>
+                                                        <option value="03" selected>03</option>
+                                                        <option value="04">04</option>
+                                                        <option value="05">05</option>
+                                                        <option value="06">06</option>
+                                                        <option value="07">07</option>
+                                                        <option value="08">08</option>
+                                                        <option value="09">09</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                        <option value="31">31</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block w-100 mr-2">
+                                                    <select name="birthmonth" class="ht bll pdd w-100">
+                                                        <option value="" class="font-weight-bold">Month</option>
+                                                        <option value="january">January</option>
+                                                        <option value="february">February</option>
+                                                        <option value="march" selected>March</option>
+                                                        <option value="april">April</option>
+                                                        <option value="may">May</option>
+                                                        <option value="june">June</option>
+                                                        <option value="july">July</option>
+                                                        <option value="august">August</option>
+                                                        <option value="september">September</option>
+                                                        <option value="october">October</option>
+                                                        <option value="november">November</option>
+                                                        <option value="december">December</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block w-100">
+                                                    <select name="birthyear" class="ht bll pdd w-100">
+                                                        <option value="" class="font-weight-bold">Year</option>
+                                                        <option value="2022">2022</option>
+                                                        <option value="2021" selected>2021</option>
+                                                        <option value="2020">2020</option>
+                                                        <option value="2019">2019</option>
+                                                        <option value="2018">2018</option>
+                                                        <option value="2017">2017</option>
+                                                        <option value="2016">2016</option>
+                                                        <option value="2015">2015</option>
+                                                        <option value="2014">2014</option>
+                                                        <option value="2013">2013</option>
+                                                        <option value="2012">2012</option>
+                                                        <option value="2011">2011</option>
+                                                        <option value="2010">2010</option>
+                                                        <option value="2009">2009</option>
+                                                        <option value="2008">2008</option>
+                                                        <option value="2007">2007</option>
+                                                        <option value="2006">2006</option>
+                                                        <option value="2005">2005</option>
+                                                        <option value="2004">2004</option>
+                                                        <option value="2003">2003</option>
+                                                        <option value="2002">2002</option>
+                                                        <option value="2001">2001</option>
+                                                        <option value="2000">2000</option>
+                                                        <option value="1999">1999</option>
+                                                        <option value="1998">1998</option>
+                                                        <option value="1997">1997</option>
+                                                        <option value="1996">1996</option>
+                                                        <option value="1995">1995</option>
+                                                        <option value="1994">1994</option>
+                                                        <option value="1993">1993</option>
+                                                        <option value="1992">1992</option>
+                                                        <option value="1991">1991</option>
+                                                        <option value="1990">1990</option>
+                                                        <option value="1989">1989</option>
+                                                        <option value="1988">1988</option>
+                                                        <option value="1987">1987</option>
+                                                        <option value="1986">1986</option>
+                                                        <option value="1985">1985</option>
+                                                        <option value="1984">1984</option>
+                                                        <option value="1983">1983</option>
+                                                        <option value="1982">1982</option>
+                                                        <option value="1981">1981</option>
+                                                        <option value="1980">1980</option>
+                                                        <option value="1979">1979</option>
+                                                        <option value="1978">1978</option>
+                                                        <option value="1977">1977</option>
+                                                        <option value="1976">1976</option>
+                                                        <option value="1975">1975</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <div class="d-flex flex-column">
+                            <label for="preferedLanguage">My Prefered Language</label>
+                            <select name="preferedLanguage" class="ht pdd bll" style="max-width: 120px;">
+                                <option value="hindi">Hindi</option>
+                                <option value="english" selected>English</option>
+                                <option value="french">French</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="german">German</option>
+                            </select>
+                        </div>
+                        <button type="button" id="saveButton" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3">
+                            Save
+                        </button>
+                    </div>
+
+
+                    <!-- ---------------------------- my addresses menu ------------------------- -->
+                    <div class="tab-pane fade" role="tabpanel" id="myAddressesMenu" aria-labelledby="myAddresses">
+                        <!--<div id="myAddressesTable">
+                            <table class="table tablee1 tb1">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Addresses</th>
+                                        <th scope="col" width="100">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p class="mb-1"><b>Address:</b> Street 54, 53844 Troisdorf </p>
+                                            <p class="mb-1"><b>Phone Number:</b>9988556644</p>
+                                        </td>
+                                        <td>
+                                            <a href="#editAddressModal" data-toggle="modal" role="button">
+                                                <img src="~/images/edit-icon.png" alt="" height="22" width="22">
+                                            </a>
+                                            <a href="#deleteAdressModal" data-toggle="modal" role="button">
+                                                <img src="~/images/delete-icon.png" alt="" height="22" width="22">
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="#addNewAddressModal" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none px-2">Add New address </a>
+                        </div>-->
+                        <!-- ---------------------------Add New Address PopUp Modal----------------------- -->
+                        <!--<div class="modal fade" id="addNewAddressModal" aria-hidden="true" aria-labelledby="addNewAddressModalLabel2" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title me-3 clrr" id="addNewAddressModalLabel2">Add New Address</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="streetname">Street Name</label>
+                                                        <input type="text" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="housenumber">House number</label>
+                                                        <input type="text" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="postalcode">Postal Code</label>
+                                                        <input type="text" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="city">City</label>
+                                                        <div class="d-inline-block">
+                                                            <input name="city" placeholder="City" class="ht bll pdd w-100" />
+                                                            <option value="troisdorf">Troisdorf</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="phonenumber">Phone Number</label>
+                                                        <div class="d-flex">
+                                                            <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
+                                                            <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
+                                                Add
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!-- ------------------------Edit Address PopUp modal-------------------- -->
+                        <!--<div class="modal fade" id="editAddressModal" aria-hidden="true" aria-labelledby="editAddressModalLabel2" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title me-3 clrr" id="editAddressModalLabel2">Edit Address</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body ">
+                                        <form action="" onsubmit="">
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="streetname">Street Name</label>
+                                                        <input type="text" value="" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="housenumber">House number</label>
+                                                        <input type="text" value="" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="postalcode">Postal Code</label>
+                                                        <input type="text" value="" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="city">City</label>
+                                                        <div class="d-inline-block">
+                                                            <input name="city" placeholder="City" class="ht bll pdd w-100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <div class="form-group d-flex flex-column">
+                                                        <label for="phonenumber">Phone Number</label>
+                                                        <div class="d-flex">
+                                                            <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
+                                                            <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd" value="3423423423">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
+                                                Add
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!-- ------------------------Delete Address PopUp Modal---------------------------- -->
+                        <!--<div class="modal fade" id="deleteAdressModal" aria-hidden="true" aria-labelledby="deleteAdressModalLabel2" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title me-3 clrr" id="deleteAdressModalLabel2">Delete Address</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" onsubmit="">
+                                            <p class="mb-3 clrr">Are You sure you want to delete this address?</p>
+                                            <button type="submit" class="mt-2 reschedule-btn rounded-pill bll text-light px-3 pdd">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+
+                    <!-- ---------------------- change password menu --------------------- -->
+                    <div class="tab-pane fade" role="tabpanel" id="changePasswordTab" aria-labelledby="changePassword">
+                        <form action="">
+                            <div class="form-group mb-2 col-sm-4 ah">
+                                <label for="oldPassword">Old Password</label>
+                                <input type="password" name="oldPassword" id="tap1" placeholder="Current Password" class="form-control ht" maxlength="20" required>
+                            </div>
+                            <div class="form-group mb-2 col-sm-4 ah">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" name="newPassword" id="tap2" class="form-control ht" placeholder="Password" maxlength="20" required>
+                            </div>
+                            <div class="form-group mb-2 col-sm-4 ah">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" name="confirmPassword" id="tap3" class="form-control ht " placeholder="New Password" maxlength="20" required>
+                            </div>
+                            <button type="button" id="tap4" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3 ml-3">
+                                Save
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- For Calendar PopUP Modal -->
+    <div class="modal fade" id="servicesPop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ac" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bolder" id="exampleModalCenterTitle">Service Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body CalModal">
+                    <div class="CalLeft">
+                        <h4>22/12/2021 09:00 -14:30</h4>
+                        <p><b>Duration:</b>5.5 Hrs</p>
+                        <hr>
+                        <p><b>Service Id:</b>8502</p>
+                        <p><b>Extras:</b>Inside cabinets, Inside fridge, Inside oven, Laundry wash & dry, Interior windows</p>
+                        <p>
+                            <b>Net Amount:</b>
+                            <spna class="currency fw-bolder">99,00 €</spna>
+                        </p>
+                        <hr>
+                        <p><b>Service Address:</b>Test 65, 53225 Bonn</p>
+                        <p><b>Billing Address:</b>Same as cleaning Address</p>
+                        <p><b>Phone:</b>+49 9988556644</p>
+                        <p><b>Email:</b>cust001@yopmail.com</p>
+                        <hr>
+                        <p><b>Comments</b></p>
+                        <div>
+                            <p>Hello</p>
+                        </div>
+                        <p>I don't have pets at home</p>
+                    </div>
+                </div>
+                <span class="main-btn modal-footer text-center mb-3">
+                    <a href="#rescheduleClick" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none">Reschedule</a>
+                    <a href="#cancelServiceRequest" data-dismiss="modal" role="button" class="rounded-pill text-light text-decoration-none cancel-btn">Cancel</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ..........Footer Section............. -->
+    <footer class="font-small Rectangle-12 da">
+        <div class="container d-flex flex-row justify-content-between align-items-center" style="max-width: 1800px;">
+            <div class="footer-logo">
+                <img src="~/images/white-logo-transparent-background.png" style="
+        margin-top: 25px; float: left; margin-left: 15px;" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="footer-links">
+                <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="Index" style="color: #F1F1F1;">HOME</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="About" style="color: #F1F1F1;">ABOUT</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;">TESTIMONIALS</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="Faqs" style="color: #F1F1F1;">FAQS</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;">INSURANCE POLICY</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;">IMPRESSUM</a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-insta-facebook d-flex flex-row" style="margin-top: -75px;">
+                <img src="~/images/facebook.svg" class="Forma-1">
+                <img src="~/images/instagram.svg" class="Forma-2">
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3 text-white text-center position-relative">
+            Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Sed nisi at nihil aperiam nesciunt deserunt odit fuga?
+            <a href="#" class="text-decoration-none"> Privacy Policy</a>
+        </div>
+    </footer>
+    @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>*@
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $('#tab1').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 3]
+            }]
+        });
+        $('#tab2').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 3, 5]
+            }]
+        });
+        $("#myDetails").on('click', function(){
+            console.log('hie');
+        });
+        $("#saveButton").on('click', function () {
+            var test = {};
+            test.UserId = parseInt($("#just").val());
+            test.FirstName = ($("#just1").val());
+            test.LastName = ($("#just2").val());
+            test.Mobile = ($("#just4").val());
+              console.log(test);
+              console.log($.type(test));
+
+            $.ajax
+              ({
+                url: '@Url.Action("detailsTab", "Starting")',
+                  type: 'post',
+                  dataType: 'json',
+                  contentType: 'application/json',
+                  data: JSON.stringify(test),
+                  success: function (resp) {
+
+                    alert('Changes done');
+                    console.log(resp);
+
+                },
+                error: function (err) {
+                    alert("Changes not done");
+                    console.log(err);
+                }
+
+            });
+
+        });
+
+         $("#tap4").on('click', function () {
+            var pass = {};
+
+            pass.Password = $("#tap1").val();
+             pass.Newpassword = $("#tap2").val();
+             pass.Confirmpassword = $("#tap3").val();
+            console.log(pass);
+
+            if (pass.Newpassword != pass.Confirmpassword) {
+                alert("password and confirm password does not match");
+            }
+            else
+            {
+                $.ajax({
+                    url: '@Url.Action("NewPwd","Starting")',
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(pass),
+
+                    success: function (resp) {
+                        if (resp) {
+                            alert("password changed");
+                        }
+                        else {
+                            alert("old pass does not match");
+                        }
+                    },
+                    error: function (err) {
+                        alert("Error occured while changing the password");
+                    }
+                });
+            }
+         });
+
+          $(document).on("click", "#myAddresses",function(){
+            $("#myAddressesMenu").load('@Url.Action("addressMenu", "Starting")');
+          });
+
+        /*-------------------------------For deletePopUP Modal of Mysettings tab--------------------------------*/
+        var i;
+        $(document).on('click', '.deleteMenu', function () {
+            i = parseInt($(this).attr("srid"));
+            console.log(i);
+
+        });
+
+
+        $(document).on('click', '#del1', function () {
+            console.log(i);
+
+            $.ajax({
+                url: '@Url.Action("deleteTab", "Starting")',
+                type: 'post',
+                data: {i:i},
+
+                success: function (resp) {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                $("#myAddressesMenu").html("Updating Addresses...")
+                .load('@Url.Action("addressMenu", "Starting")');
+                },
+                error: function (err) {
+                    alert("Error while inserting data");
+                }
+
+            });
+
+        });
+
+        $(document).on('click', '#str6', function () {
+            var address = {};
+            address.AddressLine1 = $("#str1").val();
+            address.AddressLine2 = $("#str2").val();
+            address.postalCode = $("#str3").val();
+            address.City = $("#str4").val();
+            address.Mobile = $("#str5").val();
+            console.log(address);
+
+
+
+            $.ajax({
+
+                url: '@Url.Action("yourDetail", "Starting")',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(address),
+
+
+                success: function (resp) {
+                    console.log(resp);
+
+                    //$("#addNewAddressModal").modal("hide");
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    $("#myAddressesMenu").html("Updating Addresses...")
+                        .load('@Url.Action("addressMenu", "Starting")');
+
+                },
+                error: function (err) {
+                    console.log(err);
+                    alert("Error while inserting data");
+                }
+
+            });
+        });
+
+        //var w;
+        $(document).on('click', '.addId', function () {
+            var edit = parseInt($(this).attr("srid"));
+            console.log(edit);
+
+              $.ajax({
+                url: '@Url.Action("editAddress", "Starting")',
+                type: 'get',
+                dataType: 'html',
+                contentType: 'application/html',
+                data: {edit:edit},
+
+
+                success: function (resp) {
+                    $("#editAddressModal .modal-body").html(resp);
+                    $("#editAddressModal").modal();
+                },
+                error: function (err) {
+                    alert("Error while inserting data");
+                }
+
+            });
+
+        });
+
+
+       $(document).on("click", "#t6",function() {
+
+            var change = {};
+
+           change.AddressId = parseInt($("#add11").val());
+            change.AddressLine1 = $("#t1").val();
+            change.AddressLine2 = $("#t2").val();
+            change.PostalCode = $("#t3").val();
+            change.City = $("#t4").val();
+            change.Mobile = $("#t5").val();
+
+            console.log(change);
+
+             $.ajax({
+                url: '@Url.Action("editPopup", "Starting")',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(change),
+
+
+                success: function (resp) {
+
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                $("#myAddressesMenu").html("Updating Addresses...")
+                .load('@Url.Action("addressMenu", "Starting")');
+                },
+                error: function (err) {
+                    alert("Error while inserting data");
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -81,11 +81,27 @@
                             <a class="nav-link py-3" asp-controller="Starting" asp-action="Contact">Contact</a>
                         </div>
                     </li>
-                    <li class="nav-item mt-4">
-                        <div class="nav-btn">
-                            <a class="nav-btn-item text-decoration-none p-3 m-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
-                        </div>
-                    </li>
+                    @{
+                        var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
+                        if (x == null)
+                        {
+                            <li class="nav-item mt-4">
+                                <div class="nav-btn">
+                                    <a class="nav-btn-item text-decoration-none p-3 m-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
+                                </div>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item mt-4">
+                                <div class="nav-btn">
+                                    <a class="nav-btn-item text-decoration-none p-3 m-3" asp-controller="Starting" asp-action="logout">Logout</a>
+                                </div>
+                            </li>
+
+                        }
+                    }
                     <li class="nav-item">
                         <div class="nav-btn-color">
                             <a class="nav-link py-3" asp-controller="Starting" asp-action="ServiceProvider">Become a Helper</a>

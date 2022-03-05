@@ -91,18 +91,31 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item ga">
-                        <div class="nav-btn">
-                            <a class="nav-btn-item text-decoration-none p-3 m-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="nav-btn" href="#">
-                            <a class="nav-btn-item text-decoration-none py-3" asp-controller="Starting" asp-action="ServiceProvider">
-                                Become a cleaner
-                            </a>
-                        </div>
-                    </li>
+                    @{
+                        var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
+                        if (x == null)
+                        {
+                            <li class="nav-item mt-4">
+                                <div class="nav-btn">
+                                    <a class="nav-btn-item text-decoration-none p-3 m-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">Login</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="nav-btn-color">
+                                    <a class="nav-link py-3" asp-controller="Starting" asp-action="ServiceProvider">Become a Helper</a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item mt-4">
+                                <div class="nav-btn">
+                                    <a class="nav-btn-item text-decoration-none p-3 m-3" asp-controller="Starting" asp-action="logout">Logout</a>
+                                </div>
+                            </li>
+
+                        }
+                    }
                     <li class="nav-item dropdown mt-3">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <img src="~/images/flag.png">
@@ -115,6 +128,7 @@
             <div>
                 <form method="post" asp-controller="Starting" asp-action="HelperAccountAdd">
                     <span class="Register-Now">Register Now!</span>
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <div>
                         <input type="text" name="firstname" placeholder="First name" asp-for="FirstName" class="Rounded-Rectangle-2 gap">
                         <input type="text" name="lastname" placeholder="Last name" asp-for="LastName" class="Rounded-Rectangle-2">
@@ -128,7 +142,8 @@
                         <input type="password" name="password" placeholder="Password" asp-for="Password" class="Rounded-Rectangle-2">
                     </div>
                     <div>
-                        <input type="password" name="confirmpassword" placeholder=" Confirm Pwd." asp-for="Password" class="Rounded-Rectangle-2">
+                        <input type="password" name="Confirmpassword" placeholder=" Confirm Pwd." asp-for="Confirmpassword" class="Rounded-Rectangle-2">
+
                     </div>
                     <div>
                         <input type="checkbox" name="CheckBox" class="copy-6"><span class="sendd">Send me newsletter from HelperLand.</span>

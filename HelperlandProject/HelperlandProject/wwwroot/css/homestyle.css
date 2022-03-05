@@ -15,7 +15,20 @@ li{ list-style: none; }
     .blog-bg{background: url('../images/blog-bg.png')no-repeat;}
 }
 
+.clrr {
+    color: #646464;
+}
+.clrr a {
+    color: grey;
+}
 
+.hrr {
+    height: 1px;
+    background-color: grey;
+}
+.tp{
+    margin-top: 2px;
+}
 .header1{
     max-width: 100%;
     min-height: 100vh;
@@ -277,8 +290,8 @@ img.Forma-2 {
 }
 
 .navbar .nav-ul-margin li{
-    margin-bottom: 30px;
-    margin-top: 30px;
+    
+    /*margin-top: 20px;*/
 }
 
 

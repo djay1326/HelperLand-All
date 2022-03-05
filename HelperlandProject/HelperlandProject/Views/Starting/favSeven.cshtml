@@ -1,0 +1,425 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<HelperlandProject.Models.ServiceRequest>
+@{
+    Layout = null;
+    var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
+    var y = HttpContextAccessor.HttpContext.Session.GetString("username");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/images/favicon_img.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/Upcoming.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script type="text/javascript" src="~/js/cal.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <title>Upcoming Service</title>
+</head>
+
+<body>
+    <div class="header1" id="topheader">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #525252;" id="navbar11">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="~/images/white-logo-transparent-background.png" style="width: 73px; height: 54px;" id="imgg2">
+                </a>
+                <div>
+                    <span class="bellImg1">
+                        <a href="">
+                            <span class="leftt"></span>
+                            <img src="~/images/bell.png" alt="" height="32px" width="29px" class="mb-2 bellImg">
+                            <span class="rightt"></span>
+                        </a>
+                    </span>
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="rtt"> &#9776</span>
+                    <div id="mySidenav" class="sidenav">
+                        <span class="nav-link">
+                            Welcome,<br>
+                            <div class="font-weight-bold ml-0">@y</div>
+                        </span>
+                        <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
+                        <a asp-controller="Starting" asp-action="shistorySeven">Service History</a>
+                        <a href="#">Service Schedule</a>
+                        <a asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
+                        <a asp-controller="Starting" asp-action="notifySeven">Notifications</a>
+                        <a asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                        <a asp-controller="Starting" asp-action="logout">Logout</a>
+                        <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                        <a asp-controller="Starting" asp-action="Prices">Prices and Services</a>
+                        <a href="#">Warranty</a>
+                        <a href="#">Blog</a>
+                        <a asp-controller="Starting" asp-action="Contact">Contact</a>
+                        <hr style="height: 5px; color: black;" class="mt-1 mb-1">
+                        <a href="" class="ml-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" class=" ml-3 mr-3">
+                                <path fill-rule="evenodd" fill="#000" d="M1.947 3.48v2.481H0v3.033h1.947V18.1h4.001V8.995h2.685S8.885 7.541 9.7 5.95H5.963V3.876c0-.31.437-.728.868-.728H9.11V.9H6.46C1.848.9 1.947 3.27 1.947 3.48z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ms-3">
+                                <path fill-rule="evenodd" fill="#000" d="M14.48 20H5.519A5.524 5.524 0 0 1 0 14.482V5.52C0 2.477 2.475.2 5.519.2h8.961c3.043 0 5.519 2.277 5.519 5.32v8.962A5.525 5.525 0 0 1 14.48 20zm3.744-5.518V5.52a3.748 3.748 0 0 0-3.744-3.744H5.519A3.749 3.749 0 0 0 1.774 5.52v8.962a3.749 3.749 0 0 0 3.745 3.744h8.961a3.748 3.748 0 0 0 3.744-3.744zm-2.855-8.536c-.099 0-.678-.14-.92-.381-.242-.243.221-.578.221-.921 0-.342-.463-.678-.221-.92.242-.242.821-.381.92-.381.343 0 1.111.139.92.381.242.242.381.578.381.92 0 .342-.139.678-.381.921.171.241-.577.381-.92.381zm-5.37 9.208c-2.841 0-5.153-2.312-5.153-5.054 0-2.941 2.312-5.252 5.153-5.252 2.842 0 5.153 2.311 5.153 5.252 0 2.742-2.311 5.054-5.153 5.054zm0-8.532c-1.863 0-3.379 1.516-3.379 3.478 0 1.764 1.516 3.28 3.379 3.28s3.379-1.516 3.379-3.28c0-1.962-1.516-3.478-3.379-3.478z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse dis" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item rounded-pill">
+                            <div class="nav-btn-color ">
+                                <a class="nav-link rounded-pill p-3 mt-2" asp-controller="Starting" asp-action="bookService" style="background-color: #1d7a8c; border: none;">Book Now</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn">
+                                <a class="nav-link1 rounded-pill py-3" asp-controller="Starting" asp-action="Prices">Prices & services</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn">
+                                <a class="nav-link1 rounded-pill py-3" href="#">Warranty</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn">
+                                <a class="nav-link1 rounded-pill py-3 px-3" href="#">Blog</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <div class="nav-btn ">
+                                <a class="nav-link1 rounded-pill py-3" asp-controller="Starting" asp-action="Contact">Contact</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class=" nav-btn bdr bdl">
+                                <a class="navbar-brand mt-2 ml-3" href="#">
+                                    <img src="~/images/bell.png" alt="" height="32px" width="29px" class="d-flex">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="navbar-brand mt-2 ml-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="~/images/user.png" class="mr-1"><img src="~/images/sp-arrow-down.png" class="">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right clrr" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item mt-1" href="#">Welcome,&nbsp;<span>@y</span></a>
+                                <hr class="hrr">
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="UpcomingSeventh">My Dashboard</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="logout">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="custHeader position-relative d-flex align-items-center justify-content-center">
+        <p class="m-0" style="color: #4f4f4f;">Welcome, <span class="font-weight-bold" style="color: #4f4f4f;">@y</span></p>
+    </div>
+    <div class="Main-dash d-flex justify-content-between m-3">
+        <!-- --------------- Sidebar -------------- -->
+        <div class="sidebar position-relative">
+            <ul class="inner mb-0">
+                <li>
+                    <a class="text-light" aria-current="page" id="dashBoard" asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
+                </li>
+                <li>
+                    <a id="serviceHistory" class="text-light" asp-controller="Starting" asp-action="shistorySeven">Service History</a>
+                </li>
+                <li>
+                    <a id="serviceSchedule" class="text-light">Service Schedule</a>
+                </li>
+                <li>
+                    <a id="favouritePros" class="text-light" asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
+                </li>
+                <li>
+                    <a id="invoices" class="text-light">Invoices</a>
+                </li>
+                <li>
+                    <a id="notifications" class="text-light" asp-controller="Starting" asp-action="notifySeven">Notification</a>
+                </li>
+            </ul>
+        </div>
+        <!-- -------------------All Tables List------------------- -->
+        <div class="whole_tables">
+
+            <!-- Favourite Pros TABLE -->
+            <div id="FavouriteProsTable" class="d-block">
+                <div class="favouriteProsBlock">
+                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
+                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                            <img src="~/images/cap.png">
+                        </div>
+                        <p class="mb-3">Cust1 Cust1</p>
+                        <div class="d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <span>3.02</span>
+                        </div>
+                        <p>1 Cleanings</p>
+                        <div class="text-center d-flex flex-row">
+                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
+                                mr-1">Remove</div>
+                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
+                        </div>
+                    </div>
+                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
+                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                            <img src="~/images/cap.png">
+                        </div>
+                        <p class="mb-3">Cust1 Cust1</p>
+                        <div class="d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <span>3.02</span>
+                        </div>
+                        <p>1 Cleanings</p>
+                        <div class="text-center d-flex flex-row">
+                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
+                                mr-1">Remove</div>
+                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
+                        </div>
+                    </div>
+                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
+                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                            <img src="~/images/cap.png">
+                        </div>
+                        <p class="mb-3">Cust1 Cust1</p>
+                        <div class="d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <span>3.02</span>
+                        </div>
+                        <p>1 Cleanings</p>
+                        <div class="text-center d-flex flex-row">
+                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
+                                mr-1">Remove</div>
+                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
+                        </div>
+                    </div>
+                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
+                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                            <img src="~/images/cap.png">
+                        </div>
+                        <p class="mb-3">Cust1 Cust1</p>
+                        <div class="d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <span>3.02</span>
+                        </div>
+                        <p>1 Cleanings</p>
+                        <div class="text-center d-flex flex-row">
+                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
+                                mr-1">Remove</div>
+                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
+                        </div>
+                    </div>
+                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
+                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                            <img src="~/images/cap.png">
+                        </div>
+                        <p class="mb-3">Cust1 Cust1</p>
+                        <div class="d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <span>3.02</span>
+                        </div>
+                        <p>1 Cleanings</p>
+                        <div class="text-center d-flex flex-row">
+                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
+                                mr-1">Remove</div>
+                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex flex-wrap align-items-center justify-content-between">
+                        <div class="show-entries">
+                            <div class="firstPart">
+                                <span>Show&nbsp;&nbsp;</span>
+                                <select class="table-dropdown" name="table-rows" id="table-rows">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                <span>&nbsp;&nbsp;entries&nbsp;</span>
+                                <span>Total Record: 3</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap gap-1 secondPart">
+                            <div class="page-round mr-1">
+                                <img src="~/images/group-100.png" alt="">
+                            </div>
+                            <div class="page-round mr-1">
+                                <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+                            </div>
+                            <div class="page-round-select mr-1">1</div>
+                            <div class="page-round mr-1">2</div>
+                            <div class="page-round page-round-reverse mr-1">
+                                <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+                            </div>
+                            <div class="page-round page-round-reverse">
+                                <img src="~/images/group-100.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ..........Footer Section............. -->
+    <footer class="font-small Rectangle-12 da">
+        <div class="container d-flex flex-row justify-content-between align-items-center" style="max-width: 1800px;">
+            <div class="footer-logo">
+                <img src="~/images/white-logo-transparent-background.png" style="
+        margin-top: 25px; float: left; margin-left: 15px;" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="footer-links">
+                <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="Index" style="color: #F1F1F1;">HOME</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="About" style="color: #F1F1F1;">ABOUT</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;">TESTIMONIALS</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a asp-controller="Starting" asp-action="Faqs" style="color: #F1F1F1;">FAQS</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;">INSURANCE POLICY</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase">
+                            <a href="#!" style="color: #F1F1F1;">IMPRESSUM</a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-insta-facebook d-flex flex-row" style="margin-top: -75px;">
+                <img src="~/images/facebook.svg" class="Forma-1">
+                <img src="~/images/instagram.svg" class="Forma-2">
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3 text-white text-center position-relative">
+            Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Sed nisi at nihil aperiam nesciunt deserunt odit fuga?
+            <a href="#" class="text-decoration-none"> Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $('#tab1').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 3]
+            }]
+        });
+        $('#tab2').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 3, 5]
+            }]
+        });
+    </script>
+
+</body>
+
+</html>

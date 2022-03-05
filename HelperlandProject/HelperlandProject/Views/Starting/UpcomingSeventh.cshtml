@@ -1,8 +1,11 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model IEnumerable<HelperlandProject.Models.ServiceRequest>
 @{
     Layout = null;
+    var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
+    var y = HttpContextAccessor.HttpContext.Session.GetString("username");
 }
 
 <!DOCTYPE html>
@@ -13,11 +16,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/images/favicon_img.png" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="~/css/Upcoming.css">
+    <link rel="stylesheet" href="~/css/Upcoming.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <script type="text/javascript" src="~/js/Upcoming.js"></script>
     <script type="text/javascript" src="~/js/cal.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
     <title>Upcoming Service</title>
 </head>
 
@@ -25,14 +29,14 @@
     <div class="header1" id="topheader">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #525252;" id="navbar11">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" asp-controller="Starting" asp-action="Index">
                     <img src="~/images/white-logo-transparent-background.png" style="width: 73px; height: 54px;" id="imgg2">
                 </a>
                 <div>
                     <span class="bellImg1">
                         <a href="">
                             <span class="leftt"></span>
-                            <img src="~/images/bell.png" alt="" height="32" width="29" class="mb-2 bellImg">
+                            <img src="~/images/bell.png" alt="" height="32px" width="29px" class="mb-2 bellImg">
                             <span class="rightt"></span>
                         </a>
                     </span>
@@ -40,22 +44,22 @@
                     <div id="mySidenav" class="sidenav">
                         <span class="nav-link">
                             Welcome,<br>
-                            <div class="font-weight-bold ml-0">Sandip</div>
+                            <div class="font-weight-bold ml-0">@y</div>
                         </span>
                         <hr style="height: 5px; color: black;" class="mt-1 mb-1">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="#" onclick="dash()">Dashboard</a>
-                        <a href="#" onclick="history()">Service History</a>
+                        <a asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
+                        <a asp-controller="Starting" asp-action="shistorySeven">Service History</a>
                         <a href="#">Service Schedule</a>
-                        <a href="#" onclick="pros()">Favourite Pros</a>
-                        <a href="#" onclick="notifications()">Notifications</a>
-                        <a href="#" onclick="settings()">My Settings</a>
-                        <a href="homepage.html">Logout</a>
+                        <a asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
+                        <a asp-controller="Starting" asp-action="notifySeven">Notifications</a>
+                        <a asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                        <a asp-controller="Starting" asp-action="logout">Logout</a>
                         <hr style="height: 5px; color: black;" class="mt-1 mb-1">
-                        <a href="Prices.html">Prices and Services</a>
+                        <a asp-controller="Starting" asp-action="Prices">Prices and Services</a>
                         <a href="#">Warranty</a>
                         <a href="#">Blog</a>
-                        <a href="ContactUs.html">Contact</a>
+                        <a asp-controller="Starting" asp-action="Contact">Contact</a>
                         <hr style="height: 5px; color: black;" class="mt-1 mb-1">
                         <a href="" class="ml-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" class=" ml-3 mr-3">
@@ -71,12 +75,12 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item rounded-pill">
                             <div class="nav-btn-color ">
-                                <a class="nav-link rounded-pill p-3 mt-2" href="#" style="background-color: #1d7a8c; border: none;">Book Now</a>
+                                <a class="nav-link rounded-pill p-3 mt-2" asp-controller="Starting" asp-action="bookService" style="background-color: #1d7a8c; border: none;">Book Now</a>
                             </div>
                         </li>
                         <li class="nav-item mt-4">
                             <div class="nav-btn">
-                                <a class="nav-link1 rounded-pill py-3" href="Prices.html">Prices & services</a>
+                                <a class="nav-link1 rounded-pill py-3" asp-controller="Starting" asp-action="Prices">Prices & services</a>
                             </div>
                         </li>
                         <li class="nav-item mt-4">
@@ -91,13 +95,13 @@
                         </li>
                         <li class="nav-item mt-4">
                             <div class="nav-btn ">
-                                <a class="nav-link1 rounded-pill py-3" href="ContactUs.html">Contact</a>
+                                <a class="nav-link1 rounded-pill py-3" asp-controller="Starting" asp-action="Contact">Contact</a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <div class=" nav-btn bdr bdl">
                                 <a class="navbar-brand mt-2 ml-3" href="#">
-                                    <img src="~/images/bell.png" alt="" height="32" width="29" class="d-flex">
+                                    <img src="~/images/bell.png" alt="" height="32px" width="29px" class="d-flex">
                                 </a>
                             </div>
                         </li>
@@ -106,11 +110,11 @@
                                 <img src="~/images/user.png" class="mr-1"><img src="~/images/sp-arrow-down.png" class="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right clrr" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item mt-1" href="#">Welcome,Customer</a>
+                                <a class="dropdown-item mt-1" href="#">Welcome,&nbsp;<span>@y</span></a>
                                 <hr class="hrr">
-                                <a class="dropdown-item" href="#" onclick="dash()">My Dashboard</a>
-                                <a class="dropdown-item" href="#" onclick="settings()">My Settings</a>
-                                <a class="dropdown-item" href="homepage.html">Logout</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="UpcomingSeventh">My Dashboard</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="logout">Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -119,35 +123,36 @@
         </nav>
     </div>
     <div class="custHeader position-relative d-flex align-items-center justify-content-center">
-        <p class="m-0" style="color: #4f4f4f;">Welcome, <span class="font-weight-bold" style="color: #4f4f4f;">Gaurang!</span></p>
+        <p class="m-0" style="color: #4f4f4f;">Welcome, <span class="font-weight-bold" style="color: #4f4f4f;">@y</span></p>
     </div>
     <div class="Main-dash d-flex justify-content-between m-3">
         <!-- --------------- Sidebar -------------- -->
         <div class="sidebar position-relative">
             <ul class="inner mb-0">
                 <li>
-                    <a class="text-light" aria-current="page" id="dashBoard" onclick="dash()">Dashboard</a>
+                    <a class="text-light" aria-current="page" id="dashBoard" asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
                 </li>
                 <li>
-                    <a id="serviceHistory" class="text-light" onclick="history()">Service History</a>
+                    <a id="serviceHistory" class="text-light" asp-controller="Starting" asp-action="shistorySeven">Service History</a>
                 </li>
                 <li>
                     <a id="serviceSchedule" class="text-light">Service Schedule</a>
                 </li>
                 <li>
-                    <a id="favouritePros" class="text-light" onclick="pros()">Favourite Pros</a>
+                    <a id="favouritePros" class="text-light" asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
                 </li>
                 <li>
                     <a id="invoices" class="text-light">Invoices</a>
                 </li>
                 <li>
-                    <a id="notifications" class="text-light" onclick="notifications()">Notification</a>
+                    <a id="notifications" class="text-light" asp-controller="Starting" asp-action="notifySeven">Notification</a>
                 </li>
             </ul>
         </div>
         <!-- -------------------All Tables List------------------- -->
         <div class="whole_tables">
             <!-- For Dashboard TABLE -->
+
             <div id="DashboardTable">
                 <div class="titlee d-flex justify-content-between align-items-center ml-0">
                     <h3 class="mt-3 ab">Current Service Requests</h3>
@@ -155,8 +160,80 @@
                         Add New Service Request
                     </a>
                 </div>
-                <table class="table tablee1 p-4">
+                <table class="table tablee1 p-4" id="tab1">
                     <thead class="ac">
+                        <tr>
+                            <th scope="col" width="100">
+                                Service Id
+                            </th>
+                            <th scope="col" width="150">
+                                Service Date
+                            </th>
+                            <th scope="col" width="150">
+                                Service Provider
+                            </th>
+                            <th scope="col" width="150" class="text-center">
+                                Payment
+                            </th>
+                            <th scope="col" class="text-center" width="150">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="ac">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row" itmReq="@item.ServiceRequestId" class="req1">@item.ServiceId</th>
+                                <td class="=datess" href="#serviceDetails">
+                                    <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none align-items-center">
+                                        <img src="~/images/calender.png" alt="" height="19" width="16">
+                                        <p class="mb-0 ms-1">@item.ServiceStartDate</p>
+                                    </a>
+                                    <a href="#" class="d-flex text-decoration-none">
+                                        <p class="m-0">12:00 - 18:00</p>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
+                                            <img src="~/images/cap.png" alt="" height="20" width="30">
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <p class="mb-0 aa">Lyum Watson</p>
+                                            <div class="d-flex align-items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                    <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                                </svg>
+                                                <p class="mb-0 aa">4</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="text-center paymentt">$@item.SubTotal</p>
+                                </td>
+                                <td class="main-btn text-center d-flex align-items-center  justify-content-center">
+                                    <a href="#rescheduleClick" data-toggle="modal" role="button" class="reschedule-btn rounded-pill mr-1 text-light text-decoration-none">Reschedule</a>
+                                    <a href="#cancelClick" data-toggle="modal" data-dismiss="modal" itmReq="@item.ServiceRequestId" role="button" class="rounded-pill text-light text-decoration-none cancel-btn">Cancel</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot class="d-none ac">
                         <tr>
                             <th scope="col" width="100">
                                 Service Id
@@ -174,153 +251,10 @@
                                 Actions
                             </th>
                         </tr>
-                    </thead>
-                    <tbody class="ac">
-                        <tr>
-                            <th scope="row">323436</th>
-                            <td class="=datess" href="#serviceDetails">
-                                <a href="#" class="d-flex text-decoration-none align-items-center">
-                                    <img src="~/images/calender.png" alt="" height="19" width="16">
-                                    <p class="mb-0 ms-1">09/04/2018</p>
-                                </a>
-                                <a href="#" class="d-flex text-decoration-none">
-                                    <p class="m-0">12:00 - 18:00</p>
-                                </a>
-                            </td>
-                            <td>
-                                <div class="d-flex">
-                                    <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
-                                        <img src="~/images/cap.png" alt="" height="20" width="30">
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <p class="mb-0 aa">Lyum Watson</p>
-                                        <div class="d-flex align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <p class="mb-0 aa">4</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-center paymentt">$40,50</p>
-                            </td>
-                            <td class="main-btn text-center">
-                                <a href="#rescheduleClick" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none">Reschedule</a>
-                                <a href="#cancelClick" data-toggle="modal" data-dismiss="modal" role="button" class="rounded-pill text-light text-decoration-none cancel-btn">Cancel</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">323436</th>
-                            <td class="datess" href="#serviceDetails">
-                                <a href="#" class="d-flex text-decoration-none align-items-center">
-                                    <img src="~/images/calender.png" alt="" height="19" width="16">
-                                    <p class="mb-0 ms-1">09/04/2018</p>
-                                </a>
-                                <a href="#" class="d-flex text-decoration-none">
-                                    <p class="m-0">12:00 - 18:00</p>
-                                </a>
-                            </td>
-                            <td>
-                                <div class="d-flex">
-                                    <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
-                                        <img src="~/images/cap.png" alt="" height="20" width="30">
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <p class="mb-0 aa">Lyum Watson</p>
-                                        <div class="d-flex align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <p class="mb-0 aa">4</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-center paymentt">$40,50</p>
-                            </td>
-                            <td class="main-btn text-center">
-                                <a href="#rescheduleClick" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none">Reschedule</a>
-                                <a href="#cancelClick" data-toggle="modal" data-dismiss="modal" role="button" class="rounded-pill text-light text-decoration-none cancel-btn">Cancel</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">323436</th>
-                            <td class="datess" href="#serviceDetails">
-                                <a href="#" class="d-flex text-decoration-none align-items-center">
-                                    <img src="~/images/calender.png" alt="" height="19" width="16">
-                                    <p class="mb-0 ms-1">09/04/2018</p>
-                                </a>
-                                <a href="#" class="d-flex text-decoration-none">
-                                    <p class="m-0">12:00 - 18:00</p>
-                                </a>
-                            </td>
-                            <td>
-                                <div class="d-flex">
-                                    <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
-                                        <img src="~/images/cap.png" alt="" height="20" width="30">
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <p class="mb-0 aa">Lyum Watson</p>
-                                        <div class="d-flex align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                            </svg>
-                                            <p class="mb-0 aa">4</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-center paymentt">$40,50</p>
-                            </td>
-                            <td class="main-btn text-center">
-                                <a href="#rescheduleClick" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none">Reschedule</a>
-                                <a href="#cancelClick" data-toggle="modal" data-dismiss="modal" role="button" class="rounded-pill text-light text-decoration-none cancel-btn">Cancel</a>
-                            </td>
-                        </tr>
-                    </tbody>
+                    </tfoot>
                 </table>
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="show-entries">
+                    <!-- <div class="show-entries">
                         <div class="firstPart">
                             <span>Show&nbsp;&nbsp;</span>
                             <select class="table-dropdown" name="table-rows" id="table-rows">
@@ -332,42 +266,42 @@
                             <span>&nbsp;&nbsp;entries&nbsp;</span>
                             <span>Total Record: 3</span>
                         </div>
-                    </div>
-                    <div class="d-flex flex-wrap gap-1 secondPart">
+                    </div> -->
+                    <!-- <div class="d-flex flex-wrap gap-1 secondPart">
                         <div class="page-round mr-1">
-                            <img src="~/images/group-100.png" alt="">
+                            <img src="images/group-100.png" alt="">
                         </div>
                         <div class="page-round mr-1">
-                            <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+                            <img src="images/keyboard-right-arrow-button-copy.png" alt="">
                         </div>
                         <div class="page-round-select mr-1">1</div>
                         <div class="page-round mr-1">2</div>
                         <div class="page-round page-round-reverse mr-1">
-                            <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+                            <img src="images/keyboard-right-arrow-button-copy.png" alt="">
                         </div>
                         <div class="page-round page-round-reverse">
-                            <img src="~/images/group-100.png" alt="">
+                            <img src="images/group-100.png" alt="">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- For Service-History TABLE -->
-            <div id="ServiceHistoryTable">
+            <!--<div id="ServiceHistoryTable">
                 <div class="titlee d-flex justify-content-between align-items-center ml-0">
                     <h3 class="mt-3 ab">Service History</h3>
                     <a href="#" class="btn form_btn rounded-pill text-decoration-none">
                         Export
                     </a>
                 </div>
-                <table class="table tablee1 p-4">
+                <table class="table tablee1 p-4" id="tab2">
                     <thead class="ac">
                         <tr>
-                            <th scope="col" width="100"> Service Id</th>
-                            <th scope="col" width="150"> Service Date </th>
+                            <th scope="col"> Service Id</th>
+                            <th scope="col"> Service Date </th>
                             <th scope="col"> Service Provider</th>
-                            <th scope="col" width="90"> Payment</th>
+                            <th scope="col"> Payment</th>
                             <th scope="col"> Status</th>
-                            <th scope="col">Rate SP</th>
+                            <th scope="col" width="85">Rate SP</th>
                         </tr>
                     </thead>
                     <tbody class="ac">
@@ -411,7 +345,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-center paymentt">$40,50</p>
+                                <p class="paymentt">$40,50</p>
                             </td>
                             <td>
                                 <p class="m-0 CompletedShowingBtn text-light px-2 py-1">Completed</p>
@@ -460,7 +394,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-center paymentt">$40,50</p>
+                                <p class="paymentt">$40,50</p>
                             </td>
                             <td>
                                 <p class="m-0 CancelledShowingBtn text-light px-2 py-1">Cancelled</p>
@@ -509,7 +443,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-center paymentt">$40,50</p>
+                                <p class=" paymentt">$40,50</p>
                             </td>
                             <td>
                                 <p class="m-0 CancelledShowingBtn text-light px-2 py-1">Cancelled</p>
@@ -558,7 +492,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-center paymentt">$40,50</p>
+                                <p class="paymentt">$40,50</p>
                             </td>
                             <td>
                                 <p class="m-0 CancelledShowingBtn text-light px-2 py-1">Cancelled</p>
@@ -607,7 +541,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-center paymentt">$40,50</p>
+                                <p class="paymentt">$40,50</p>
                             </td>
                             <td>
                                 <p class="m-0 CancelledShowingBtn text-light px-2 py-1">Cancelled</p>
@@ -617,8 +551,18 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
-                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                    <tfoot class="ac d-none">
+                        <tr>
+                            <th scope="col" width="100"> Service Id</th>
+                            <th scope="col" width="150"> Service Date </th>
+                            <th scope="col"> Service Provider</th>
+                            <th scope="col" width="90"> Payment</th>
+                            <th scope="col"> Status</th>
+                            <th scope="col" width="85">Rate SP</th>
+                        </tr>
+                    </tfoot>
+                </table>-->
+                <!-- <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="show-entries">
                         <div class="firstPart">
                             <span>Show&nbsp;&nbsp;</span>
@@ -634,24 +578,24 @@
                     </div>
                     <div class="d-flex flex-wrap gap-1 secondPart">
                         <div class="page-round mr-1">
-                            <img src="~/images/group-100.png" alt="">
+                            <img src="images/group-100.png" alt="">
                         </div>
                         <div class="page-round mr-1">
-                            <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+                            <img src="images/keyboard-right-arrow-button-copy.png" alt="">
                         </div>
                         <div class="page-round-select mr-1">1</div>
                         <div class="page-round mr-1">2</div>
                         <div class="page-round page-round-reverse mr-1">
-                            <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+                            <img src="images/keyboard-right-arrow-button-copy.png" alt="">
                         </div>
                         <div class="page-round page-round-reverse">
-                            <img src="~/images/group-100.png" alt="">
+                            <img src="images/group-100.png" alt="">
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> -->
+            <!--</div>-->
             <!-- Favourite Pros TABLE -->
-            <div id="FavouriteProsTable">
+            @*<div id="FavouriteProsTable">
                 <div class="favouriteProsBlock">
                     <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
                         <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
@@ -837,7 +781,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <!-- Notification TABLE -->
             <div id="NotificationsTable">
                 <table class="table tablee1 p-4">
@@ -861,394 +805,431 @@
                                 22/10/2021 <span>14:44</span>
                             </td>
                             <td>
-                                <img src="~/images/invoice.png" alt="">
+                                <img src="~/images/invoice.png" alt="" height="">
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <!-- Customer My Settings TABLE -->
-            <div class="settingsData w-100" id="custSettings">
+            <!--<div class="settingsData w-100" id="custSettings">
                 <ul class="nav nav-fill nav-tabs" id="myTab" role="tablist" style="border:none">
                     <li class="nav-item ea">
-                        <a class="nav-link active" href=""id="myDetails" data-toggle="tab" data-target="#myDetailsMenu" type="button" aria-controls="myDetails" aria-selected="true">
+                        <a class="nav-link active" id="myDetails" data-toggle="tab" data-target="#myDetailsMenu" type="button" aria-controls="myDetails" aria-selected="true">
                             <span style="color:#4f4f4f; border: none;">My Details</span>
                         </a>
                     </li>
                     <li class="nav-item ea">
-                        <a class="nav-link" href="" id="myAddresses" data-toggle="tab" data-target="#myAddressesMenu" type="button"
+                        <a class="nav-link" id="myAddresses" data-toggle="tab" data-target="#myAddressesMenu" type="button"
                            aria-controls="myAddresses" aria-selected="false">
                             <span style="color:#4f4f4f;">My Addresses</span>
                         </a>
                     </li>
                     <li class="nav-item ea">
-                        <a class="nav-link" href="" id="changePassword" data-toggle="tab" data-target="#changePasswordTab" type="button" aria-controls="changePassword" aria-selected="false">
+                        <a class="nav-link" id="changePassword" data-toggle="tab" data-target="#changePasswordTab" type="button" aria-controls="changePassword" aria-selected="false">
                             <span style="color:#4f4f4f;">Change Password</span>
                         </a>
                     </li>
                 </ul>
-                <div class="tab-content mt-3" id="myTabContent">
-
-
-                    <!-- -------------------------------- my details menu -----------------------------------  -->
-                    <div class="tab-pane fade show active" id="myDetailsMenu" role="tabpanel" aria-labelledby="myDetails">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-4 mb-4">
-                                    <label for="firstname">First Name</label>
-                                    <input type="text" name="firstname" value="First" class="ht bll pdd form-control" required>
+                <div class="tab-content mt-3" id="myTabContent">-->
+            <!-- -------------------------------- my details menu -----------------------------------  -->
+            <!--<div class="tab-pane fade show active" id="myDetailsMenu" role="tabpanel" aria-labelledby="myDetails">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="firstname">First Name</label>
+                            <input type="text" name="firstname" placeholder="First" class="ht bll pdd form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="firstname">Last Name</label>
+                            <input type="text" name="firstname" placeholder="Last" class="ht bll pdd form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="firstname">Email Address</label>
+                            <input type="email" name="address" value="cust@gmail.com" disabled class="ht bll pdd form-control">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="form-group d-flex flex-column">
+                                <label for="firstname">Mobile Number</label>
+                                <div class="d-flex">
+                                    <input type="text" value="+91" disabled style="max-width: 52px;" class="ht bll pdd form-control">
+                                    <input type="text" name="mobilenumber" placeholder="9848291932" class="ht bll pdd form-control">
                                 </div>
-                                <div class="col-md-4 mb-4">
-                                    <label for="firstname">Last Name</label>
-                                    <input type="text" name="firstname" value="Last" class="ht bll pdd form-control" required>
-                                </div>
-                                <div class="col-md-4 mb-4">
-                                    <label for="firstname">Email Address</label>
-                                    <input type="email" name="address" value="cust@gmail.com" disabled class="ht bll pdd form-control">
-                                </div>
-                                <div class="col-md-4 mb-4">
-                                    <div class="form-group d-flex flex-column">
-                                        <label for="firstname">Mobile Number</label>
-                                        <div class="d-flex">
-                                            <input type="text" value="+91" disabled style="max-width: 52px;" class="ht bll pdd form-control">
-                                            <input type="text" name="mobilenumber" value="9848291932" class="ht bll pdd form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="form-group">
+                                <div class="d-flex flex-column">
+                                    <label for="birthdate">Date Of Birth</label>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-inline-block w-100 mr-2">
+                                            <select name="birthdate" id="" class="ht bll pdd w-100">
+                                                <option value="" class="font-weight-bold">Day</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03" selected>03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                            </select>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-4">
-                                    <div class="form-group">
-                                        <div class="d-flex flex-column">
-                                            <label for="birthdate">Date Of Birth</label>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-inline-block w-100 mr-2">
-                                                    <select name="birthdate" id="" class="ht bll pdd w-100">
-                                                        <option value="" class="font-weight-bold">Day</option>
-                                                        <option value="01">01</option>
-                                                        <option value="02">02</option>
-                                                        <option value="03" selected>03</option>
-                                                        <option value="04">04</option>
-                                                        <option value="05">05</option>
-                                                        <option value="06">06</option>
-                                                        <option value="07">07</option>
-                                                        <option value="08">08</option>
-                                                        <option value="09">09</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                        <option value="13">13</option>
-                                                        <option value="14">14</option>
-                                                        <option value="15">15</option>
-                                                        <option value="16">16</option>
-                                                        <option value="17">17</option>
-                                                        <option value="18">18</option>
-                                                        <option value="19">19</option>
-                                                        <option value="20">20</option>
-                                                        <option value="21">21</option>
-                                                        <option value="22">22</option>
-                                                        <option value="23">23</option>
-                                                        <option value="24">24</option>
-                                                        <option value="25">25</option>
-                                                        <option value="26">26</option>
-                                                        <option value="27">27</option>
-                                                        <option value="28">28</option>
-                                                        <option value="29">29</option>
-                                                        <option value="30">30</option>
-                                                        <option value="31">31</option>
-                                                    </select>
-                                                </div>
-                                                <div class="d-inline-block w-100 mr-2">
-                                                    <select name="birthmonth" id="" class="ht bll pdd w-100">
-                                                        <option value="" class="font-weight-bold">Month</option>
-                                                        <option value="january">January</option>
-                                                        <option value="february">February</option>
-                                                        <option value="march" selected>March</option>
-                                                        <option value="april">April</option>
-                                                        <option value="may">May</option>
-                                                        <option value="june">June</option>
-                                                        <option value="july">July</option>
-                                                        <option value="august">August</option>
-                                                        <option value="september">September</option>
-                                                        <option value="october">October</option>
-                                                        <option value="november">November</option>
-                                                        <option value="december">December</option>
-                                                    </select>
-                                                </div>
-                                                <div class="d-inline-block w-100">
-                                                    <select name="birthyear" id="" class="ht bll pdd w-100">
-                                                        <option value="" class="font-weight-bold">Year</option>
-                                                        <option value="2022">2022</option>
-                                                        <option value="2021" selected>2021</option>
-                                                        <option value="2020">2020</option>
-                                                        <option value="2019">2019</option>
-                                                        <option value="2018">2018</option>
-                                                        <option value="2017">2017</option>
-                                                        <option value="2016">2016</option>
-                                                        <option value="2015">2015</option>
-                                                        <option value="2014">2014</option>
-                                                        <option value="2013">2013</option>
-                                                        <option value="2012">2012</option>
-                                                        <option value="2011">2011</option>
-                                                        <option value="2010">2010</option>
-                                                        <option value="2009">2009</option>
-                                                        <option value="2008">2008</option>
-                                                        <option value="2007">2007</option>
-                                                        <option value="2006">2006</option>
-                                                        <option value="2005">2005</option>
-                                                        <option value="2004">2004</option>
-                                                        <option value="2003">2003</option>
-                                                        <option value="2002">2002</option>
-                                                        <option value="2001">2001</option>
-                                                        <option value="2000">2000</option>
-                                                        <option value="1999">1999</option>
-                                                        <option value="1998">1998</option>
-                                                        <option value="1997">1997</option>
-                                                        <option value="1996">1996</option>
-                                                        <option value="1995">1995</option>
-                                                        <option value="1994">1994</option>
-                                                        <option value="1993">1993</option>
-                                                        <option value="1992">1992</option>
-                                                        <option value="1991">1991</option>
-                                                        <option value="1990">1990</option>
-                                                        <option value="1989">1989</option>
-                                                        <option value="1988">1988</option>
-                                                        <option value="1987">1987</option>
-                                                        <option value="1986">1986</option>
-                                                        <option value="1985">1985</option>
-                                                        <option value="1984">1984</option>
-                                                        <option value="1983">1983</option>
-                                                        <option value="1982">1982</option>
-                                                        <option value="1981">1981</option>
-                                                        <option value="1980">1980</option>
-                                                        <option value="1979">1979</option>
-                                                        <option value="1978">1978</option>
-                                                        <option value="1977">1977</option>
-                                                        <option value="1976">1976</option>
-                                                        <option value="1975">1975</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                        <div class="d-inline-block w-100 mr-2">
+                                            <select name="birthmonth" id="" class="ht bll pdd w-100">
+                                                <option value="" class="font-weight-bold">Month</option>
+                                                <option value="january">January</option>
+                                                <option value="february">February</option>
+                                                <option value="march" selected>March</option>
+                                                <option value="april">April</option>
+                                                <option value="may">May</option>
+                                                <option value="june">June</option>
+                                                <option value="july">July</option>
+                                                <option value="august">August</option>
+                                                <option value="september">September</option>
+                                                <option value="october">October</option>
+                                                <option value="november">November</option>
+                                                <option value="december">December</option>
+                                            </select>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <hr>
-                        <div class="d-flex flex-column">
-                            <label for="preferedLanguage">My Prefered Language</label>
-                            <select name="preferedLanguage" class="ht pdd bll" style="max-width: 120px;">
-                                <option value="hindi">Hindi</option>
-                                <option value="english" selected>English</option>
-                                <option value="french">French</option>
-                                <option value="spanish">Spanish</option>
-                                <option value="german">German</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3">
-                            Save
-                        </button>
-                    </div>
-                    <!-- ---------------------------- my addresses menu ------------------------- -->
-                    <div class="tab-pane fade" role="tabpanel" id="myAddressesMenu" aria-labelledby="myAddresses">
-                        <div id="myAddressesTable">
-                            <table class="table tablee1 tb1">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Addresses</th>
-                                        <th scope="col" width="100">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <p class="mb-1"><b>Address:</b> Street 54, 53844 Troisdorf </p>
-                                            <p class="mb-1"><b>Phone Number:</b>9988556644</p>
-                                        </td>
-                                        <td>
-                                            <a href="#editAddressModal" data-toggle="modal" role="button">
-                                                <img src="~/images/edit-icon.png" alt="" height="22" width="22">
-                                            </a>
-                                            <a href="#deleteAdressModal" data-toggle="modal" role="button">
-                                                <img src="~/images/delete-icon.png" alt="" height="22" width="22">
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="#addNewAddressModal" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none px-2">Add New address </a>
-                        </div>
-                        <!-- ---------------------------Add New Address PopUp Modal----------------------- -->
-                        <div class="modal fade" id="addNewAddressModal" aria-hidden="true" aria-labelledby="addNewAddressModalLabel2" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title me-3 clrr" id="addNewAddressModalLabel2">Add New Address</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="">
-                                            <div class="row">
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="streetname">Street Name</label>
-                                                        <input type="text" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="housenumber">House number</label>
-                                                        <input type="text" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="postalcode">Postal Code</label>
-                                                        <input type="text" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="city">City</label>
-                                                        <div class="d-inline-block">
-                                                            <input name="city" id="" placeholder="City" class="ht bll pdd w-100" />
-                                                            <!-- <option value="troisdorf" >Troisdorf</option> -->
-                                                            <!-- </select> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="phonenumber">Phone Number</label>
-                                                        <div class="d-flex">
-                                                            <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
-                                                            <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
-                                                Add
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ------------------------Edit Address PopUp modal-------------------- -->
-                        <div class="modal fade" id="editAddressModal" aria-hidden="true" aria-labelledby="editAddressModalLabel2" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title me-3 clrr" id="editAddressModalLabel2">Edit Address</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body ">
-                                        <form action="" onsubmit="">
-                                            <div class="row">
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="streetname">Street Name</label>
-                                                        <input type="text" value="" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="housenumber">House number</label>
-                                                        <input type="text" value="" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="postalcode">Postal Code</label>
-                                                        <input type="text" value="" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="city">City</label>
-                                                        <div class="d-inline-block">
-                                                            <input name="city" id="" placeholder="City" class="ht bll pdd w-100">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="phonenumber">Phone Number</label>
-                                                        <div class="d-flex">
-                                                            <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
-                                                            <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd" value="3423423423">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
-                                                Add
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ------------------------Delete Address PopUp Modal---------------------------- -->
-                        <div class="modal fade" id="deleteAdressModal" aria-hidden="true" aria-labelledby="deleteAdressModalLabel2" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-md">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title me-3 clrr" id="deleteAdressModalLabel2">Delete Address</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="" onsubmit="">
-                                            <p class="mb-3 clrr">Are You sure you want to delete this address?</p>
-                                            <button type="submit" class="mt-2 reschedule-btn rounded-pill bll text-light px-3 pdd">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        <div class="d-inline-block w-100">
+                                            <select name="birthyear" id="" class="ht bll pdd w-100">
+                                                <option value="" class="font-weight-bold">Year</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2021" selected>2021</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2000">2000</option>
+                                                <option value="1999">1999</option>
+                                                <option value="1998">1998</option>
+                                                <option value="1997">1997</option>
+                                                <option value="1996">1996</option>
+                                                <option value="1995">1995</option>
+                                                <option value="1994">1994</option>
+                                                <option value="1993">1993</option>
+                                                <option value="1992">1992</option>
+                                                <option value="1991">1991</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1989">1989</option>
+                                                <option value="1988">1988</option>
+                                                <option value="1987">1987</option>
+                                                <option value="1986">1986</option>
+                                                <option value="1985">1985</option>
+                                                <option value="1984">1984</option>
+                                                <option value="1983">1983</option>
+                                                <option value="1982">1982</option>
+                                                <option value="1981">1981</option>
+                                                <option value="1980">1980</option>
+                                                <option value="1979">1979</option>
+                                                <option value="1978">1978</option>
+                                                <option value="1977">1977</option>
+                                                <option value="1976">1976</option>
+                                                <option value="1975">1975</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </form>
+                <hr>
+                <div class="d-flex flex-column">
+                    <label for="preferedLanguage">My Prefered Language</label>
+                    <select name="preferedLanguage" class="ht pdd bll" style="max-width: 120px;">
+                        <option value="hindi">Hindi</option>
+                        <option value="english" selected>English</option>
+                        <option value="french">French</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="german">German</option>
+                    </select>
+                </div>
+                <button type="submit" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3">
+                    Save
+                </button>
+            </div>-->
+            <!-- ---------------------------- my addresses menu ------------------------- -->
+            <!--<div class="tab-pane fade" role="tabpanel" id="myAddressesMenu" aria-labelledby="myAddresses">
+            <div id="myAddressesTable">
+                <table class="table tablee1 tb1">
+                    <thead>
+                        <tr>
+                            <th scope="col">Addresses</th>
+                            <th scope="col" width="100">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="mb-1"><b>Address:</b> Street 54, 53844 Troisdorf </p>
+                                <p class="mb-1"><b>Phone Number:</b>9988556644</p>
+                            </td>
+                            <td>
+                                <a href="#editAddressModal" data-toggle="modal" role="button">
+                                    <img src="~/images/edit-icon.png" alt="" height="22" width="22">
+                                </a>
+                                <a href="#deleteAdressModal" data-toggle="modal" role="button">
+                                    <img src="~/images/delete-icon.png" alt="" height="22" width="22">
+                                </a>
 
-                    <!-- ---------------------- change password menu --------------------- -->
-                    <div class="tab-pane fade" role="tabpanel" id="changePasswordTab" aria-labelledby="changePassword">
-                        <form action="">
-                            <div class="form-group mb-2 col-sm-4 ah">
-                                <label for="oldPassword">Old Password</label>
-                                <input type="password" name="oldPassword" placeholder="Current Password" class="form-control ht" maxlength="20" required>
-                            </div>
-                            <div class="form-group mb-2 col-sm-4 ah">
-                                <label for="newPassword">New Password</label>
-                                <input type="password" name="newPassword" class="form-control ht" placeholder="Password" maxlength="20" required>
-                            </div>
-                            <div class="form-group mb-2 col-sm-4 ah">
-                                <label for="confirmPassword">Confirm Password</label>
-                                <input type="password" name="confirmPassword" class="form-control ht " placeholder="New Password" maxlength="20" required>
-                            </div>
-                            <button type="submit" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3 ml-3">
-                                Save
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#addNewAddressModal" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none px-2">Add New address </a>
+            </div>-->
+            <!-- ---------------------------Add New Address PopUp Modal----------------------- -->
+            <!--<div class="modal fade" id="addNewAddressModal" aria-hidden="true" aria-labelledby="addNewAddressModalLabel2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title me-3 clrr" id="addNewAddressModalLabel2">Add New Address</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
                             </button>
-                        </form>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="streetname">Street Name</label>
+                                            <input type="text" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="housenumber">House number</label>
+                                            <input type="text" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="postalcode">Postal Code</label>
+                                            <input type="text" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="city">City</label>
+                                            <div class="d-inline-block">
+                                                <input name="city" id="" placeholder="City" class="ht bll pdd w-100" />
+                                     <option value="troisdorf" >Troisdorf</option>
+                                     </select>
+                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="phonenumber">Phone Number</label>
+                                            <div class="d-flex">
+                                                <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
+                                                <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
+                                    Add
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
+            </div>-->
+            <!-- ------------------------Edit Address PopUp modal-------------------- -->
+            <!--<div class="modal fade" id="editAddressModal" aria-hidden="true" aria-labelledby="editAddressModalLabel2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title me-3 clrr" id="editAddressModalLabel2">Edit Address</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body ">
+                            <form action="" onsubmit="">
+                                <div class="row">
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="streetname">Street Name</label>
+                                            <input type="text" value="" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="housenumber">House number</label>
+                                            <input type="text" value="" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="postalcode">Postal Code</label>
+                                            <input type="text" value="" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="city">City</label>
+                                            <div class="d-inline-block">
+                                                <input name="city" id="" placeholder="City" class="ht bll pdd w-100">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-group d-flex flex-column">
+                                            <label for="phonenumber">Phone Number</label>
+                                            <div class="d-flex">
+                                                <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
+                                                <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd" value="3423423423">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
+                                    Add
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!-- ------------------------Delete Address PopUp Modal---------------------------- -->
+            <!--<div class="modal fade" id="deleteAdressModal" aria-hidden="true" aria-labelledby="deleteAdressModalLabel2" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title me-3 clrr" id="deleteAdressModalLabel2">Delete Address</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" onsubmit="">
+                                    <p class="mb-3 clrr">Are You sure you want to delete this address?</p>
+                                    <button type="submit" class="mt-2 reschedule-btn rounded-pill bll text-light px-3 pdd">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!-- ---------------------- change password menu --------------------- -->
+            <!--<div class="tab-pane fade" role="tabpanel" id="changePasswordTab" aria-labelledby="changePassword">
+                                                <form action="">
+                                                    <div class="form-group mb-2 col-sm-4 ah">
+                                                        <label for="oldPassword">Old Password</label>
+                                                        <input type="password" name="oldPassword" placeholder="Current Password" class="form-control ht" maxlength="20" required>
+                                                    </div>
+                                                    <div class="form-group mb-2 col-sm-4 ah">
+                                                        <label for="newPassword">New Password</label>
+                                                        <input type="password" name="newPassword" class="form-control ht" placeholder="Password" maxlength="20" required>
+                                                    </div>
+                                                    <div class="form-group mb-2 col-sm-4 ah">
+                                                        <label for="confirmPassword">Confirm Password</label>
+                                                        <input type="password" name="confirmPassword" class="form-control ht " placeholder="New Password" maxlength="20" required>
+                                                    </div>
+                                                    <button type="submit" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3 ml-3">
+                                                        Save
+                                                    </button>
+                                                </form>
+                                            </div>
             </div>
+                        </div>-->
         </div>
     </div>
 
+    <!-- For Calendar PopUP Modal -->
+    <div class="modal fade" id="servicesPop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ac" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bolder" id="exampleModalCenterTitle">Service Details</h5>
+                    <button type="button" class="close cancel1" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body CalModal">
+                    @*<div class="CalLeft">
+                            <h4>22/12/2021 09:00 -14:30</h4>
+                            <p><b>Duration:</b>5.5 Hrs</p>
+                            <hr>
+                            <p><b>Service Id:</b>8502</p>
+                            <p><b>Extras:</b>Inside cabinets, Inside fridge, Inside oven, Laundry wash & dry, Interior windows</p>
+                            <p>
+                                <b>Net Amount:</b>
+                                <spna class="currency fw-bolder">99,00 €</spna>
+                            </p>
+                            <hr>
+                            <p><b>Service Address:</b>Test 65, 53225 Bonn</p>
+                            <p><b>Billing Address:</b>Same as cleaning Address</p>
+                            <p><b>Phone:</b>+49 9988556644</p>
+                            <p><b>Email:</b>cust001@yopmail.com</p>
+                            <hr>
+                            <p><b>Comments</b></p>
+                            <div>
+                                <p>Hello</p>
+                            </div>
+                            <p>I don't have pets at home</p>
+                        </div>*@
+                </div>
+                <span class="main-btn modal-footer text-center mb-3">
+                    <a href="#rescheduleClick" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none">Reschedule</a>
+                    <a href="#cancelServiceRequest" data-dismiss="modal" role="button" class="cancel1 rounded-pill text-light text-decoration-none cancel-btn">Cancel</a>
+                </span>
+            </div>
+        </div>
+    </div>
     <!-- .........For RescheduleButton PopUp Modal............. -->
     <div class="modal fade" id="rescheduleClick" tabindex="-1" role="dialog" aria-labelledby="rescheduleBtnClick" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title font-weight-bolder" id="rescheduleBtnClick">Reschedule Service Request</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close cancel1" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -1278,7 +1259,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title font-weight-bolder" id="cancelBtnClick">Cancel Service Request</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close cancel1" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -1286,7 +1267,7 @@
                     <p class="mb-1">Why you want to cancel the service request?</p>
                     <form action="" class="d-flex flex-column">
                         <textarea type="text" class="whyToCancel mb-2" name="whyToCancel" maxlength="500" rows="3"></textarea>
-                        <button type="submit" data-dismiss="modal" class="cancelButton text-light rounded-pill border-0">Cancel Now</button>
+                        <button type="submit" data-dismiss="modal" id="btnCancel" class="cancelButton text-light rounded-pill border-0">Cancel Now</button>
                     </form>
                 </div>
             </div>
@@ -1303,12 +1284,12 @@
                 <div class="row text-center d-flex justify-content-center pt-5 mb-3">
                     <div class="col-md-2 mb-3">
                         <h6 class="text-uppercase">
-                            <a href="#!" style="color: #F1F1F1;">HOME</a>
+                            <a asp-controller="Starting" asp-action="Index" style="color: #F1F1F1;">HOME</a>
                         </h6>
                     </div>
                     <div class="col-md-2 mb-3">
                         <h6 class="text-uppercase">
-                            <a href="#!" style="color: #F1F1F1;">ABOUT</a>
+                            <a asp-controller="Starting" asp-action="About" style="color: #F1F1F1;">ABOUT</a>
                         </h6>
                     </div>
                     <div class="col-md-2 mb-3">
@@ -1318,7 +1299,7 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <h6 class="text-uppercase">
-                            <a href="#!" style="color: #F1F1F1;">FAQS</a>
+                            <a asp-controller="Starting" asp-action="Faqs" style="color: #F1F1F1;">FAQS</a>
                         </h6>
                     </div>
                     <div class="col-md-2 mb-3">
@@ -1344,11 +1325,128 @@
             <a href="#" class="text-decoration-none"> Privacy Policy</a>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>*@
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>*@
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $('#tab1').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 3]
+            }]
+        });
+        $('#tab2').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 3, 5]
+            }]
+        });
+
+        /*------------------------------ For Modal Popup of entire divtab of Dashboard Menu in UpcomingSeventh---------------------------------------*/
+          $(".req1").click(function () {
+              var ServiceRequestId = parseInt($(this).attr("itmReq"));
+            console.log(ServiceRequestId);
+              console.log($.type(ServiceRequestId));
+
+            $.ajax
+              ({
+                url: '@Url.Action("divOpen", "Starting")',
+                type: 'get',
+
+                dataType: 'html',
+                  data: {
+                      valuess: parseInt($(this).attr("itmReq"))
+                  },
+                success: function (resp) {
+                    console.log(resp);
+                    $("#servicesPop .modal-body").html(resp);
+                    $("#servicesPop").modal('show');
+
+                },
+                error: function (err) {
+                    alert("not done");
+                    console.log(err);
+                }
+
+            });
+
+          });
+
+
+        $(".cancel1").on('click', function () {
+            $("#servicesPop").modal('hide');
+            $("#rescheduleClick").modal('hide');
+            $("#cancelClick").modal('hide');
+        });
+
+
+        $(".reschedule-btn").on('click', function () {
+            $("#servicesPop").modal('hide');
+            $("#rescheduleClick").modal('show');
+
+        });
+        $(".cancel-btn").on('click', function () {
+            $("#cancelClick").modal('show');
+        });
+
+       /*-------------------------------- For CancelBtn of Dashboard Menu Of UpcomingSeventh-----------------------------*/
+        var Click;
+        $(".cancel-btn").on('click', function () {
+            Click = parseInt($(this).attr('itmReq'));
+            console.log(Click);
+
+        });
+        $("#btnCancel").click(function () {
+            var test = {};
+            test.ServiceRequestId = Click;
+            test.Comments = $(".whyToCancel").val();
+             // var ServiceRequestId = parseInt($(this).attr("itmReq"));
+              console.log(test);
+              console.log($.type(test));
+
+            $.ajax
+              ({
+                url: '@Url.Action("btnOpen", "Starting")',
+                  type: 'post',
+                  dataType: 'json',
+                  contentType: 'application/json',
+                  data: JSON.stringify(test),
+                  success: function (resp) {
+
+                      $('body').removeClass('modal-open');                      $('.modal-backdrop').remove();
+                      alert('cancel done');
+                      //onload('@Url.Action("UpcomingSeventh","Starting")');
+                    console.log(resp);
+
+                },
+                error: function (err) {
+                    alert("not done");
+                    console.log(err);
+                }
+
+            });
+
+        });
+
+        
+    </script>
+
 </body>
 
 </html>

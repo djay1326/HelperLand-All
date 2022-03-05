@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model HelperlandProject.Models.Popup
+@{
+    Layout = null;
+}
+
+<div class="CalLeft">
+    <h4>@Model.ServiceStartDate</h4>
+    <p><b>Duration:</b>5.5 Hrs</p>
+    <hr>
+    <p><b>Service Id:</b>8502</p>
+    <p><b>Extras:</b>Inside cabinets, Inside fridge, Inside oven, Laundry wash & dry, Interior windows</p>
+    <p>
+        <b>Net Amount:</b>
+        <spna class="currency fw-bolder">@Model.SubTotal €</spna>
+    </p>
+    <hr>
+    <p><b>Service Address:</b>@Model.AddressLine1</p>
+    <p><b>Billing Address:</b>@Model.AddressLine1</p>
+    <p><b>Phone:</b>+49 9988556644</p>
+    <p><b>Email:</b>cust001@yopmail.com</p>
+    <hr>
+    <p><b>Comments</b></p>
+    @*<div>
+        <p>Hello</p>
+    </div>*@
+    <p>I don't have pets at home</p>
+</div>

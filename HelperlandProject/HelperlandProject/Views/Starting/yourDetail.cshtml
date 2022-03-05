@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    
+    
     <script type="text/javascript" src="~/js/dashh.js"></script>
     <!-- <script type="text/javascript" src="js/book.js"></script> -->
     <title>Book Service</title>
@@ -35,7 +37,7 @@
             {
                 <li class="yourAddData px-3 py-2 my-2">
                     <label class="d-flex align-items-center">
-                        <input type="radio" id="address1" name="address" checked>
+                        <input type="radio" id="address1" name="address" value="@item.AddressId" checked>
                         <div class="ms-4">
                             <p class="mb-1">
                                 <b style="color: grey;">Address:</b>
@@ -75,13 +77,13 @@
                 <div class="col-sm-6 mb-4">
                     <div class="form-group d-flex flex-column">
                         <label for="streetname">Street Name</label>
-                        <input type="text" placeholder="Street Name" name="streetname" class="bdrlt htt pddIn w-100" id="add1">
+                        <input type="text" placeholder="Street Name" name="streetname" class="bdrlt htt pddIn w-100" id="add1" required>
                     </div>
                 </div>
                 <div class="col-sm-6 mb-4">
                     <div class="form-group d-flex flex-column">
                         <label for="housenumber">House number</label>
-                        <input type="text" placeholder="House Number" name="housenumber" class="bdrlt htt pddIn w-100" id="add2">
+                        <input type="text" placeholder="House Number" name="housenumber" class="bdrlt htt pddIn w-100" id="add2" required>
                     </div>
                 </div>
                 <div class="col-sm-6 mb-4">
@@ -93,11 +95,7 @@
                 <div class="col-sm-6">
                     <div class="form-group d-flex flex-column">
                         <label for="city">City</label>
-                        <div class="d-inline-block">
-                            <select name="city" id="" class="htt bdrlt pddIn w-100" id="city">
-                                <option value="troisdorf">Troisdorf</option>
-                            </select>
-                        </div>
+                        <input type="text" placeholder="City" id="city" class="bdrlt htt pddIn w-100"required/>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
@@ -160,12 +158,16 @@
         </div>
     </div>
     <div class="d-flex justify-content-end">
-        <button type="button"  class="rounded-pill greenBtn1 my-2 text-light" onclick="$('#yourDetailsForm').submit();">
+        <button type="button" id="cont2" class="rounded-pill greenBtn1 my-2 text-light" onclick="$('#yourDetailsForm').submit();">
             Continue
         </button>
     </div>
 
     <script>
+        $("#cont2").on("click", function () {
+            $("#makePaymentTabController").removeClass("disabled");
+            $("#makePaymentTabController")[0].click();
+        });
         $("#save").on('click', function () {
 
             var address = {};
@@ -189,7 +191,7 @@
                     console.log(resp);
                     alert("Data has been added successfully.");
                 //  $("#list-profile-list").removeClass("disabled");
-                    $("#yourDetailsTab").html("updating Addresses...")
+                    $("#yourDetailsTab").html("Updating Addresses...")
                      .load('@Url.Action("yourDetail", "Starting")');
 
                 },

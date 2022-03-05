@@ -4,6 +4,8 @@
 @model HelperlandProject.Models.Userr
 @{
     Layout = null;
+    var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
+    var y = HttpContextAccessor.HttpContext.Session.GetString("username");
 }
 
 
@@ -54,7 +56,7 @@
                 </div>
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto nav-ul-margin">
+                <ul class="navbar-nav ml-auto nav-ul-margin align-items-center">
                     <li class="nav-item">
                         <div class="nav-btn " href="#">
                             <a class="nav-btn-item text-decoration-none py-3 mr-3 " asp-controller="Starting" asp-action="bookService">
@@ -64,14 +66,14 @@
                     </li>
                     <li class="nav-item">
                         <div class="nav-btn2" href="#">
-                            <a class="nav-btn-item text-decoration-none py-3 mr-3" asp-controller="Starting" asp-action="prices">
+                            <a class="nav-btn-item text-decoration-none py-3 mr-3 " asp-controller="Starting" asp-action="prices">
                                 Price
                             </a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <div class="nav-btn2" href="#">
-                            <a class="nav-btn-item text-decoration-none py-3 mr-3" href="#">
+                            <a class="nav-btn-item text-decoration-none py-3 mr-3 " href="#">
                                 Our Guarantee
                             </a>
                         </div>
@@ -90,25 +92,59 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <div class="nav-btn" href="#">
-                            <a class="nav-btn-item text-decoration-none p-3 mr-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">
-                                Login
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="nav-btn" href="#">
-                            <a class="nav-btn-item text-decoration-none py-3 mr-3" asp-controller="Starting" asp-action="ServiceProvider">
-                                Become a cleaner
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown mt-3">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <img src="images/flag.png">
-                        </a>
-                    </li>
+                    @{
+                        var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
+                        if (x == null)
+                        {
+                            <li class="nav-item">
+                                <div class="nav-btn" href="#">
+                                    <a class="nav-btn-item text-decoration-none p-3 mr-3" href="#loginPopup" data-toggle="modal" data-dismiss="modal" data-target="#loginPopup">
+                                        Login
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="nav-btn" href="#">
+                                    <a class="nav-btn-item text-decoration-none py-3 mr-3" asp-controller="Starting" asp-action="ServiceProvider">
+                                        Become a cleaner
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown mt-3">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/flag.png">
+                                </a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <div class="nav-btn" href="#">
+                                    <a class="nav-btn-item text-decoration-none py-3 mr-3" asp-controller="Starting" asp-action="ServiceProvider">
+                                        Become a cleaner
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="navbar-brand mt-0 ml-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/images/user.png" class="mr-1"><img src="~/images/sp-arrow-down.png" class="">
+                                </a>
+                                @*<a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="images/flag.png">
+                                    </a>*@
+                                <div class="dropdown-menu dropdown-menu-right clrr" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item mt-1" href="#">Welcome,&nbsp;<span>@y</span></a>
+                                    <hr class="hrr">
+                                    <a class="dropdown-item" asp-controller="Starting" asp-action="UpcomingSeventh" onclick="dash()">My Dashboard</a>
+                                    <a class="dropdown-item" asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                                    <a class="dropdown-item" asp-controller="Starting" asp-action="logout">Logout</a>
+                                </div>
+                            </li>
+
+                        }
+                    }
+
                 </ul>
             </div>
         </nav>
@@ -241,7 +277,7 @@
     <section id="why">
         <div class="container-fluid home-container-2 container">
             <div class="col-md-12 text-center" style="margin-top: 50px; margin-bottom: 50px;">
-                <h1 class="text-40 font-weight-bold whyus-head" style="color: #4f4f4f;">Why helperland</h1>
+                <h1 class="text-40 font-weight-bold whyus-head" style="color: #4f4f4f;">Why helperland?</h1>
             </div>
             <div class="row whyus-row justify-content-center align-items-start why-helperland-content">
                 <div class="col whyus-col text-center p-0">
@@ -553,17 +589,28 @@
         }*@
 
     @*<script>
-        $(document).ready(function () {
-            $("#submitButton").on("click", function () {
-                alert('Reset link is send to your email account');
-            });
+            $(document).ready(function () {
+                $("#submitButton").on("click", function () {
+                    alert('Reset link is send to your email account');
+                });
 
-        });
-    <script>*@
+            });
+        <script>*@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 </body>
+
+       @if (TempData["abc"] != null)
+        {
+            <script>
+            $(document).ready(function () {
+                alert('@TempData["abc"]');
+                @TempData.Remove("abc");
+            });
+
+            </script>
+        }
 
 </html>
 

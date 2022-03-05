@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model HelperlandProject.Models.UserAddress
+@{
+    Layout = null;
+}
+
+<form action="" onsubmit="">
+    <div class="row">
+        <input type="hidden" asp-for="AddressId" id="add11" />
+        <div class="col-sm-6 mb-4">
+            <div class="form-group d-flex flex-column">
+                <label for="streetname">Street Name</label>
+                <input type="text"  placeholder="Street Name" id="t1" asp-for="AddressLine1" name="streetname" class="bll ht pdd w-100">
+            </div>
+        </div>
+        <div class="col-sm-6 mb-4">
+            <div class="form-group d-flex flex-column">
+                <label for="housenumber">House number</label>
+                <input type="text"  placeholder="House Number" id="t2" asp-for="AddressLine2" name="housenumber" class="bll ht pdd w-100">
+            </div>
+        </div>
+        <div class="col-sm-6 mb-4">
+            <div class="form-group d-flex flex-column">
+                <label for="postalcode">Postal Code</label>
+                <input type="text"  placeholder="Postal Code" id="t3" asp-for="PostalCode" name="postalcode" class="bll ht pdd w-100">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group d-flex flex-column">
+                <label for="city">City</label>
+                <div class="d-inline-block">
+                    <input name="city" asp-for="City" id="t4" placeholder="City" class="ht bll pdd w-100">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="form-group d-flex flex-column">
+                <label for="phonenumber">Phone Number</label>
+                <div class="d-flex">
+                    <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
+                    <input type="text" placeholder="Phone Number" id="t5" name="phonenumber" class="bll ht pdd" asp-for="Mobile">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="reschedule-btn rounded-pill bll text-light px-3 pdd" id="t6" >
+        Add
+    </button>
+</form>

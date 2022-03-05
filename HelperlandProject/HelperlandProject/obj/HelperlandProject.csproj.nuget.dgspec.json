@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {}
+    "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {
+    "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+        "projectUniqueName": "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
         "projectName": "HelperlandProject",
-        "projectPath": "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+        "projectPath": "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
         "packagesPath": "C:\\Users\\djay1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\djay1\\Desktop\\Project\\HelperlandProject\\HelperlandProject\\obj\\",
+        "outputPath": "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,6 +43,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
             "Microsoft.AspNetCore.Session": {
               "target": "Package",
               "version": "[1.1.1, )"

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -27,6 +29,9 @@ namespace HelperlandProject.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        [NotMapped]
+        [Compare("Password", ErrorMessage = "Password and Confirm password do not match")]
+        public string Confirmpassword { get; set; }
         public string Mobile { get; set; }
         public int UserTypeId { get; set; }
         public int? Gender { get; set; }
@@ -47,6 +52,9 @@ namespace HelperlandProject.Models
         public int? Status { get; set; }
         public string BankTokenId { get; set; }
         public string TaxNo { get; set; }
+        [NotMapped]
+        [Required]
+        public string NewPassword { get; set; }
 
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedTargetUser { get; set; }
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedUser { get; set; }
