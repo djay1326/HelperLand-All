@@ -33,7 +33,7 @@ function neww(){
 	// var aa = document.getElementById("Dif (x.style.display === "block") {
     // p.style.display = "block";
   	
-  	if (aa.style.display === "none") {
+  	//if (aa.style.display === "none") {
     aa.style.display = "block";
     p.style.display = "none";
     ab.style.display = "none";
@@ -42,17 +42,17 @@ function neww(){
     ae.style.display = "none";
     af.style.display = "none";
     m.style.display = "none";
-  	} 
-  else {
-    aa.style.display = "none";
-    ab.style.display = "none";
-    ac.style.display = "none";
-    ad.style.display = "none";
-    ae.style.display = "none";
-    af.style.display = "none";
-    m.style.display = "none";
-    p.style.display = "block";
-  }
+  //	} 
+  //else {
+  //  aa.style.display = "none";
+  //  ab.style.display = "none";
+  //  ac.style.display = "none";
+  //  ad.style.display = "none";
+  //  ae.style.display = "none";
+  //  af.style.display = "none";
+  //  m.style.display = "none";
+  //  p.style.display = "block";
+  //}
 }
 
 function upcomingg(){
@@ -448,24 +448,24 @@ function ratee1(){
 
 // .......................sidenav......................
 
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
+//function openNav() {
+//  document.getElementById("mySidenav").style.width = "250px";
+//}
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
+//function closeNav() {
+//  document.getElementById("mySidenav").style.width = "0";
+//}
 
 
-window.onscroll = function() {
-  if (window.pageYOffset > 100) {
-    document.getElementById("navbar11").classList.add('scrolled');
-    document.getElementById("navbar11").classList.add('fixed-top');
-    document.getElementById("imgg2").setAttribute("src","images/small.png");
-  } 
-  else {
-    document.getElementById("navbar11").classList.remove('scrolled');
-    document.getElementById("navbar11").classList.remove('fixed-top');
-    document.getElementById("imgg2").setAttribute("src","images/large.png");
-  } 
-}
+//window.onscroll = function() {
+//  if (window.pageYOffset > 100) {
+//    document.getElementById("navbar11").classList.add('scrolled');
+//    document.getElementById("navbar11").classList.add('fixed-top');
+//    /*document.getElementById("imgg2").setAttribute("src","images/small.png");*/
+//  } 
+//  else {
+//    document.getElementById("navbar11").classList.remove('scrolled');
+//    document.getElementById("navbar11").classList.remove('fixed-top');
+//    /*document.getElementById("imgg2").setAttribute("src","images/large.png");*/
+//  } 
+//}

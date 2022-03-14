@@ -110,7 +110,7 @@
                                 <img src="~/images/user.png" class="mr-1"><img src="~/images/sp-arrow-down.png" class="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right clrr" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item mt-1" href="#">Welcome,&nbsp;<span>@y</span></a>
+                                <a class="dropdown-item mt-1" href="#">Welcome,&nbsp;<span>@y!</span></a>
                                 <hr class="hrr">
                                 <a class="dropdown-item" asp-controller="Starting" asp-action="UpcomingSeventh">My Dashboard</a>
                                 <a class="dropdown-item" asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
@@ -156,7 +156,7 @@
             <div id="DashboardTable">
                 <div class="titlee d-flex justify-content-between align-items-center ml-0">
                     <h3 class="mt-3 ab">Current Service Requests</h3>
-                    <a href="#" class="btn form_btn rounded-pill text-decoration-none">
+                    <a asp-controller="Starting" asp-action="bookService" class="btn form_btn rounded-pill text-decoration-none">
                         Add New Service Request
                     </a>
                 </div>
@@ -188,7 +188,7 @@
                                 <td class="=datess" href="#serviceDetails">
                                     <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none align-items-center">
                                         <img src="~/images/calender.png" alt="" height="19" width="16">
-                                        <p class="mb-0 ms-1">@item.ServiceStartDate</p>
+                                        <p class="mb-0 ms-1">@item.ServiceStartDate.ToShortDateString()</p>
                                     </a>
                                     <a href="#" class="d-flex text-decoration-none">
                                         <p class="m-0">12:00 - 18:00</p>
@@ -1431,6 +1431,7 @@
 
                       $('body').removeClass('modal-open');                      $('.modal-backdrop').remove();
                       alert('cancel done');
+                      location.reload();
                       //onload('@Url.Action("UpcomingSeventh","Starting")');
                     console.log(resp);
 

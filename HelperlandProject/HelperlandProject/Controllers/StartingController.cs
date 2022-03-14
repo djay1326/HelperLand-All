@@ -98,7 +98,7 @@ namespace HelperlandProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult HelperAccountAdd(Userr userr)
+        public IActionResult ServiceProvider(Userr userr)
         {
             var x = _DbContext.Userr.FirstOrDefault(p => p.Email.Equals(userr.Email));
             if (ModelState.IsValid && x == null)
@@ -128,8 +128,9 @@ namespace HelperlandProject.Controllers
         public IActionResult LoginAdd(Userr userr)
         {
 
-            Userr u = new Userr(); 
-            var ue = _DbContext.Userr.FirstOrDefault((System.Linq.Expressions.Expression<Func<Userr, bool>>)(u => (bool)(u.Email.Equals((string)userr.Email) && u.Password.Equals((string)userr.Password))));
+            //Userr u = new Userr();
+            // var ue = _DbContext.Userr.FirstOrDefault((System.Linq.Expressions.Expression<Func<Userr, bool>>)(u => (bool)(u.Email.Equals((string)userr.Email) && u.Password.Equals((string)userr.Password))));
+            var ue = _DbContext.Userr.Where(x => x.Email == userr.Email && x.Password == userr.Password).FirstOrDefault();
             if(ue.UserTypeId == 1)
             {
                 ViewBag.Message = String.Format("No matching email");
@@ -144,7 +145,7 @@ namespace HelperlandProject.Controllers
                 ViewBag.Message = String.Format("No matching email");
                 HttpContext.Session.SetInt32("userid", ue.UserId);
                 HttpContext.Session.SetString("username", ue.FirstName + " " + ue.LastName);
-                return RedirectToAction("Faqs");
+                return RedirectToAction("eightMain");
             }
             else
             {
@@ -266,6 +267,9 @@ namespace HelperlandProject.Controllers
             sa.State = ab.State;
             sa.PostalCode = ab.PostalCode;
             _DbContext.ServiceRequestAddress.Add(sa);
+            _DbContext.SaveChanges();
+            add.ServiceId = 1000 + add.ServiceRequestId;
+            _DbContext.ServiceRequest.Update(add);
             _DbContext.SaveChanges();
             string message = "true";
             return message;
@@ -409,6 +413,287 @@ namespace HelperlandProject.Controllers
             _DbContext.SaveChanges();
             return "true";
 
+        }
+
+        public IActionResult eightMain()
+        {
+            return View();
+        }
+
+        public IActionResult settingsEight()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            SettingsModelEight st = new SettingsModelEight();
+            st.Userr = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            st.UserAddress = _DbContext.UserAddress.Where(x => x.UserId == ty).FirstOrDefault();
+            return View(st);
+        }
+
+        public IActionResult notifyEight()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult settingsEight(SettingsModelEight sme)
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            u.FirstName = sme.Userr.FirstName;
+            u.LastName = sme.Userr.LastName;
+            u.Mobile = sme.Userr.Mobile;
+            _DbContext.Userr.Update(u);
+            _DbContext.SaveChanges();
+            UserAddress ua = _DbContext.UserAddress.Where(x => x.UserId == ty).FirstOrDefault();
+            if (ua!= null) 
+            { 
+            ua.AddressLine1 = sme.UserAddress.AddressLine1;
+            ua.AddressLine2 = sme.UserAddress.AddressLine2;
+            ua.PostalCode = sme.UserAddress.PostalCode;
+            ua.Mobile = sme.Userr.Mobile;
+            ua.City = sme.UserAddress.City;
+            _DbContext.UserAddress.Update(ua);
+            _DbContext.SaveChanges();
+            }
+            else
+            {
+                UserAddress usa = new UserAddress();
+                usa.UserId = ty;
+                usa.AddressLine1 = sme.UserAddress.AddressLine1;
+                usa.AddressLine2 = sme.UserAddress.AddressLine2;
+                usa.PostalCode = sme.UserAddress.PostalCode;
+                usa.Mobile = sme.Userr.Mobile;
+                usa.City = sme.UserAddress.City;
+                _DbContext.UserAddress.Add(usa);
+                _DbContext.SaveChanges();
+            }
+            TempData["abc"] = "Data has been updated!";
+            return View();
+        }
+
+        public string NewPwdEight([FromBody] Userr pass)
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            if (u.Password == pass.Password)
+            {
+                u.Password = pass.NewPassword;
+                _DbContext.Userr.Update(u);
+                _DbContext.SaveChanges();
+                return "true";
+            }
+            return "false";
+        }
+
+        public IActionResult blockCust()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            var query = (from user in _DbContext.Userr
+                         join FavoriteAndBlocked in _DbContext.FavoriteAndBlocked
+                         on user.UserId equals FavoriteAndBlocked.TargetUserId
+                         where FavoriteAndBlocked.UserId == ty
+                         select new Popup
+                         {
+                             Id = FavoriteAndBlocked.Id,
+                             FirstName = user.FirstName,
+                             LastName = user.LastName,
+                             IsBlocked = FavoriteAndBlocked.IsBlocked,
+                             UserId = user.UserId
+                         }).ToList();
+
+            return View(query);
+            
+        }
+        public IActionResult eightNewService()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            var query = (from ServiceRequest in _DbContext.ServiceRequest
+                         join ServiceRequestAddress in _DbContext.ServiceRequestAddress
+                         on ServiceRequest.ServiceRequestId equals ServiceRequestAddress.ServiceRequestId
+                         join user in _DbContext.Userr on ServiceRequest.UserId equals user.UserId
+                         where ServiceRequest.ZipCode == u.ZipCode && ServiceRequest.ServiceProviderId == null
+                         select new NewServiceRequest
+                         {
+                             ServiceRequestId = ServiceRequest.ServiceRequestId,
+                             ServiceId = ServiceRequest.ServiceId,
+                             ServiceStartDate = ServiceRequest.ServiceStartDate,
+                             FirstName = user.FirstName,
+                             LastName = user.LastName,
+                             AddressLine1 = ServiceRequestAddress.AddressLine1,
+                             AddressLine2 = ServiceRequestAddress.AddressLine2,
+                             ZipCode = ServiceRequest.ZipCode,
+                             SubTotal = ServiceRequest.SubTotal,
+                             City = ServiceRequestAddress.City
+                         }).ToList();
+            return View(query);
+        }
+
+        public IActionResult eightUpcoming()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault();
+            var query = (from ServiceRequest in _DbContext.ServiceRequest
+                         join ServiceRequestAddress in _DbContext.ServiceRequestAddress
+                         on ServiceRequest.ServiceRequestId equals ServiceRequestAddress.ServiceRequestId
+                         join user in _DbContext.Userr on ServiceRequest.UserId equals user.UserId
+                         where ServiceRequest.ServiceProviderId == ty && ServiceRequest.Status == 2
+                         select new NewServiceRequest
+                         {
+                             ServiceRequestId = ServiceRequest.ServiceRequestId,
+                             ServiceId = ServiceRequest.ServiceId,
+                             ServiceStartDate = ServiceRequest.ServiceStartDate,
+                             FirstName = user.FirstName,
+                             LastName = user.LastName,
+                             AddressLine1 = ServiceRequestAddress.AddressLine1,
+                             AddressLine2 = ServiceRequestAddress.AddressLine2,
+                             ZipCode = ServiceRequest.ZipCode,
+                             SubTotal = ServiceRequest.SubTotal,
+                             City = ServiceRequestAddress.City
+                         }).ToList();
+            return View(query);
+        }
+        
+        public string eightAccept(int i)
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            //Userr u = _DbContext.Userr.Where(x => x.UserId == ty).FirstOrDefault(); 
+            ServiceRequest srt = _DbContext.ServiceRequest.Where(x => x.ServiceRequestId == i).FirstOrDefault();
+            srt.ServiceProviderId = ty;
+            srt.SpacceptedDate = DateTime.Now;
+            srt.Status = 2;
+            _DbContext.ServiceRequest.Update(srt);
+            _DbContext.SaveChanges();
+            return "true";
+        }
+
+        public string eightCancel(int i)
+        {
+            ServiceRequest srt = _DbContext.ServiceRequest.Where(x => x.ServiceRequestId == i).FirstOrDefault();
+            srt.ServiceProviderId = null;
+            srt.SpacceptedDate = null;
+            _DbContext.ServiceRequest.Update(srt);
+            _DbContext.SaveChanges();
+            return "true";
+        }
+
+        public IActionResult eightHistory()
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            var query = from ServiceRequest in _DbContext.ServiceRequest
+                        join ServiceRequestAddress in _DbContext.ServiceRequestAddress
+                        on ServiceRequest.ServiceRequestId equals ServiceRequestAddress.ServiceRequestId
+                        join user in _DbContext.Userr on ServiceRequest.UserId equals user.UserId
+                        where ServiceRequest.ServiceProviderId == ty && ServiceRequest.Status == 1
+                        select new Popup
+                        {
+                            ServiceRequestId = ServiceRequest.ServiceRequestId,
+                            ServiceId = ServiceRequest.ServiceId,
+                            ServiceHours = ServiceRequest.ServiceHours,
+                            ServiceStartDate = ServiceRequest.ServiceStartDate,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Comments = ServiceRequest.Comments,
+                            AddressLine1 = ServiceRequestAddress.AddressLine1,
+                            AddressLine2 = ServiceRequestAddress.AddressLine2,
+                            ZipCode = ServiceRequest.ZipCode,
+                            SubTotal = ServiceRequest.SubTotal,
+                            City = ServiceRequestAddress.City
+                        };
+            return View(query);
+        }
+
+        public IActionResult _upcomingPop(int i)
+        {
+            var query = (from ServiceRequest in _DbContext.ServiceRequest
+                         join ServiceRequestAddress in _DbContext.ServiceRequestAddress
+                         on ServiceRequest.ServiceRequestId equals ServiceRequestAddress.ServiceRequestId
+                         join user in _DbContext.Userr on ServiceRequest.UserId equals user.UserId
+                         where ServiceRequest.ServiceRequestId == i
+                         select new Popup
+                         {
+                             ServiceRequestId = ServiceRequest.ServiceRequestId,
+                             ServiceId = ServiceRequest.ServiceId,
+                             ServiceHours = ServiceRequest.ServiceHours,
+                             ServiceStartDate = ServiceRequest.ServiceStartDate,
+                             FirstName = user.FirstName,
+                             LastName = user.LastName,
+                             Comments = ServiceRequest.Comments,
+                             AddressLine1 = ServiceRequestAddress.AddressLine1,
+                             AddressLine2 = ServiceRequestAddress.AddressLine2,
+                             ZipCode = ServiceRequest.ZipCode,
+                             SubTotal = ServiceRequest.SubTotal,
+                             City = ServiceRequestAddress.City
+                         }).Single();
+
+            return PartialView(query);
+        }
+        
+        public string serviceComplete(int i)
+        {
+            ServiceRequest sr = _DbContext.ServiceRequest.Where(x => x.ServiceRequestId == i).FirstOrDefault();
+            sr.Status = 1;
+            _DbContext.ServiceRequest.Update(sr);
+            _DbContext.SaveChanges();
+            var ii = _DbContext.FavoriteAndBlocked.Where(x => x.UserId == sr.ServiceProviderId && x.TargetUserId == sr.UserId).FirstOrDefault();
+            if(ii== null)
+            {
+                FavoriteAndBlocked sb = new FavoriteAndBlocked();
+                sb.UserId = (int)sr.ServiceProviderId;
+                sb.TargetUserId = sr.UserId;
+                sb.IsBlocked = false;
+                sb.IsFavorite = false;
+                _DbContext.FavoriteAndBlocked.Add(sb);
+                _DbContext.SaveChanges();
+            }
+            return "true";
+        }
+
+        public IActionResult _calendarPop(int i)
+        {
+            var query = (from ServiceRequest in _DbContext.ServiceRequest
+                         join ServiceRequestAddress in _DbContext.ServiceRequestAddress
+                         on ServiceRequest.ServiceRequestId equals ServiceRequestAddress.ServiceRequestId
+                         join user in _DbContext.Userr on ServiceRequest.UserId equals user.UserId
+                         where ServiceRequest.ServiceRequestId == i
+                         select new Popup
+                         {
+                             ServiceRequestId = ServiceRequest.ServiceRequestId,
+                             ServiceId = ServiceRequest.ServiceId,
+                             ServiceHours = ServiceRequest.ServiceHours,
+                             ServiceStartDate = ServiceRequest.ServiceStartDate,
+                             FirstName = user.FirstName,
+                             LastName = user.LastName,
+                             Comments = ServiceRequest.Comments,
+                             AddressLine1 = ServiceRequestAddress.AddressLine1,
+                             AddressLine2 = ServiceRequestAddress.AddressLine2,
+                             ZipCode = ServiceRequest.ZipCode,
+                             SubTotal = ServiceRequest.SubTotal,
+                             City = ServiceRequestAddress.City
+                         }).Single();
+
+            return PartialView(query);
+        }
+
+        public IActionResult eightRating(int i)
+        {
+            var ty = (int)HttpContext.Session.GetInt32("userid");
+            var query = (from User in _DbContext.Userr
+                         join Rating in _DbContext.Rating
+                         on User.UserId equals Rating.RatingFrom
+                         join ServiceRequest in _DbContext.ServiceRequest
+                         on Rating.ServiceRequestId equals ServiceRequest.ServiceRequestId
+                         where Rating.RatingTo == ty
+                         select new Popup
+                         {
+                             ServiceId = ServiceRequest.ServiceId,
+                             FirstName = User.FirstName,
+                             LastName = User.LastName,
+                             RatingDate = (DateTime)Rating.RatingDate,
+                             Ratings = Rating.Ratings,
+                             Comments = Rating.Comments
+                         }).ToList();
+            return View(query);
         }
     }
 }

@@ -846,3 +846,39 @@ div.dataTables_wrapper div.dataTables_info {
         padding-bottom: 0;
     }
 }
+/*----------Modal---------------*/
+.srdetail p {
+    margin: 0%;
+}
+
+.srdetail .vr {
+    border-bottom: 1px solid gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.srdetail span {
+    font-weight: 500;
+}
+
+.srdetail .btn-cancel {
+    width: fit-content;
+    background-color: #FF7B6D;
+    color: white;
+    font-weight: 500;
+    border: 1px solid #FF7B6D;
+    border-radius: 20px;
+    padding: 4px 10px 4px 10px;
+    align-items: center;
+}
+
+.srdetail .btn-complete {
+    width: fit-content;
+    background-color: #29626D;
+    color: white;
+    font-weight: 500;
+    border: 1px solid #29626D;
+    border-radius: 20px;
+    padding: 4px 10px 4px 10px;
+    align-items: center;
+}

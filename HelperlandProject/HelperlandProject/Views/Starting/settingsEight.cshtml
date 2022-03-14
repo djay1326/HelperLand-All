@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model HelperlandProject.Models.Userr
+@model HelperlandProject.Models.SettingsModelEight
 @{
     Layout = null;
     var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
@@ -16,13 +16,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/images/favicon_img.png" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="~/css/Upcoming.css">
+    <link rel="stylesheet" type="text/css" href="~/css/ServiceDashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script type="text/javascript" src="~/js/dashh.js"></script>
     <script type="text/javascript" src="~/js/cal.js"></script>
-
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-    <title>Upcoming Service</title>
+    <title>Service Provider-Upcoming Service</title>
 </head>
 
 <body>
@@ -32,6 +32,7 @@
                 <a class="navbar-brand" asp-controller="Starting" asp-action="Index">
                     <img src="~/images/white-logo-transparent-background.png" style="width: 73px; height: 54px;" id="imgg2">
                 </a>
+                <!-- ............RightSidenav............. -->
                 <div>
                     <span class="bellImg1">
                         <a href="">
@@ -48,12 +49,14 @@
                         </span>
                         <hr style="height: 5px; color: black;" class="mt-1 mb-1">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
-                        <a asp-controller="Starting" asp-action="shistorySeven">Service History</a>
-                        <a href="#">Service Schedule</a>
-                        <a asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
-                        <a asp-controller="Starting" asp-action="notifySeven">Notifications</a>
-                        <a asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                        <a asp-controller="Starting" asp-action="eightMain">Dashboard</a>
+                        <a asp-controller="Starting" asp-action="eightNewService">New Service Request</a>
+                        <a href="#upcomingService" onclick="upcomingg()">Upcoming services</a>
+                        <a href="#" onclick="schedulee()">Service Schedule</a>
+                        <a href="#serviceHistory" onclick="history()">Service History</a>
+                        <a href="#myRatings" onclick="ratee()">My Ratings</a>
+                        <a href="#">Invoices</a>
+                        <a asp-controller="Starting" asp-action="settingsEight">My Settings</a>
                         <a asp-controller="Starting" asp-action="logout">Logout</a>
                         <hr style="height: 5px; color: black;" class="mt-1 mb-1">
                         <a asp-controller="Starting" asp-action="Prices">Prices and Services</a>
@@ -71,13 +74,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse dis" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse dis topNavbar1" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item rounded-pill">
-                            <div class="nav-btn-color ">
-                                <a class="nav-link rounded-pill p-3 mt-2" asp-controller="Starting" asp-action="bookService" style="background-color: #1d7a8c; border: none;">Book Now</a>
-                            </div>
-                        </li>
                         <li class="nav-item mt-4">
                             <div class="nav-btn">
                                 <a class="nav-link1 rounded-pill py-3" asp-controller="Starting" asp-action="Prices">Prices & services</a>
@@ -112,8 +110,8 @@
                             <div class="dropdown-menu dropdown-menu-right clrr" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item mt-1" href="#">Welcome,&nbsp;<span>@y</span></a>
                                 <hr class="hrr">
-                                <a class="dropdown-item" asp-controller="Starting" asp-action="UpcomingSeventh">My Dashboard</a>
-                                <a class="dropdown-item" asp-controller="Starting" asp-action="settingsSeven">My Settings</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="eightMain">My Dashboard</a>
+                                <a class="dropdown-item" asp-controller="Starting" asp-action="settingsEight">My Settings</a>
                                 <a class="dropdown-item" asp-controller="Starting" asp-action="logout">Logout</a>
                             </div>
                         </li>
@@ -123,82 +121,93 @@
         </nav>
     </div>
     <div class="custHeader position-relative d-flex align-items-center justify-content-center">
-        <p class="m-0" style="color: #4f4f4f;">Welcome, <span class="font-weight-bold" style="color: #4f4f4f;">@y</span></p>
+        <p class="m-0" style="color: #4f4f4f;">Welcome, <span class="font-weight-bold" style="color: #4f4f4f;">@y!</span></p>
     </div>
     <div class="Main-dash d-flex justify-content-between m-3">
         <!-- --------------- Sidebar -------------- -->
-        <div class="sidebar position-relative">
+        <div class="sidebar position-relative postion-sticky sticky-top">
             <ul class="inner mb-0">
                 <li>
-                    <a class="text-light" aria-current="page" id="dashBoard" asp-controller="Starting" asp-action="UpcomingSeventh">Dashboard</a>
+                    <a class="text-light" aria-current="page" id="dashBoard" asp-controller="Starting" asp-action="eightMain">Dashboard</a>
                 </li>
                 <li>
-                    <a id="serviceHistory" class="text-light" asp-controller="Starting" asp-action="shistorySeven">Service History</a>
+                    <a class="text-light" id="NewService" asp-controller="Starting" asp-action="eightNewService">New Service Requests</a>
                 </li>
                 <li>
-                    <a id="serviceSchedule" class="text-light">Service Schedule</a>
+                    <a class="text-light" id="Upcomingg" onclick="upcomingg()">Upcoming Services</a>
                 </li>
                 <li>
-                    <a id="favouritePros" class="text-light" asp-controller="Starting" asp-action="favSeven">Favourite Pros</a>
+                    <a id="serviceSchedulee" class="text-light" onclick="schedulee()">Service Schedule</a>
+                </li>
+                <li>
+                    <a id="serviceHistoryy" class="text-light" onclick="history()">Service History</a>
+                </li>
+                <li>
+                    <a id="ratingss" class="text-light" onclick="ratee()">My Ratings</a>
+                </li>
+                <li>
+                    <a id="blockCustomerr" class="text-light" asp-controller="Starting" asp-action="blockCust">Block Customer</a>
                 </li>
                 <li>
                     <a id="invoices" class="text-light">Invoices</a>
                 </li>
                 <li>
-                    <a id="notifications" class="text-light" asp-controller="Starting" asp-action="notifySeven">Notification</a>
+                    <a id="myNotificationss" class="text-light" asp-controller="Starting" asp-action="notifyEight">Notification</a>
                 </li>
             </ul>
         </div>
         <!-- -------------------All Tables List------------------- -->
         <div class="whole_tables">
-            <!-- For Dashboard TABLE
-            <!-- Customer My Settings TABLE -->
+            <!-- .......ServiceDashboad My Settings TABLE...... -->
             <div class="settingsData w-100 d-block" id="custSettings">
                 <ul class="nav nav-fill nav-tabs" id="myTab" role="tablist" style="border:none">
                     <li class="nav-item ea">
-                        <a class="nav-link active" id="myDetails" data-toggle="tab" data-target="#myDetailsMenu" type="button" aria-controls="myDetails" aria-selected="true">
+                        <a class="nav-link active" href="" id="myDetails" data-toggle="tab" data-target="#myDetailsMenu" type="button" aria-controls="myDetails" aria-selected="true">
                             <span style="color:#4f4f4f; border: none;">My Details</span>
                         </a>
                     </li>
                     <li class="nav-item ea">
-                        <a class="nav-link" id="myAddresses" data-toggle="tab" data-target="#myAddressesMenu" type="button"
-                           aria-controls="myAddresses" aria-selected="false">
-                            <span style="color:#4f4f4f;">My Addresses</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ea">
-                        <a class="nav-link" id="changePassword" data-toggle="tab" data-target="#changePasswordTab" type="button" aria-controls="changePassword" aria-selected="false">
+                        <a class="nav-link" href="" id="changePassword" data-toggle="tab" data-target="#changePasswordTab" type="button" aria-controls="changePassword" aria-selected="false">
                             <span style="color:#4f4f4f;">Change Password</span>
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content mt-3" id="myTabContent">
-
-
-
                     <!-- -------------------------------- my details menu -----------------------------------  -->
                     <div class="tab-pane fade show active" id="myDetailsMenu" role="tabpanel" aria-labelledby="myDetails">
-                        <form>
-                            <input type="hidden" name="UserId" id="just" asp-for="UserId" />
+                        <h3 class="accountStatus">
+                            Account Status:
+                            <span class="fw-normal">Active</span>
+                            <img class="avatar rounded-circle" src="~/images/avatar-female.png" alt="" height="85">
+                        </h3>
+                        <label for="" class="fw-bold detailss">Basic Details</label>
+                        <hr>
+                        <form method="post" asp-controller="Starting" asp-action="settingsEight">
                             <div class="row">
                                 <div class="col-md-4 mb-4">
-                                    <label for="firstname">First Name</label>
-                                    <input type="text" name="firstname" placeholder="First" id="just1" asp-for="FirstName" class="ht bll pdd form-control" required>
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="firstname">First Name</label>
+                                        <input type="text" id="frs1" asp-for="Userr.FirstName" class="ht bll pdd form-control" required>
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-4">
-                                    <label for="firstname">Last Name</label>
-                                    <input type="text" name="firstname" placeholder="Last" id="just2" asp-for="LastName" class="ht bll pdd form-control" required>
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="firstname">Last Name</label>
+                                        <input type="text" id="frs2" asp-for="Userr.LastName" class="ht bll pdd form-control" required>
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-4">
-                                    <label for="firstname">Email Address</label>
-                                    <input type="email" name="address"  id="just3" asp-for="Email" disabled class="ht bll pdd form-control">
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="firstname">Email Address</label>
+                                        <input type="email" id="frs3" asp-for="Userr.Email" readonly class="ht bll pdd form-control">
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-4">
                                     <div class="form-group d-flex flex-column">
                                         <label for="firstname">Mobile Number</label>
                                         <div class="d-flex">
-                                            <input type="text" value="+91" disabled style="max-width: 52px;" class="ht bll pdd form-control">
-                                            <input type="text" name="mobilenumber" id="just4" asp-for="Mobile" placeholder="9848291932" class="ht bll pdd form-control">
+                                            <input type="text" value="+91" readonly style="max-width: 52px;" class="ht bll pdd form-control">
+                                            <input type="text" id="frs4" asp-for="Userr.Mobile" class="ht bll pdd form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +217,7 @@
                                             <label for="birthdate">Date Of Birth</label>
                                             <div class="d-flex justify-content-between">
                                                 <div class="d-inline-block w-100 mr-2">
-                                                    <select name="birthdate" class="ht bll pdd w-100">
+                                                    <select name="birthdate" id="" class="ht bll pdd w-100">
                                                         <option value="" class="font-weight-bold">Day</option>
                                                         <option value="01">01</option>
                                                         <option value="02">02</option>
@@ -244,7 +253,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="d-inline-block w-100 mr-2">
-                                                    <select name="birthmonth" class="ht bll pdd w-100">
+                                                    <select name="birthmonth" id="" class="ht bll pdd w-100">
                                                         <option value="" class="font-weight-bold">Month</option>
                                                         <option value="january">January</option>
                                                         <option value="february">February</option>
@@ -261,7 +270,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="d-inline-block w-100">
-                                                    <select name="birthyear" class="ht bll pdd w-100">
+                                                    <select name="birthyear" id="" class="ht bll pdd w-100">
                                                         <option value="" class="font-weight-bold">Year</option>
                                                         <option value="2022">2022</option>
                                                         <option value="2021" selected>2021</option>
@@ -317,194 +326,89 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="form-group">
+                                        <div class="d-flex flex-column">
+                                            <label for="nationality">Nationality</label>
+                                            <div class="d-inline-block">
+                                                <select name="nationality" id="" class="ht bll pdd w-100">
+                                                    <option value="indian" selected>Indian</option>
+                                                    <option value="british">British</option>
+                                                    <option value="french">French</option>
+                                                    <option value="spanish">Spanish</option>
+                                                    <option value="german">German</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex flex-column my-3">
+                                    <label for="" class="control-label ">
+                                        Gender
+                                    </label>
+                                    <div class="">
+                                        <div class="form-check form-check-inline d-inline mx-2 ms-0">
+                                            <input class="form-check-input" type="radio" id="male" name="radiobtn" value="1" checked>
+                                            <label class="form-check-label genderrr" for="male">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline d-inline mx-2">
+                                            <input class="form-check-input" type="radio" id="female" name="radiobtn" value="2">
+                                            <label class="form-check-label genderrr" for="female">Female</label>
+                                        </div>
+                                        <div class="form-check form-check-inline d-inline mx-2">
+                                            <input class="form-check-input" type="radio" id="rathernottosay" name="radiobtn" value="3">
+                                            <label class="form-check-label genderrr" for="rathernottosay">Rather Not To Say</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 my-3 ">
+                                    <label for="" class="mb-2">Select Avatar</label>
+                                    <div class="btn-group d-table-row avatarGroup" role="group" aria-label="Basic radio toggle button group">
+                                        <img class="avatar rounded-circle mr-2" src="~/images/avatar-car.png" alt="" height="85"> <img class="avatar rounded-circle mr-2" src="~/images/avatar-female.png" alt="" height="85"> <img class="avatar rounded-circle mr-2" src="~/images/avatar-hat.png" alt="" height="85">
+                                        <img class="avatar rounded-circle mr-2" src="~/images/avatar-iron.png" alt="" height="85">
+                                        <img class="avatar rounded-circle mr-2" src="~/images/avatar-male.png" alt="" height="85">
+                                        <img class="avatar rounded-circle" src="~/images/avatar-ship.png" alt="" height="85">
+                                    </div>
+                                </div>
                             </div>
+
+                            <label for="" class=" fw-bold mt-3 detailss"> My address</label>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-md-4 mb-4 ">
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="streetname">Street Name</label>
+                                        <input type="text" id="str1" placeholder="Street Name" asp-for="UserAddress.AddressLine1" class="ht bll pdd w-100">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4 ">
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="housenumber">House number</label>
+                                        <input type="text" id="str2" placeholder="House Number" asp-for="UserAddress.AddressLine2" class="ht bll pdd w-100">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="postalcode">Postal Code</label>
+                                        <input type="text" id="str3" placeholder="Postal Code" asp-for="UserAddress.PostalCode" class="ht bll pdd w-100">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group d-flex flex-column">
+                                        <label for="city">City</label>
+                                        <div class="d-inline-block">
+                                            <input type="text" id="str4" asp-for="UserAddress.City" class="ht bll pdd w-100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3 ">
+                                Save
+                            </button>
                         </form>
-                        <hr>
-                        <div class="d-flex flex-column">
-                            <label for="preferedLanguage">My Prefered Language</label>
-                            <select name="preferedLanguage" class="ht pdd bll" style="max-width: 120px;">
-                                <option value="hindi">Hindi</option>
-                                <option value="english" selected>English</option>
-                                <option value="french">French</option>
-                                <option value="spanish">Spanish</option>
-                                <option value="german">German</option>
-                            </select>
-                        </div>
-                        <button type="button" id="saveButton" class="reschedule-btn rounded-pill text-light text-decoration-none px-4 mt-3">
-                            Save
-                        </button>
+
                     </div>
-
-
-                    <!-- ---------------------------- my addresses menu ------------------------- -->
-                    <div class="tab-pane fade" role="tabpanel" id="myAddressesMenu" aria-labelledby="myAddresses">
-                        <!--<div id="myAddressesTable">
-                            <table class="table tablee1 tb1">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Addresses</th>
-                                        <th scope="col" width="100">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <p class="mb-1"><b>Address:</b> Street 54, 53844 Troisdorf </p>
-                                            <p class="mb-1"><b>Phone Number:</b>9988556644</p>
-                                        </td>
-                                        <td>
-                                            <a href="#editAddressModal" data-toggle="modal" role="button">
-                                                <img src="~/images/edit-icon.png" alt="" height="22" width="22">
-                                            </a>
-                                            <a href="#deleteAdressModal" data-toggle="modal" role="button">
-                                                <img src="~/images/delete-icon.png" alt="" height="22" width="22">
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="#addNewAddressModal" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none px-2">Add New address </a>
-                        </div>-->
-                        <!-- ---------------------------Add New Address PopUp Modal----------------------- -->
-                        <!--<div class="modal fade" id="addNewAddressModal" aria-hidden="true" aria-labelledby="addNewAddressModalLabel2" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title me-3 clrr" id="addNewAddressModalLabel2">Add New Address</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="">
-                                            <div class="row">
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="streetname">Street Name</label>
-                                                        <input type="text" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="housenumber">House number</label>
-                                                        <input type="text" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="postalcode">Postal Code</label>
-                                                        <input type="text" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="city">City</label>
-                                                        <div class="d-inline-block">
-                                                            <input name="city" placeholder="City" class="ht bll pdd w-100" />
-                                                            <option value="troisdorf">Troisdorf</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="phonenumber">Phone Number</label>
-                                                        <div class="d-flex">
-                                                            <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
-                                                            <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
-                                                Add
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-                        <!-- ------------------------Edit Address PopUp modal-------------------- -->
-                        <!--<div class="modal fade" id="editAddressModal" aria-hidden="true" aria-labelledby="editAddressModalLabel2" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title me-3 clrr" id="editAddressModalLabel2">Edit Address</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body ">
-                                        <form action="" onsubmit="">
-                                            <div class="row">
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="streetname">Street Name</label>
-                                                        <input type="text" value="" placeholder="Street Name" name="streetname" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="housenumber">House number</label>
-                                                        <input type="text" value="" placeholder="House Number" name="housenumber" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="postalcode">Postal Code</label>
-                                                        <input type="text" value="" placeholder="Postal Code" name="postalcode" class="bll ht pdd w-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="city">City</label>
-                                                        <div class="d-inline-block">
-                                                            <input name="city" placeholder="City" class="ht bll pdd w-100">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-4">
-                                                    <div class="form-group d-flex flex-column">
-                                                        <label for="phonenumber">Phone Number</label>
-                                                        <div class="d-flex">
-                                                            <input type="text" name="phonecode" class="bll ht pdd" value="+49" disabled style="max-width: 55px;">
-                                                            <input type="text" placeholder="Phone Number" name="phonenumber" class="bll ht pdd" value="3423423423">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="reschedule-btn rounded-pill bll text-light px-3 pdd">
-                                                Add
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-                        <!-- ------------------------Delete Address PopUp Modal---------------------------- -->
-                        <!--<div class="modal fade" id="deleteAdressModal" aria-hidden="true" aria-labelledby="deleteAdressModalLabel2" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-md">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title me-3 clrr" id="deleteAdressModalLabel2">Delete Address</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="" onsubmit="">
-                                            <p class="mb-3 clrr">Are You sure you want to delete this address?</p>
-                                            <button type="submit" class="mt-2 reschedule-btn rounded-pill bll text-light px-3 pdd">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-                    </div>
-
                     <!-- ---------------------- change password menu --------------------- -->
                     <div class="tab-pane fade" role="tabpanel" id="changePasswordTab" aria-labelledby="changePassword">
                         <form action="">
@@ -530,49 +434,7 @@
         </div>
     </div>
 
-    <!-- For Calendar PopUP Modal -->
-    <div class="modal fade" id="servicesPop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ac" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bolder" id="exampleModalCenterTitle">Service Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body CalModal">
-                    <div class="CalLeft">
-                        <h4>22/12/2021 09:00 -14:30</h4>
-                        <p><b>Duration:</b>5.5 Hrs</p>
-                        <hr>
-                        <p><b>Service Id:</b>8502</p>
-                        <p><b>Extras:</b>Inside cabinets, Inside fridge, Inside oven, Laundry wash & dry, Interior windows</p>
-                        <p>
-                            <b>Net Amount:</b>
-                            <spna class="currency fw-bolder">99,00 €</spna>
-                        </p>
-                        <hr>
-                        <p><b>Service Address:</b>Test 65, 53225 Bonn</p>
-                        <p><b>Billing Address:</b>Same as cleaning Address</p>
-                        <p><b>Phone:</b>+49 9988556644</p>
-                        <p><b>Email:</b>cust001@yopmail.com</p>
-                        <hr>
-                        <p><b>Comments</b></p>
-                        <div>
-                            <p>Hello</p>
-                        </div>
-                        <p>I don't have pets at home</p>
-                    </div>
-                </div>
-                <span class="main-btn modal-footer text-center mb-3">
-                    <a href="#rescheduleClick" data-toggle="modal" role="button" class="reschedule-btn rounded-pill text-light text-decoration-none">Reschedule</a>
-                    <a href="#cancelServiceRequest" data-dismiss="modal" role="button" class="rounded-pill text-light text-decoration-none cancel-btn">Cancel</a>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ..........Footer Section............. -->
+    <!-- ............Footer Section....... -->
     <footer class="font-small Rectangle-12 da">
         <div class="container d-flex flex-row justify-content-between align-items-center" style="max-width: 1800px;">
             <div class="footer-logo">
@@ -655,41 +517,22 @@
                 targets: [1, 3, 5]
             }]
         });
-        $("#myDetails").on('click', function(){
-            console.log('hie');
+        $('#tab3').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [4]
+            }]
         });
-        $("#saveButton").on('click', function () {
-            var test = {};
-            test.UserId = parseInt($("#just").val());
-            test.FirstName = ($("#just1").val());
-            test.LastName = ($("#just2").val());
-            test.Mobile = ($("#just4").val());
-              console.log(test);
-              console.log($.type(test));
-
-            $.ajax
-              ({
-                url: '@Url.Action("detailsTab", "Starting")',
-                  type: 'post',
-                  dataType: 'json',
-                  contentType: 'application/json',
-                  data: JSON.stringify(test),
-                  success: function (resp) {
-
-                    alert('Changes done');
-                    console.log(resp);
-
-                },
-                error: function (err) {
-                    alert("Changes not done");
-                    console.log(err);
-                }
-
-            });
-
+        $('#tab4').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 2]
+            }]
         });
 
-         $("#tap4").on('click', function () {
+        $("#tap4").on('click', function () {
             var pass = {};
 
             pass.Password = $("#tap1").val();
@@ -698,12 +541,12 @@
             console.log(pass);
 
             if (pass.Newpassword != pass.Confirmpassword) {
-                alert("password and confirm password does not match");
+                alert("Password and confirm password does not match");
             }
             else
             {
                 $.ajax({
-                    url: '@Url.Action("NewPwd","Starting")',
+                    url: '@Url.Action("NewPwdEight","Starting")',
                     type: 'post',
                     dataType: 'json',
                     contentType: 'application/json',
@@ -711,7 +554,6 @@
 
                     success: function (resp) {
                         if (resp) {
-                            
                             location.reload();
                             alert("Password changed");
                         }
@@ -725,144 +567,17 @@
                 });
             }
          });
-
-          $(document).on("click", "#myAddresses",function(){
-            $("#myAddressesMenu").load('@Url.Action("addressMenu", "Starting")');
-          });
-
-        /*-------------------------------For deletePopUP Modal of Mysettings tab--------------------------------*/
-        var i;
-        $(document).on('click', '.deleteMenu', function () {
-            i = parseInt($(this).attr("srid"));
-            console.log(i);
-
-        });
-
-
-        $(document).on('click', '#del1', function () {
-            console.log(i);
-
-            $.ajax({
-                url: '@Url.Action("deleteTab", "Starting")',
-                type: 'post',
-                data: {i:i},
-
-                success: function (resp) {
-                $('body').removeClass('modal-open');
-                $('.modal-backdrop').remove();
-                $("#myAddressesMenu").html("Updating Addresses...")
-                .load('@Url.Action("addressMenu", "Starting")');
-                },
-                error: function (err) {
-                    alert("Error while inserting data");
-                }
-
-            });
-
-        });
-
-        $(document).on('click', '#str6', function () {
-            var address = {};
-            address.AddressLine1 = $("#str1").val();
-            address.AddressLine2 = $("#str2").val();
-            address.postalCode = $("#str3").val();
-            address.City = $("#str4").val();
-            address.Mobile = $("#str5").val();
-            console.log(address);
-
-
-
-            $.ajax({
-
-                url: '@Url.Action("yourDetail", "Starting")',
-                type: 'post',
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify(address),
-
-
-                success: function (resp) {
-                    console.log(resp);
-
-                    //$("#addNewAddressModal").modal("hide");
-                    $('body').removeClass('modal-open');
-                    $('.modal-backdrop').remove();
-                    $("#myAddressesMenu").html("Updating Addresses...")
-                        .load('@Url.Action("addressMenu", "Starting")');
-
-                },
-                error: function (err) {
-                    console.log(err);
-                    alert("Error while inserting data");
-                }
-
-            });
-        });
-
-        //var w;
-        $(document).on('click', '.addId', function () {
-            var edit = parseInt($(this).attr("srid"));
-            console.log(edit);
-
-              $.ajax({
-                url: '@Url.Action("editAddress", "Starting")',
-                type: 'get',
-                dataType: 'html',
-                contentType: 'application/html',
-                data: {edit:edit},
-
-
-                success: function (resp) {
-                    $("#editAddressModal .modal-body").html(resp);
-                    $("#editAddressModal").modal();
-                },
-                error: function (err) {
-                    alert("Error while inserting data");
-                }
-
-            });
-
-        });
-
-
-       $(document).on("click", "#t6",function() {
-
-            var change = {};
-
-           change.AddressId = parseInt($("#add11").val());
-            change.AddressLine1 = $("#t1").val();
-            change.AddressLine2 = $("#t2").val();
-            change.PostalCode = $("#t3").val();
-            change.City = $("#t4").val();
-            change.Mobile = $("#t5").val();
-
-            console.log(change);
-
-             $.ajax({
-                url: '@Url.Action("editPopup", "Starting")',
-                type: 'post',
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify(change),
-
-
-                success: function (resp) {
-
-                $('body').removeClass('modal-open');
-                $('.modal-backdrop').remove();
-                $("#myAddressesMenu").html("Updating Addresses...")
-                .load('@Url.Action("addressMenu", "Starting")');
-                },
-                error: function (err) {
-                    alert("Error while inserting data");
-                }
-
-            });
-
-        });
-
     </script>
+    @if (TempData["abc"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                alert('@TempData["abc"]');
+                @TempData.Remove("abc");
+            });
 
+        </script>
+    }
 </body>
 
 </html>

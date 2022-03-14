@@ -53,7 +53,6 @@ namespace HelperlandProject.Models
         public string BankTokenId { get; set; }
         public string TaxNo { get; set; }
         [NotMapped]
-        [Required]
         public string NewPassword { get; set; }
 
         public virtual ICollection<FavoriteAndBlocked> FavoriteAndBlockedTargetUser { get; set; }

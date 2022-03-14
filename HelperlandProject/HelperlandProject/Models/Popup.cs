@@ -9,7 +9,8 @@ namespace HelperlandProject.Models
     {
         public int Id { get; set; }
         public int ServiceRequestId { get; set; }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string City { get; set; }
@@ -45,5 +46,12 @@ namespace HelperlandProject.Models
         public bool? HasIssue { get; set; }
         public bool? PaymentDone { get; set; }
         public Guid? RecordVersion { get; set; }
+        
+        public int? TargetUserId { get; set; }
+        public bool? IsFavorite { get; set; }
+        public bool? IsBlocked { get; set; }
+
+        public decimal? Ratings { get; set; }
+        public DateTime? RatingDate { get; set; }
     }
 }

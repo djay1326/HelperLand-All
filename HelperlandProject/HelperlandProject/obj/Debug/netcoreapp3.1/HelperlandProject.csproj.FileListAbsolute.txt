@@ -481,3 +481,13 @@ E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razo
 E:\tatva\rough1\HelperlandProject\HelperlandProject\bin\Debug\netcoreapp3.1\EPPlus.dll
 E:\tatva\rough1\HelperlandProject\HelperlandProject\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\editAddress.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\eightMain.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\settingsEight.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\notifyEight.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\blockCust.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\eightNewService.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\eightUpcoming.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\eightHistory.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_upcomingPop.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_calendarPop.cshtml.g.cs
+E:\tatva\rough1\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\eightRating.cshtml.g.cs

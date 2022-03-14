@@ -23,6 +23,31 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
     <title>Upcoming Service</title>
+    <style>
+        body {
+            cursor: default;
+        }
+
+        #RateSPModal .modal-body .profile-img {
+            width: 55px;
+            height: 55px;
+            border: 1px solid #AAAAAA;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        #RateSPModal .modal-body .submit-btn {
+            background-color: #1D7A8C;
+            color: #FFFFFF;
+            border-radius: 17px;
+            height: 34px;
+            border: none;
+            width: 80px;
+        }
+    </style>
 </head>
 
 <body>
@@ -175,11 +200,11 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <th scope="row">323436</th>
+                                <th scope="row">@item.ServiceId</th>
                                 <td class="datess" href="#serviceDetails">
                                     <a href="#" class="d-flex text-decoration-none align-items-center">
                                         <img src="~/images/calender.png" alt="" height="19" width="16">
-                                        <p class="mb-0 ms-1">09/04/2018</p>
+                                        <p class="mb-0 ms-1">@item.ServiceStartDate.ToShortDateString()</p>
                                     </a>
                                     <a href="#" class="d-flex text-decoration-none">
                                         <p class="m-0">12:00 - 18:00</p>
@@ -229,7 +254,8 @@
                                     </td>
                                 }
                                 <td class="main-btn">
-                                    <a class="rateSP-btn rounded-pill text-light text-decoration-none">Rate SP</a>
+                                    <a data-toggle="modal"
+        data-target="#RateSPModal" class="rateSP-btn rounded-pill text-light text-decoration-none">Rate SP</a>
                                 </td>
                             </tr>
                         }
@@ -332,7 +358,79 @@
 
         </div>
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="RateSPModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered mx-auto" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <form>
+                        <div class="d-flex flex-row mb-3">
+                            <div class="profile-img">
+                                <img src="~/images/cap.png" alt="">
+                            </div>
+                            <div class="details">
+                                <b>Sandip Patel</b>
+                                <div class="rate">
+                                    <img src="~/images/star2.png" alt="" id="v1">
+                                    <img src="~/images/star2.png" alt="" id="v2">
+                                    <img src="~/images/star2.png" alt="" id="v3">
+                                    <img src="~/images/star2.png" alt="" id="v4">
+                                    <img src="~/images/star2.png" alt="" id="v5">
+                                    <span id="vraj"><span id="rateavg">11</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5><b>Rate your service provider</b></h5>
+                        </div>
+                        <hr>
+                        <div>
+                            <span>On time arrival</span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="s1"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="s2"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="s3"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="s4"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="s5"></span>
+                        </div>
+                        <div>
+                            <span>Friendly</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="t1"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="t2"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="t3"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="t4"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="t5"></span>
+                        </div>
+                        <div>
+                            <span>Quality of service</span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="p1"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="p2"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="p3"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="p4"></span>
+                            <span><img class="rate" src="~/images/star2.png" alt="" id="p5"></span>
+                        </div>
+                        <div class="form-row mt-3">
+                            <div class="form-group col-md-12">
+                                <label for="fbofsp" class="cm-dez">Feedback on service provider</label>
+                                <textarea class="form-control" id="fbofsp" rows="3" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <button class="submit-btn">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ..........Footer Section............. -->
     <footer class="font-small Rectangle-12 da">
         <div class="container d-flex flex-row justify-content-between align-items-center" style="max-width: 1800px;">
@@ -428,6 +526,139 @@
             });
 
         });
+    </script>
+    <script>
+        var s = 0, t = 0, p = 0;
+
+        $(document).ready(function () {
+            $("#s1").click(function () {
+                $("#s1").attr('src', '/images/star1.png');
+                $("#s2,#s3,#s4,#s5").attr('src', '/images/star2.png');
+                s = 1;
+            });
+            $("#s2").click(function () {
+                $("#s1,#s2").attr('src', '/images/star1.png');
+                $("#s3,#s4,#s5").attr('src', '/images/star2.png');
+                s = 2;
+            });
+            $("#s3").click(function () {
+                $("#s1,#s2,#s3").attr('src', '/images/star1.png');
+                $("#s4,#s5").attr('src', '/images/star2.png');
+                s = 3;
+            });
+            $("#s4").click(function () {
+                $("#s1,#s2,#s3,#s4").attr('src', '/images/star1.png');
+                $("#s5").attr('src', '/images/star2.png');
+                s = 4;
+            });
+            $("#s5").click(function () {
+                $("#s1,#s2,#s3,#s4,#s5").attr('src', '/images/star1.png');
+                s = 5;
+            });
+
+
+
+
+            $("#t1").click(function () {
+                $("#t1").attr('src', '/images/star1.png');
+                $("#t2,#t3,#t4,#t5").attr('src', '/images/star2.png');
+                t = 1;
+            });
+            $("#t2").click(function () {
+                $("#t1,#t2").attr('src', '/images/star1.png');
+                $("#t3,#t4,#t5").attr('src', '/images/star2.png');
+                t = 2;
+            });
+            $("#t3").click(function () {
+                $("#t1,#t2,#t3").attr('src', '/images/star1.png');
+                $("#t4,#t5").attr('src', '/images/star2.png');
+                t = 3;
+            });
+            $("#t4").click(function () {
+                $("#t1,#t2,#t3,#t4").attr('src', '/images/star1.png');
+                $("#t5").attr('src', '/images/star2.png');
+                t = 4;
+            });
+            $("#t5").click(function () {
+                $("#t1,#t2,#t3,#t4,#t5").attr('src', '/images/star1.png');
+                t = 5;
+            });
+
+
+
+
+            $("#p1").click(function () {
+                $("#p1").attr('src', '/images/star1.png');
+                $("#p2,#p3,#p4,#p5").attr('src', '/images/star2.png');
+                p = 1;
+            });
+            $("#p2").click(function () {
+                $("#p1,#p2").attr('src', '/images/star1.png');
+                $("#p3,#p4,#p5").attr('src', '/images/star2.png');
+                p = 2;
+            });
+            $("#p3").click(function () {
+                $("#p1,#p2,#p3").attr('src', '/images/star1.png');
+                $("#p4,#p5").attr('src', '/images/star2.png');
+                p = 3;
+            });
+            $("#p4").click(function () {
+                $("#p1,#p2,#p3,#p4").attr('src', '/images/star1.png');
+                $("#p5").attr('src', '/images/star2.png');
+                p = 4;
+            });
+            $("#p5").click(function () {
+                $("#p1,#p2,#p3,#p4,#p5").attr('src', '/images/star1.png');
+                p = 5;
+            });
+
+            $(".rate").on('click', function () {
+                var ratesp = (s + t + p) / 3;
+                console.log(ratesp);
+
+
+                console.log("p " + p);
+                console.log("t" + t);
+                console.log("s" + s);
+                // x = Math.floor(ratesp)
+                // console.log("math fllorr " + x);
+                x = ratesp.toFixed(0);
+                console.log("fixed value" + x);
+                $("#rateavg").html(x);
+
+                switch (x) {
+                    case '0':
+                        $("#v1,#v2,#v3,#v4,#v5").attr('src', '/images/star2.png');
+                        break;
+                    case '1':
+                        $("#v1").attr('src', '/images/star1.png');
+                        $("#v2,#v3,#v4,#v5").attr('src', '/images/star2.png');
+                        break;
+                    case '2':
+                        $("#v1,#v2").attr('src', '/images/star1.png');
+                        $("#v3,#v4,#v5").attr('src', '/images/star2.png');
+                        break;
+                    case '3':
+                        $("#v1,#v2,#v3").attr('src', '/images/star1.png');
+                        $("#v4,#v5").attr('src', '/images/star2.png');
+                        break;
+                    case '4':
+                        $("#v1,#v2,#v3,#v4").attr('src', '/images/star1.png');
+                        $("#v5").attr('src', '/images/star2.png');
+                        break;
+                    case '5':
+                        $("#v1,#v2,#v3,#v4,#v5").attr('src', '/images/star1.png');
+                        break;
+                    default:
+                        alert('Nobody Wins!');
+                }
+
+            })
+
+
+        });
+
+
     </script>
 </body>
 

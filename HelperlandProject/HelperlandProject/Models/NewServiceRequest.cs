@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HelperlandProject.Models
 {
-    public partial class ServiceRequest
+    public class NewServiceRequest
     {
-        public ServiceRequest()
-        {
-            Rating = new HashSet<Rating>();
-            ServiceRequestAddress = new HashSet<ServiceRequestAddress>();
-            ServiceRequestExtra = new HashSet<ServiceRequestExtra>();
-            
-        }
-
+        public int Id { get; set; }
         public int ServiceRequestId { get; set; }
+
+        public string FirstName {get; set;}
+        public string LastName { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+        public string Mobile { get; set; }
+        public string Email { get; set; }
+
+        public virtual ServiceRequest ServiceRequest { get; set; }
+
         public int UserId { get; set; }
         public int ServiceId { get; set; }
         public DateTime ServiceStartDate { get; set; }
@@ -44,12 +47,6 @@ namespace HelperlandProject.Models
         public bool? HasIssue { get; set; }
         public bool? PaymentDone { get; set; }
         public Guid? RecordVersion { get; set; }
-        [NotMapped]
-        public int AddressId { get; set; }
-        public virtual Userr ServiceProvider { get; set; }
-        public virtual Userr User { get; set; }
-        public virtual ICollection<Rating> Rating { get; set; }
-        public virtual ICollection<ServiceRequestAddress> ServiceRequestAddress { get; set; }
-        public virtual ICollection<ServiceRequestExtra> ServiceRequestExtra { get; set; }
+
     }
 }
