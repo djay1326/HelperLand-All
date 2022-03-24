@@ -228,3 +228,18 @@ td{
   color: var(--clr-64-grey);
 
 }
+
+/*..............*/
+.page-item.active .page-link {
+    z-index: 3;
+    /*color: #fff;*/
+    background-color: #1fb6ff !important;
+    border-color: #1fb6ff;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    padding-top: 0 !important;
+    font-family: Roboto !important;
+    color: grey !important;
+    margin-bottom: 10px;
+}

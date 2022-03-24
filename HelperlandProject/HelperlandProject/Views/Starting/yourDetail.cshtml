@@ -177,7 +177,11 @@
             address.City = $("#city").val();
             address.Mobile = $("#mobile").val();
             console.log(address);
-
+            if (address.AddressLine1 == "" || address.AddressLine2 == "" || address.PostalCode == "" || address.City == "" || address.Mobile == "") {
+                alert('You cannot leave empty values!')
+            }
+            else
+            {
             $.ajax({
 
                 url: '@Url.Action("yourDetail", "Starting")',
@@ -199,8 +203,9 @@
                     console.log(err);
                     alert("Error while inserting data");
                 }
-
-            });
+            
+                });
+            }
         });
 
     </script>

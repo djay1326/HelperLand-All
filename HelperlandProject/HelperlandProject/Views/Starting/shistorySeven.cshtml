@@ -199,65 +199,66 @@
                     <tbody class="ac">
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <th scope="row">@item.ServiceId</th>
-                                <td class="datess" href="#serviceDetails">
-                                    <a href="#" class="d-flex text-decoration-none align-items-center">
-                                        <img src="~/images/calender.png" alt="" height="19" width="16">
-                                        <p class="mb-0 ms-1">@item.ServiceStartDate.ToShortDateString()</p>
-                                    </a>
-                                    <a href="#" class="d-flex text-decoration-none">
-                                        <p class="m-0">12:00 - 18:00</p>
-                                    </a>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
-                                            <img src="~/images/cap.png" alt="" height="20" width="30">
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0 aa">Lyum Watson</p>
-                                            <div class="d-flex align-items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <p class="mb-0 aa">4</p>
-                                            </div>
+                        <tr>
+                            <th scope="row">@item.ServiceId</th>
+                            <td class="datess" href="#serviceDetails">
+                                <a href="#" class="d-flex text-decoration-none align-items-center">
+                                    <img src="~/images/calender.png" alt="" height="19" width="16">
+                                    <p class="mb-0 ms-1">@item.ServiceStartDate.ToShortDateString()</p>
+                                </a>
+                                <a href="#" class="d-flex text-decoration-none">
+                                    <p class="m-0">12:00 - 18:00</p>
+                                </a>
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
+                                        <img src="~/images/cap.png" alt="" height="20" width="30">
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <p class="mb-0 aa">Lyum Watson</p>
+                                        <div class="d-flex align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                                <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <p class="mb-0 aa">4</p>
                                         </div>
                                     </div>
-                                </td>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="paymentt">$@item.SubTotal</p>
+                            </td>
+                            @if (item.Status == 0)
+                            {
                                 <td>
-                                    <p class="paymentt">$@item.SubTotal</p>
+                                    <p class="m-0 CancelledShowingBtn text-light px-2 py-1">Cancelled</p>
                                 </td>
-                                @if (item.Status == 0)
-                                {
-                                    <td>
-                                        <p class="m-0 CancelledShowingBtn text-light px-2 py-1">Cancelled</p>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <p class="m-0 CompletedShowingBtn text-light px-2 py-1">Completed</p>
-                                    </td>
-                                }
+                                <td></td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <p class="m-0 CompletedShowingBtn text-light px-2 py-1">Completed</p>
+                                </td>
                                 <td class="main-btn">
-                                    <a data-toggle="modal"
-        data-target="#RateSPModal" class="rateSP-btn rounded-pill text-light text-decoration-none">Rate SP</a>
+                                    <a i="@item.ServiceRequestId" sid="@item.ServiceProviderId" class="rateSP-btn btn rounded-pill text-light text-decoration-none">Rate SP</a>
                                 </td>
-                            </tr>
+                            }
+                            
+                        </tr>
                         }
 
                         @*<tr>
@@ -364,69 +365,69 @@
         <div class="modal-dialog modal-dialog-centered mx-auto" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <form>
-                        <div class="d-flex flex-row mb-3">
-                            <div class="profile-img">
-                                <img src="~/images/cap.png" alt="">
-                            </div>
-                            <div class="details">
-                                <b>Sandip Patel</b>
-                                <div class="rate">
-                                    <img src="~/images/star2.png" alt="" id="v1">
-                                    <img src="~/images/star2.png" alt="" id="v2">
-                                    <img src="~/images/star2.png" alt="" id="v3">
-                                    <img src="~/images/star2.png" alt="" id="v4">
-                                    <img src="~/images/star2.png" alt="" id="v5">
-                                    <span id="vraj"><span id="rateavg">11</span></span>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form>
+                            <div class="d-flex flex-row mb-3">
+                                <div class="profile-img">
+                                    <img src="~/images/cap.png" alt="">
+                                </div>
+                                <div class="details">
+                                    <b>@y</b>
+                                    <div class="rate">
+                                        <img src="~/images/star2.png" alt="" id="v1">
+                                        <img src="~/images/star2.png" alt="" id="v2">
+                                        <img src="~/images/star2.png" alt="" id="v3">
+                                        <img src="~/images/star2.png" alt="" id="v4">
+                                        <img src="~/images/star2.png" alt="" id="v5">
+                                        <span id="vraj"><span id="rateavg">0</span></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <h5><b>Rate your service provider</b></h5>
-                        </div>
-                        <hr>
-                        <div>
-                            <span>On time arrival</span>
-                            &nbsp;&nbsp;&nbsp;
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="s1"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="s2"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="s3"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="s4"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="s5"></span>
-                        </div>
-                        <div>
-                            <span>Friendly</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="t1"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="t2"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="t3"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="t4"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="t5"></span>
-                        </div>
-                        <div>
-                            <span>Quality of service</span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="p1"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="p2"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="p3"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="p4"></span>
-                            <span><img class="rate" src="~/images/star2.png" alt="" id="p5"></span>
-                        </div>
-                        <div class="form-row mt-3">
-                            <div class="form-group col-md-12">
-                                <label for="fbofsp" class="cm-dez">Feedback on service provider</label>
-                                <textarea class="form-control" id="fbofsp" rows="3" placeholder=""></textarea>
+                            <div>
+                                <h5><b>Rate your service provider</b></h5>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <button class="submit-btn">Submit</button>
+                            <hr>
+                            <div>
+                                <span>On time arrival</span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="s1"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="s2"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="s3"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="s4"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="s5"></span>
                             </div>
-                        </div>
-                    </form>
+                            <div>
+                                <span>Friendly</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="t1"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="t2"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="t3"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="t4"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="t5"></span>
+                            </div>
+                            <div>
+                                <span>Quality of service</span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="p1"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="p2"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="p3"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="p4"></span>
+                                <span><img class="rate" src="~/images/star2.png" alt="" id="p5"></span>
+                            </div>
+                            <div class="form-row mt-3">
+                                <div class="form-group col-md-12">
+                                    <label for="fbofsp" class="cm-dez">Feedback on service provider</label>
+                                    <textarea class="form-control" id="fbofsp" rows="3" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <button class="submit-btn">Submit</button>
+                                </div>
+                            </div>
+                        </form>*@
                 </div>
             </div>
         </div>
@@ -484,6 +485,7 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -530,135 +532,200 @@
     <script>
         var s = 0, t = 0, p = 0;
 
-        $(document).ready(function () {
-            $("#s1").click(function () {
-                $("#s1").attr('src', '/images/star1.png');
-                $("#s2,#s3,#s4,#s5").attr('src', '/images/star2.png');
-                s = 1;
-            });
-            $("#s2").click(function () {
-                $("#s1,#s2").attr('src', '/images/star1.png');
-                $("#s3,#s4,#s5").attr('src', '/images/star2.png');
-                s = 2;
-            });
-            $("#s3").click(function () {
-                $("#s1,#s2,#s3").attr('src', '/images/star1.png');
-                $("#s4,#s5").attr('src', '/images/star2.png');
-                s = 3;
-            });
-            $("#s4").click(function () {
-                $("#s1,#s2,#s3,#s4").attr('src', '/images/star1.png');
-                $("#s5").attr('src', '/images/star2.png');
-                s = 4;
-            });
-            $("#s5").click(function () {
-                $("#s1,#s2,#s3,#s4,#s5").attr('src', '/images/star1.png');
-                s = 5;
-            });
+
+        $(document).on("click", "#s1", function () {
+            $("#s1").attr('src', '/images/star1.png');
+            $("#s2,#s3,#s4,#s5").attr('src', '/images/star2.png');
+            s = 1;
+        });
+        $(document).on("click", "#s2", function () {
+            $("#s1,#s2").attr('src', '/images/star1.png');
+            $("#s3,#s4,#s5").attr('src', '/images/star2.png');
+            s = 2;
+        });
+        $(document).on("click", "#s3", function () {
+            $("#s1,#s2,#s3").attr('src', '/images/star1.png');
+            $("#s4,#s5").attr('src', '/images/star2.png');
+            s = 3;
+        });
+        $(document).on("click", "#s4", function () {
+            $("#s1,#s2,#s3,#s4").attr('src', '/images/star1.png');
+            $("#s5").attr('src', '/images/star2.png');
+            s = 4;
+        });
+        $(document).on("click", "#s5", function () {
+            $("#s1,#s2,#s3,#s4,#s5").attr('src', '/images/star1.png');
+            s = 5;
+        });
 
 
 
 
-            $("#t1").click(function () {
-                $("#t1").attr('src', '/images/star1.png');
-                $("#t2,#t3,#t4,#t5").attr('src', '/images/star2.png');
-                t = 1;
-            });
-            $("#t2").click(function () {
-                $("#t1,#t2").attr('src', '/images/star1.png');
-                $("#t3,#t4,#t5").attr('src', '/images/star2.png');
-                t = 2;
-            });
-            $("#t3").click(function () {
-                $("#t1,#t2,#t3").attr('src', '/images/star1.png');
-                $("#t4,#t5").attr('src', '/images/star2.png');
-                t = 3;
-            });
-            $("#t4").click(function () {
-                $("#t1,#t2,#t3,#t4").attr('src', '/images/star1.png');
-                $("#t5").attr('src', '/images/star2.png');
-                t = 4;
-            });
-            $("#t5").click(function () {
-                $("#t1,#t2,#t3,#t4,#t5").attr('src', '/images/star1.png');
-                t = 5;
-            });
+        $(document).on("click", "#t1", function () {
+            $("#t1").attr('src', '/images/star1.png');
+            $("#t2,#t3,#t4,#t5").attr('src', '/images/star2.png');
+            t = 1;
+        });
+        $(document).on("click", "#t2", function () {
+            $("#t1,#t2").attr('src', '/images/star1.png');
+            $("#t3,#t4,#t5").attr('src', '/images/star2.png');
+            t = 2;
+        });
+        $(document).on("click", "#t3", function () {
+            $("#t1,#t2,#t3").attr('src', '/images/star1.png');
+            $("#t4,#t5").attr('src', '/images/star2.png');
+            t = 3;
+        });
+        $(document).on("click", "#t4", function () {
+            $("#t1,#t2,#t3,#t4").attr('src', '/images/star1.png');
+            $("#t5").attr('src', '/images/star2.png');
+            t = 4;
+        });
+        $(document).on("click", "#t5", function () {
+            $("#t1,#t2,#t3,#t4,#t5").attr('src', '/images/star1.png');
+            t = 5;
+        });
 
 
 
 
-            $("#p1").click(function () {
-                $("#p1").attr('src', '/images/star1.png');
-                $("#p2,#p3,#p4,#p5").attr('src', '/images/star2.png');
-                p = 1;
-            });
-            $("#p2").click(function () {
-                $("#p1,#p2").attr('src', '/images/star1.png');
-                $("#p3,#p4,#p5").attr('src', '/images/star2.png');
-                p = 2;
-            });
-            $("#p3").click(function () {
-                $("#p1,#p2,#p3").attr('src', '/images/star1.png');
-                $("#p4,#p5").attr('src', '/images/star2.png');
-                p = 3;
-            });
-            $("#p4").click(function () {
-                $("#p1,#p2,#p3,#p4").attr('src', '/images/star1.png');
-                $("#p5").attr('src', '/images/star2.png');
-                p = 4;
-            });
-            $("#p5").click(function () {
-                $("#p1,#p2,#p3,#p4,#p5").attr('src', '/images/star1.png');
-                p = 5;
-            });
+        $(document).on("click", "#p1", function () {
+            $("#p1").attr('src', '/images/star1.png');
+            $("#p2,#p3,#p4,#p5").attr('src', '/images/star2.png');
+            p = 1;
+        });
+        $(document).on("click", "#p2", function () {
+            $("#p1,#p2").attr('src', '/images/star1.png');
+            $("#p3,#p4,#p5").attr('src', '/images/star2.png');
+            p = 2;
+        });
+        $(document).on("click", "#p3", function () {
+            $("#p1,#p2,#p3").attr('src', '/images/star1.png');
+            $("#p4,#p5").attr('src', '/images/star2.png');
+            p = 3;
+        });
+        $(document).on("click", "#p4", function () {
+            $("#p1,#p2,#p3,#p4").attr('src', '/images/star1.png');
+            $("#p5").attr('src', '/images/star2.png');
+            p = 4;
+        });
+        $(document).on("click", "#p5", function () {
+            $("#p1,#p2,#p3,#p4,#p5").attr('src', '/images/star1.png');
+            p = 5;
+        });
 
-            $(".rate").on('click', function () {
-                var ratesp = (s + t + p) / 3;
-                console.log(ratesp);
+        $(document).on('click', ".rate", function () {
+            var ratesp = (s + t + p) / 3;
+            console.log(ratesp);
 
 
-                console.log("p " + p);
-                console.log("t" + t);
-                console.log("s" + s);
-                // x = Math.floor(ratesp)
-                // console.log("math fllorr " + x);
-                x = ratesp.toFixed(0);
-                console.log("fixed value" + x);
-                $("#rateavg").html(x);
+            console.log("p " + p);
+            console.log("t" + t);
+            console.log("s" + s);
+            x = ratesp.toFixed(0);
+            console.log("fixed value" + x);
+            $("#rateavg").html(x);
 
-                switch (x) {
-                    case '0':
-                        $("#v1,#v2,#v3,#v4,#v5").attr('src', '/images/star2.png');
-                        break;
-                    case '1':
-                        $("#v1").attr('src', '/images/star1.png');
-                        $("#v2,#v3,#v4,#v5").attr('src', '/images/star2.png');
-                        break;
-                    case '2':
-                        $("#v1,#v2").attr('src', '/images/star1.png');
-                        $("#v3,#v4,#v5").attr('src', '/images/star2.png');
-                        break;
-                    case '3':
-                        $("#v1,#v2,#v3").attr('src', '/images/star1.png');
-                        $("#v4,#v5").attr('src', '/images/star2.png');
-                        break;
-                    case '4':
-                        $("#v1,#v2,#v3,#v4").attr('src', '/images/star1.png');
-                        $("#v5").attr('src', '/images/star2.png');
-                        break;
-                    case '5':
-                        $("#v1,#v2,#v3,#v4,#v5").attr('src', '/images/star1.png');
-                        break;
-                    default:
-                        alert('Nobody Wins!');
-                }
-
-            })
-
+            switch (x) {
+                case '0':
+                    $("#v1,#v2,#v3,#v4,#v5").attr('src', '/images/star2.png');
+                    break;
+                case '1':
+                    $("#v1").attr('src', '/images/star1.png');
+                    $("#v2,#v3,#v4,#v5").attr('src', '/images/star2.png');
+                    break;
+                case '2':
+                    $("#v1,#v2").attr('src', '/images/star1.png');
+                    $("#v3,#v4,#v5").attr('src', '/images/star2.png');
+                    break;
+                case '3':
+                    $("#v1,#v2,#v3").attr('src', '/images/star1.png');
+                    $("#v4,#v5").attr('src', '/images/star2.png');
+                    break;
+                case '4':
+                    $("#v1,#v2,#v3,#v4").attr('src', '/images/star1.png');
+                    $("#v5").attr('src', '/images/star2.png');
+                    break;
+                case '5':
+                    $("#v1,#v2,#v3,#v4,#v5").attr('src', '/images/star1.png');
+                    break;
+                default:
+                    alert('Wohoo!');
+            }
 
         });
 
 
+    </script>
+    <script>
+        $(document).on('click', '.rateSP-btn', function () {
+            console.log('hie');
+             $.ajax({
+                url: '@Url.Action("_star", "Starting")',
+                type: 'GET',
+                contentType: 'application/html; charset=utf-8',
+                dataType: 'html',
+                data: {
+                    //id: parseInt($(this).attr("SRid")),
+                    sid: parseInt($(this).attr("sid"))
+                },
+                success: function (res) {
+                    $("#RateSPModal .modal-body").html(res);
+                    $("#RateSPModal").modal();
+                },
+                error: function (err) {
+                    console.log(err);
+                    console.log("Error");
+                }
+            });
+        });
+    </script>
+    <script>
+          var ServiceRequestId = 0, ServiceProviderId = 0;
+        $(document).on('click', ".rateSP-btn", function () {
+            ServiceRequestId = $(this).attr("i");
+            
+            ServiceProviderId = $(this).attr("sid");
+            console.log(ServiceRequestId);
+
+            console.log(ServiceProviderId);
+        });
+
+        $(document).on('click', ".submit-btn", function () {
+            var rate = {};
+            rate.Ratings = parseInt(x);
+            rate.OnTimeArrival = parseInt(s);
+            rate.Friendly = parseInt(t);
+            rate.QualityOfService = parseInt(p);
+            rate.Comments = $("#cmnt").val();
+            rate.ServiceRequestId = parseInt(ServiceRequestId);
+
+            rate.RatingTo = parseInt(ServiceProviderId);
+            console.log(rate);
+
+
+            $.ajax({
+                url: '@Url.Action("starPopup", "Starting")',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(rate),
+
+
+                success: function (resp) {
+
+                    //$("#addNewAddressModal").modal("hide");
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    alert("done rating");
+                },
+                error: function (err) {
+                    console.log(err);
+                    alert("Error while inserting data");
+                }
+
+            });
+        });
     </script>
 </body>
 

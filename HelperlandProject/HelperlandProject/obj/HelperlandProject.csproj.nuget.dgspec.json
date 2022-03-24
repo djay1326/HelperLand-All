@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {}
+    "E:\\tatva\\rough2\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {}
   },
   "projects": {
-    "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {
+    "E:\\tatva\\rough2\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+        "projectUniqueName": "E:\\tatva\\rough2\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
         "projectName": "HelperlandProject",
-        "projectPath": "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
+        "projectPath": "E:\\tatva\\rough2\\HelperlandProject\\HelperlandProject\\HelperlandProject.csproj",
         "packagesPath": "C:\\Users\\djay1\\.nuget\\packages\\",
-        "outputPath": "E:\\tatva\\rough1\\HelperlandProject\\HelperlandProject\\obj\\",
+        "outputPath": "E:\\tatva\\rough2\\HelperlandProject\\HelperlandProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

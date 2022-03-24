@@ -21,7 +21,7 @@ namespace HelperlandProject.Data
         }
 
         public virtual DbSet<Ayy> Ayy { get; set; }
-        public virtual DbSet<Contactu> Contactus { get; set; }
+        public virtual DbSet<Contactus> Contactus { get; set; }
         public virtual DbSet<Userr> Userr { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -35,19 +35,29 @@ namespace HelperlandProject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Ayy>(entity =>
-            {
-                entity.ToTable("ayy");
+            //modelBuilder.Entity<Ayy>(entity =>
+            //{
+            //    entity.ToTable("ayy");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+            //    entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasColumnName("firstName")
-                    .HasMaxLength(30);
-            });
+            //    entity.Property(e => e.FirstName)
+            //        .IsRequired()
+            //        .HasColumnName("firstName")
+            //        .HasMaxLength(30);
 
-            modelBuilder.Entity<Contactu>(entity =>
+            //    entity.Property(e => e.LastName)
+            //        .HasColumnName("lastName")
+            //        .HasMaxLength(50)
+            //        .IsUnicode(false);
+
+            //    entity.Property(e => e.RollNumber)
+            //        .HasColumnName("rollNumber")
+            //        .HasMaxLength(10)
+            //        .IsUnicode(false);
+            //});
+
+            modelBuilder.Entity<Contactus>(entity =>
             {
                 entity.ToTable("contactus");
 

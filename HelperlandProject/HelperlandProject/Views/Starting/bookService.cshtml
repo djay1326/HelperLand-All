@@ -107,9 +107,9 @@
                                 </div>
                             </li>
 
-                            }
                         }
-                    </ul>
+                    }
+                </ul>
             </div>
         </div>
     </nav>
@@ -127,11 +127,11 @@
                     <div class="modal-body loginPopup p-2">
                         <form asp-controller="Starting" asp-action="LoginAdd">
                             <div class="form-group position-relative my-3">
-                                <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
+                                <input type="email" placeholder="Email Address" name="email" class="emaill brdr" required>
                                 <img src="~/images/userr.png" alt="" height="21" width="20">
                             </div>
                             <div class="form-group position-relative my-3">
-                                <input type="password" placeholder="Password" name="password" class="emaill brdr">
+                                <input type="password" placeholder="Password" name="password" class="emaill brdr" required>
                                 <img src="~/images/lock.png" alt="" height="21" width="20">
                             </div>
                             <div class="form-group d-flex">
@@ -424,8 +424,8 @@
                                             Complete Booking
                                         </button>
                                         @*<button type="button" id="successmodal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success" style="display:none">
-                                            success
-                                        </button>*@
+                                                success
+                                            </button>*@
                                     </div>
                                 </form>
                             </div>
@@ -526,7 +526,7 @@
                 </div>
             </div>
         </section>
-       
+
         <div class="modal fade" id="successModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="successModalLabel2" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-sm">
                 <div class="modal-content">
@@ -598,7 +598,7 @@
         </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
     @*<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>*@
     @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
     @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>*@
@@ -780,7 +780,7 @@
     </script>
 
     @* ....................For Not Loading....................... *@
-<script>
+    <script>
     $("#cont1").on("click", function () {
         $("#yourDetailsTabController").removeClass("disabled");
         $("#yourDetailsTabController")[0].click();
@@ -834,7 +834,7 @@
             });
 
        });
-        
+
 
     $("#completeBooking").on('click', function () {
 
@@ -867,7 +867,11 @@
         });
 
 
-</script>
+    </script>
+    <script>
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("servicedate")[0].setAttribute('min', today);
+    </script>
 </body>
 
 </html>

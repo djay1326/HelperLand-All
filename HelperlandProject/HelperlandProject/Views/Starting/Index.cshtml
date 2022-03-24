@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="images/white-logo-transparent-background.png">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <script type="text/javascript" src="js/dashh.js"></script>
+    <script type="text/javascript" src="~/js/cal.js"></script>
     <title>Home</title>
 </head>
 
@@ -162,11 +162,11 @@
                         <div class="modal-body loginPopup p-2">
                             <form asp-controller="Starting" asp-action="LoginAdd">
                                 <div class="form-group position-relative my-3">
-                                    <input type="email" placeholder="Email Address" name="email" class="emaill brdr">
+                                    <input type="email" placeholder="Email Address" name="email" class="emaill brdr" required>
                                     <img src="images/userr.png" alt="" height="21" width="20">
                                 </div>
                                 <div class="form-group position-relative my-3">
-                                    <input type="password" placeholder="Password" name="password" class="emaill brdr">
+                                    <input type="password" placeholder="Password" name="password" class="emaill brdr" required>
                                     <img src="images/lock.png" alt="" height="21" width="20">
                                 </div>
                                 <div class="form-group d-flex">
@@ -239,7 +239,7 @@
             </ul>
         </div>
         <div class="main_button position-relative rounded-pill mx-auto" style="margin-bottom: 45px;">
-            <a class="button_link  text-decoration-none text-light">Let’s Book a Cleaner</a>
+            <a class="button_link  text-decoration-none text-light" asp-controller="Starting" asp-action="bookService">Let’s Book a Cleaner</a>
         </div>
         <div class="text-center d-flex flex-row text-image-steps justify-content-center row grid-row">
             <div class="col grid-col">
@@ -608,7 +608,7 @@
                 alert('@TempData["abc"]');
                 @TempData.Remove("abc");
             });
-
+            
             </script>
         }
 

@@ -46,6 +46,8 @@ namespace HelperlandProject.Models
         public Guid? RecordVersion { get; set; }
         [NotMapped]
         public int AddressId { get; set; }
+        [NotMapped]
+        public string Date { get; set; }
         public virtual Userr ServiceProvider { get; set; }
         public virtual Userr User { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }

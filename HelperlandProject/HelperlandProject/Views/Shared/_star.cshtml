@@ -1,0 +1,65 @@
+﻿@model HelperlandProject.Models.Userr
+
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+<form>
+    <div class="d-flex flex-row mb-3">
+        <div class="profile-img">
+            <img src="~/images/cap.png" alt="">
+        </div>
+        <div class="details">
+            <b>@Model.FirstName @Model.LastName</b>
+            <div class="rate">
+                <img src="~/images/star2.png" alt="" id="v1">
+                <img src="~/images/star2.png" alt="" id="v2">
+                <img src="~/images/star2.png" alt="" id="v3">
+                <img src="~/images/star2.png" alt="" id="v4">
+                <img src="~/images/star2.png" alt="" id="v5">
+                <span id="vraj"><span id="rateavg">0</span></span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h5><b>Rate your service provider</b></h5>
+    </div>
+    <hr>
+    <div>
+        <span>On time arrival</span>
+        &nbsp;&nbsp;&nbsp;
+        <span><img class="rate" src="~/images/star2.png" alt="" id="s1"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="s2"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="s3"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="s4"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="s5"></span>
+    </div>
+    <div>
+        <span>Friendly</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span><img class="rate" src="~/images/star2.png" alt="" id="t1"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="t2"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="t3"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="t4"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="t5"></span>
+    </div>
+    <div>
+        <span>Quality of service</span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="p1"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="p2"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="p3"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="p4"></span>
+        <span><img class="rate" src="~/images/star2.png" alt="" id="p5"></span>
+    </div>
+    <div class="form-row mt-3">
+        <div class="form-group col-md-12">
+            <label for="cmnt" class="cm-dez">Feedback on service provider</label>
+            <textarea class="form-control" id="cmnt" rows="3" placeholder=""></textarea>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button class="submit-btn">Submit</button>
+        </div>
+    </div>
+</form>

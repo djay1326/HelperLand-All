@@ -312,9 +312,11 @@ li {
 }
 
 .rateSP-btn {
-    background-color: #6da9b5;
-    padding: 8px 16px;
+    background-color: #6da9b5 !important;
+    /*padding: 8px 16px;*/
     border: none;
+    color: white !important;
+    min-width : 90px;
 }
 
 /*......For Favorite pros..........*/

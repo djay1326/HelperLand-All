@@ -53,5 +53,7 @@ namespace HelperlandProject.Models
 
         public decimal? Ratings { get; set; }
         public DateTime? RatingDate { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }
