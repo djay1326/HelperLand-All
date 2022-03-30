@@ -25,13 +25,19 @@ namespace HelperlandProject.Models
         }
 
         public int UserId { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
+        [Required]
         [NotMapped]
         [Compare("Password", ErrorMessage = "Password and Confirm password do not match")]
         public string Confirmpassword { get; set; }
+        [RegularExpression("^[6789][0-9]{9}$", ErrorMessage = "Enter valid mobile number")]
         public string Mobile { get; set; }
         public int UserTypeId { get; set; }
         public int? Gender { get; set; }

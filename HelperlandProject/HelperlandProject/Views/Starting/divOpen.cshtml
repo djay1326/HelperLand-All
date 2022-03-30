@@ -7,7 +7,7 @@
 }
 
 <div class="CalLeft">
-    <h4>@Model.ServiceStartDate</h4>
+    <h4>@Model.ServiceStartDate.ToShortDateString()</h4>
     <p><b>Duration:</b>@Model.ServiceHours Hrs</p>
     <hr>
     <p><b>Service Id:</b>@Model.ServiceId</p>

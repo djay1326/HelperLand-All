@@ -133,7 +133,7 @@ namespace HelperlandProject.Controllers
             var ue = _DbContext.Userr.Where(x => x.Email == userr.Email && x.Password == userr.Password).FirstOrDefault();
             if (ue != null)
             {
-                if (ue.UserTypeId == 1)
+                if (ue.UserTypeId == 1 && ue.IsActive == true)
                 {
                     ViewBag.Message = String.Format("No matching email");
                     //Session["FirstName"] = ue.UserId.ToString();
@@ -142,7 +142,7 @@ namespace HelperlandProject.Controllers
                     return RedirectToAction("Index");
                 }
 
-                else if (ue.UserTypeId == 2)
+                else if (ue.UserTypeId == 2 && ue.IsActive == true)
                 {
                     ViewBag.Message = String.Format("No matching email");
                     HttpContext.Session.SetInt32("userid", ue.UserId);
@@ -156,8 +156,8 @@ namespace HelperlandProject.Controllers
                 }
                 else
                 {
-                    
-                    return RedirectToAction("About");
+                    TempData["abc"] = "Your id is deactivated!";
+                    return RedirectToAction("Index");
                 }
             }
             else
@@ -460,6 +460,7 @@ namespace HelperlandProject.Controllers
             u.Mobile = sme.Userr.Mobile;
             u.DateOfBirth = sme.Userr.DateOfBirth;
             u.Gender = sme.Userr.Gender;
+            u.ZipCode = sme.Userr.ZipCode;
             _DbContext.Userr.Update(u);
             _DbContext.SaveChanges();
             UserAddress ua = _DbContext.UserAddress.Where(x => x.UserId == ty).FirstOrDefault();
@@ -470,7 +471,8 @@ namespace HelperlandProject.Controllers
             ua.PostalCode = sme.UserAddress.PostalCode;
             ua.Mobile = sme.Userr.Mobile;
             ua.City = sme.UserAddress.City;
-            _DbContext.UserAddress.Update(ua);
+                ua.PostalCode = sme.Userr.ZipCode;
+                _DbContext.UserAddress.Update(ua);
             _DbContext.SaveChanges();
             }
             else
@@ -865,6 +867,27 @@ namespace HelperlandProject.Controllers
             _DbContext.ServiceRequestAddress.Update(srd);
             _DbContext.SaveChanges();
             return 1;
+        }
+
+        public IActionResult _refundPop(int id)
+        {
+            ServiceRequest sr = _DbContext.ServiceRequest.Where(x => x.ServiceRequestId == id).FirstOrDefault();
+            return PartialView(sr);
+        }
+
+        public string refundUpdateChanges([FromBody] ServiceRequest book)
+        {
+            ServiceRequest sr = _DbContext.ServiceRequest.Where(x => x.ServiceRequestId == book.ServiceRequestId).FirstOrDefault();
+            sr.Comments = book.Comments;
+            sr.RefundedAmount = book.RefundedAmount;
+            _DbContext.ServiceRequest.Update(sr);
+            _DbContext.SaveChanges();
+            return "true";
+        }
+
+        public IActionResult eightSchedule()
+        {
+            return View();
         }
     }
 }

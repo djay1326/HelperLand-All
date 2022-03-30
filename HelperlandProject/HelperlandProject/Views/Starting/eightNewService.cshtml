@@ -88,8 +88,8 @@
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a asp-controller="Starting" asp-action="eightMain">Dashboard</a>
                         <a asp-controller="Starting" asp-action="eightNewService">New Service Request</a>
-                        <a href="#upcomingService" onclick="upcomingg()">Upcoming services</a>
-                        <a href="#" onclick="schedulee()">Service Schedule</a>
+                        <a asp-controller="Starting" asp-action="eightUpcoming">Upcoming services</a>
+                        <a asp-controller="Starting" asp-action="eightSchedule">Service Schedule</a>
                         <a asp-controller="Starting" asp-action="eightHistory">Service History</a>
                         <a asp-controller="Starting" asp-action="eightRating">My Ratings</a>
                         <a href="#">Invoices</a>
@@ -174,7 +174,7 @@
                     <a class="text-light" id="Upcomingg" asp-controller="Starting" asp-action="eightUpcoming">Upcoming Services</a>
                 </li>
                 <li>
-                    <a id="serviceSchedulee" class="text-light" onclick="schedulee()">Service Schedule</a>
+                    <a id="serviceSchedulee" class="text-light" asp-controller="Starting" asp-action="eightSchedule">Service Schedule</a>
                 </li>
                 <li>
                     <a id="serviceHistoryy" class="text-light" asp-controller="Starting" asp-action="eightHistory">Service History</a>
@@ -226,11 +226,11 @@
                             </th>
                             <th scope="col">
                                 Service Date
-                                <span>
+                                @*<span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
                                         <path fill-rule="evenodd" fill="#9B9B9B" d="m13.829 9.159-4.67 4.67c.261.116-.233.571-.409.571-.116 0-.291-.455-.408-.571a.53.53 0 0 1-.175-.409V.579c0-.292.292-.179.583-.179h1.168c.292 0 .584-.113.584.179v7.88c0 .291.35.408.768.233l.924-1.167a.53.53 0 0 1 .409-.175c.117 0 .292.058.507.175l.719.817c.116.117.571.233.571.408 0 .176-.455.67-.571.409zM5.248 14.4H4.81c-1.021 0-1.313-.688-1.313-.98V5.54c0-.292-.35-.408-.525-.233L1.804 6.474a.527.527 0 0 1-.408.175.63.63 0 0 1-.409-.175L.17 5.657c.36-.117.23-.234.23-.409 0 .482.13-.292-.23-.408L4.84.17c.116.36.89.23.408.23.175 0 .292.13.409-.23a.53.53 0 0 1 .175.409V13.42c0 .292-.292.98-.584.98z" />
                                     </svg>
-                                </span>
+                                </span>*@
                             </th>
                             <th scope="col">
                                 Customer Details
@@ -255,7 +255,7 @@
                                 <td>
                                     <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none camera" zrid="@item.ServiceRequestId">
                                         <img src="~/images/calender.png"  alt="" height="19" width="16">
-                                        <p class="m-0">@item.ServiceStartDate</p>
+                                        <p class="m-0">@item.ServiceStartDate.ToShortDateString()</p>
                                     </a>
                                     <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none">
                                         <img src="~/images/clock.png" alt="" height="19" width="16">
@@ -274,7 +274,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <p class="m-0 text-center">@item.SubTotal</p>
+                                    <p class="m-0 text-center">@item.SubTotal $</p>
                                 </td>
                                 <td>
                                     <p class="m-0 text-center">15km</p>
@@ -534,8 +534,8 @@
                 </div>
             </div>
             <div class="footer-insta-facebook d-flex flex-row" style="margin-top: -75px;">
-                <img src="~/images/facebook.svg" class="Forma-1">
-                <img src="~/images/instagram.svg" class="Forma-2">
+                <img src="~/images/facebook.svg" class="Forma-1 mr-4">
+                <img src="~/images/instagram.svg" class="Forma-2 mr-2">
             </div>
         </div>
         <div class="footer-copyright text-center py-3 text-white text-center position-relative">

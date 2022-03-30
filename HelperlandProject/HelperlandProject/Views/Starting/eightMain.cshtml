@@ -51,7 +51,7 @@
                         <a asp-controller="Starting" asp-action="eightMain">Dashboard</a>
                         <a asp-controller="Starting" asp-action="eightNewService">New Service Request</a>
                         <a asp-controller="Starting" asp-action="eightUpcoming">Upcoming services</a>
-                        <a href="#" onclick="schedulee()">Service Schedule</a>
+                        <a asp-controller="Starting" asp-action="eightSchedule">Service Schedule</a>
                         <a asp-controller="Starting" asp-action="eightHistory">Service History</a>
                         <a asp-controller="Starting" asp-action="eightRating">My Ratings</a>
                         <a href="#">Invoices</a>
@@ -136,7 +136,7 @@
                     <a class="text-light" id="Upcomingg" asp-controller="Starting" asp-action="eightUpcoming">Upcoming Services</a>
                 </li>
                 <li>
-                    <a id="serviceSchedulee" class="text-light" onclick="schedulee()">Service Schedule</a>
+                    <a id="serviceSchedulee" class="text-light" asp-controller="Starting" asp-action="eightSchedule">Service Schedule</a>
                 </li>
                 <li>
                     <a id="serviceHistoryy" class="text-light" asp-controller="Starting" asp-action="eightHistory">Service History</a>
@@ -1762,8 +1762,8 @@
                 </div>
             </div>
             <div class="footer-insta-facebook d-flex flex-row" style="margin-top: -75px;">
-                <img src="~/images/facebook.svg" class="Forma-1">
-                <img src="~/images/instagram.svg" class="Forma-2">
+                <img src="~/images/facebook.svg" class="Forma-1 mr-4">
+                <img src="~/images/instagram.svg" class="Forma-2 mr-2">
             </div>
         </div>
         <div class="footer-copyright text-center py-3 text-white text-center position-relative">

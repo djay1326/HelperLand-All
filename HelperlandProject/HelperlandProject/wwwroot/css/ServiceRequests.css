@@ -214,9 +214,13 @@ label {
 .bld{
     font-weight: 550;
 }
-.updateBtn {
+.updateBtn1 {
   color: white;
   background-color: #1fb6ff;
+}
+.refundUp {
+    color: white;
+    background-color: #1fb6ff;
 }
 /*.........Refund Popup .......*/
 .refundPopModal .modal-dialog {

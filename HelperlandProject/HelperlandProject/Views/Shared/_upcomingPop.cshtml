@@ -15,13 +15,13 @@
             <div class="modal-body srdetail d-flex">*@
                 <div class="col-sm-6">
                     <div class="vr">
-                        <p class="m-0 font-weight-bold">10/02/2012 12:00-1:00</p>
+                        <p class="m-0 font-weight-bold">@Model.ServiceStartDate.ToShortDateString()</p>
                         <p><span>Duration : </span> @Model.ServiceHours hrs</p>
                     </div>
                     <div class="vr">
-                        <p><span>ServiceId : </span> 8847</p>
+                        <p><span>ServiceId : </span>@Model.ServiceId</p>
                         <p><span>Extras : </span></p>
-                        <p><span>Total Payment : </span>$@Model.SubTotal</p>
+                        <p><span>Total Payment : </span>$@Model.SubTotal $</p>
                     </div>
                     <div class="vr">
                         <p><span>Customer Name : </span>@Model.FirstName @Model.LastName</p>
@@ -33,7 +33,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                     <div class="justify-content-start mt-2 d-flex">
-                        <button type="button" class="btn-cancel mx-2">Cancel</button>
+                        <button type="button" class="btn-cancel cancel-btn mx-2" zyid="@Model.ServiceRequestId">Cancel</button>
                         <button type="button" class="btn-complete" trid="@Model.ServiceRequestId">Complete</button>
                     </div>
                 </div>

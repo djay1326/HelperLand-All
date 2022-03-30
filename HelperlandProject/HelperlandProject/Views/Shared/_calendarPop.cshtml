@@ -14,11 +14,11 @@
             <div class="modal-body srdetail d-flex">*@
 <div class="col-sm-6">
     <div class="vr">
-        <p class="m-0 font-weight-bold">10/02/2012 12:00-1:00</p>
+        <p class="m-0 font-weight-bold">@Model.ServiceStartDate.ToShortDateString()</p>
         <p><span>Duration : </span> @Model.ServiceHours hrs</p>
     </div>
     <div class="vr">
-        <p><span>ServiceId : </span> 8847</p>
+        <p><span>ServiceId : </span>@Model.ServiceId</p>
         <p><span>Extras : </span></p>
         <p><span>Total Payment : </span>$@Model.SubTotal</p>
     </div>

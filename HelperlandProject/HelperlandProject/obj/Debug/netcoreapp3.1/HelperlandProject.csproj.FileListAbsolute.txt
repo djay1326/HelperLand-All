@@ -679,3 +679,5 @@ E:\tatva\rough2\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Help
 E:\tatva\rough2\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\HelperlandProject.csproj.CopyComplete
 E:\tatva\rough2\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\HelperlandProject.genruntimeconfig.cache
 E:\tatva\rough2\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_editreschedule.cshtml.g.cs
+E:\tatva\rough2\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_refundPop.cshtml.g.cs
+E:\tatva\rough2\HelperlandProject\HelperlandProject\obj\Debug\netcoreapp3.1\Razor\Views\Starting\eightSchedule.cshtml.g.cs

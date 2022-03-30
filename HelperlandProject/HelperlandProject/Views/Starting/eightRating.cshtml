@@ -52,7 +52,7 @@
                         <a asp-controller="Starting" asp-action="eightMain">Dashboard</a>
                         <a asp-controller="Starting" asp-action="eightNewService">New Service Request</a>
                         <a asp-controller="Starting" asp-action="eightUpcoming">Upcoming services</a>
-                        <a href="#" onclick="schedulee()">Service Schedule</a>
+                        <a asp-controller="Starting" asp-action="eightSchedule">Service Schedule</a>
                         <a asp-controller="Starting" asp-action="eightHistory">Service History</a>
                         <a asp-controller="Starting" asp-action="eightRating">My Ratings</a>
                         <a href="#">Invoices</a>
@@ -137,7 +137,7 @@
                     <a class="text-light" id="Upcomingg" asp-controller="Starting" asp-action="eightUpcoming">Upcoming Services</a>
                 </li>
                 <li>
-                    <a id="serviceSchedulee" class="text-light" onclick="schedulee()">Service Schedule</a>
+                    <a id="serviceSchedulee" class="text-light" asp-controller="Starting" asp-action="eightSchedule">Service Schedule</a>
                 </li>
                 <li>
                     <a id="serviceHistoryy" class="text-light" asp-controller="Starting" asp-action="eightHistory">Service History</a>
@@ -196,80 +196,71 @@
                                 <div class="al">
                                     <p class="mb-0 font-weight-bold">ratings</p>
                                     <div class="d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#D4D4D4" d="m8.823 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.823.6 6.529 5.578.658 6.98l4.454 3.84-1.335 5.78 5.046-3.735z" />
-                                        </svg>
-                                        <span class="ms-2">
-                                            Very Good
-                                        </span>
+                                        @for (int j = 0; j < 5; j++)
+                                        {
+                                            if (j < ((int)i.Ratings))
+                                            {
+                                                <img src="~/images/star1.png" alt=""> }
+                                            else
+                                            {
+                                                <img src="~/images/star2.png" alt="">}
+                                        }
+                                    </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="p-2">
-                                <p class="mb-0 font-weight-bold m-2">@i.Comments</p>
-                            </div>
-                        </div>
-                            }
-                        
-                        @*<div class="ratee d-flex flex-column">
-                            <div class="ratee1 d-flex p-2 m-2">
-                                <div class="d-flex ratee2 ">
-                                    <div class="d-flex flex-column mr-5">
-                                        <a class="text-decoration-none" href="#">323436</a>
-                                        <a href="" class="text-decoration-none font-weight-bold">Gaurang patel</a>
-                                    </div>
-                                    <div class="datess">
-                                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none font-weight-bold">
-                                            <img src="~/images/calender.png" alt="" height="19" width="16">
-                                            <p class="m-0">27/06/2019</p>
-                                        </a>
-                                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none">
-                                            <img src="~/images/clock.png" alt="" height="19" width="16">
-                                            <p class="m-0">12:00 - 18:00</p>
-                                        </a>
+                                    <div class="p-2">
+                                        <p class="mb-0 font-weight-bold m-2">@i.Comments</p>
                                     </div>
                                 </div>
-                                <div class="al">
-                                    <p class="mb-0 font-weight-bold">ratings</p>
-                                    <div class="d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                                            <path fill-rule="evenodd" fill="#D4D4D4" d="m8.823 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.823.6 6.529 5.578.658 6.98l4.454 3.84-1.335 5.78 5.046-3.735z" />
-                                        </svg>
-                                        <span class="ms-2">
-                                            Very Good
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-2">
-                                <p class="mb-0 font-weight-bold m-2">Customer Comment</p>
-                            </div>
-                        </div>*@
+                                }
+
+                                @*<div class="ratee d-flex flex-column">
+            <div class="ratee1 d-flex p-2 m-2">
+                <div class="d-flex ratee2 ">
+                    <div class="d-flex flex-column mr-5">
+                        <a class="text-decoration-none" href="#">323436</a>
+                        <a href="" class="text-decoration-none font-weight-bold">Gaurang patel</a>
                     </div>
+                    <div class="datess">
+                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none font-weight-bold">
+                            <img src="~/images/calender.png" alt="" height="19" width="16">
+                            <p class="m-0">27/06/2019</p>
+                        </a>
+                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none">
+                            <img src="~/images/clock.png" alt="" height="19" width="16">
+                            <p class="m-0">12:00 - 18:00</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="al">
+                    <p class="mb-0 font-weight-bold">ratings</p>
+                    <div class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                            <path fill-rule="evenodd" fill="#D4D4D4" d="m8.823 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.823.6 6.529 5.578.658 6.98l4.454 3.84-1.335 5.78 5.046-3.735z" />
+                        </svg>
+                        <span class="ms-2">
+                            Very Good
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2">
+                <p class="mb-0 font-weight-bold m-2">Customer Comment</p>
+            </div>
+        </div>*@
+                            </div>
                 </div>
                 @*<div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="show-entries">
@@ -443,8 +434,8 @@
                 </div>
             </div>
             <div class="footer-insta-facebook d-flex flex-row" style="margin-top: -75px;">
-                <img src="~/images/facebook.svg" class="Forma-1">
-                <img src="~/images/instagram.svg" class="Forma-2">
+                <img src="~/images/facebook.svg" class="Forma-1 mr-4">
+                <img src="~/images/instagram.svg" class="Forma-2 mr-2">
             </div>
         </div>
         <div class="footer-copyright text-center py-3 text-white text-center position-relative">

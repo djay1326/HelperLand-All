@@ -128,28 +128,33 @@
             <div>
                 <form method="post" asp-controller="Starting" asp-action="ServiceProvider">
                     <span class="Register-Now">Register Now!</span>
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div>
-                        <input type="text" name="firstname" placeholder="First name" asp-for="FirstName" class="Rounded-Rectangle-2 gap" required>
-                        <input type="text" name="lastname" placeholder="Last name" asp-for="LastName" class="Rounded-Rectangle-2" required>
-                        <input type="email" name="Email" placeholder="Email address" asp-for="Email" class="Rounded-Rectangle-3" required>
-                    </div>
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                <div>
+                    <input type="text"  placeholder="First name" asp-for="FirstName" class="Rounded-Rectangle-2 gap" required>
+                    <span asp-validation-for="FirstName" style="color:red"></span>
+                    <input type="text"  placeholder="Last name" asp-for="LastName" class="Rounded-Rectangle-2" required>
+                    <span asp-validation-for="LastName" style="color:red"></span>
+                    <input type="email"  placeholder="Email address" asp-for="Email" class="Rounded-Rectangle-3" required>
+                    <span asp-validation-for="Email" style="color:red"></span>
+                </div>
                     <div class="form-group d-flex">
                         <input type="number" name="areacode" class="form-areacode form-control p-0 pl-2 text-center" placeholder="+91" value="+49" disabled style="max-width: 55px;">
                         <input type="number" name="Mobile" placeholder="Mobile Number" asp-for="Mobile" class="form-control">
                     </div>
                     <div>
-                        <input type="password" name="password" placeholder="Password" asp-for="Password" class="Rounded-Rectangle-2" required>
+                        <input type="password" placeholder="Password" asp-for="Password" class="Rounded-Rectangle-2" required>
+                        <span asp-validation-for="Password" style="color:red"></span>
                     </div>
                     <div>
-                        <input type="password" name="Confirmpassword" placeholder=" Confirm Pwd." asp-for="Confirmpassword" class="Rounded-Rectangle-2" required>
+                        <input type="password" placeholder=" Confirm Pwd." asp-for="Confirmpassword" class="Rounded-Rectangle-2" required>
+                        <span asp-validation-for="Confirmpassword" style="color:red"></span>
 
                     </div>
                     <div>
-                        <input type="checkbox" name="CheckBox" class="copy-6"><span class="sendd">Send me newsletter from HelperLand.</span>
+                        <input type="checkbox" name="CheckBox" class="copy-6" required><span class="sendd">Send me newsletter from HelperLand.</span>
                     </div>
                     <div>
-                        <input type="checkbox" name="CheckBox1" class="copy-6"><span class="sendd">I accept <a href="#" class="colorr">Terms and conditions</a> & <a href="#" class="colorr">Privacy Policy.</a></span>
+                        <input type="checkbox" name="CheckBox1" class="copy-6" required><span class="sendd">I accept <a href="#" class="colorr">Terms and conditions</a> & <a href="#" class="colorr">Privacy Policy.</a></span>
                     </div>
                     <div>
                         <img src="~/images/captcha.png" class="TheCaptcha">

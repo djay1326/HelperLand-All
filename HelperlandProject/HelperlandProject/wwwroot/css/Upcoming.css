@@ -787,7 +787,7 @@ tbody {
     }
 
     #myAddressesMenu {
-        display: flex;
+        /*display: flex;*/
         justify-content: center;
         align-items: center;
         width: 100vw;
@@ -807,6 +807,9 @@ tbody {
     .ha {
         display: flex;
         flex-direction: column;
+    }
+    #changePasswordTab input {
+        width: 230px;
     }
 }
 

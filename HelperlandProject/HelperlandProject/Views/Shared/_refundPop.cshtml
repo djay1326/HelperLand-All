@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model HelperlandProject.Models.ServiceRequest
+
+<div class="modal-header">
+    <h4 class="modal-title fw-bold" id="editRescheduleLabel">Refund Amount</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="d-flex px-4 justify-content-between">
+    <div class="d-flex flex-column va">
+        <p class="mb-1">Paid Amount</p>
+        <p class="mb-1">@Model.SubTotal $</p>
+    </div>
+    <div class="d-flex flex-column va">
+        <p class="mb-1">Refunded Amount</p>
+        <p class="mb-1">@Model.RefundedAmount</p>
+    </div>
+    <div class="d-flex flex-column va">
+        <p class="mb-1">In Balance Amount</p>
+        <p class="mb-1"><span id="inbalance">@Model.SubTotal </span>$</p>
+    </div>
+</div>
+<div class="modal-body d-flex refundModalModal p-4 justify-content-center">
+    <form action="">
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <div class="form-group d-flex flex-column">
+                    <label for="amountRefundModal" class="control-label fw-bold">Amount</label>
+                    <div class="d-flex">
+                        <input type="text" id="refundamount" name="amountRefundModal" class="ht bdr2" style="max-width: 130px;">
+                        <select name="" id="" style="max-width: 130px;" class="p-1">
+                            <option value="percentage">Percentage</option>
+                            <option value="fixed">Fixed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group d-flex flex-column">
+                    <label for="calculatedRefundModal" class="control-label fw-bold">Calculated</label>
+                    <div class="d-flex">
+                        <button type="button" class="border-none bdr2 p-2" style="width: 130px;" id="calculate">Calculate</button>
+                        <input type="text" id="printrfnd" disabled name="calculatedRefundModal" class="ht bdr2" style="max-width: 130px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="reasonScheduleEdit" class="fw-bold">Why do you want to reschedule service request?</label>
+            <textarea name="reasonScheduleEdit" id="cmt1" rows="4" maxlength="500" placeholder="Why do you want to reschedule service request?" class="bdr2 p-2"></textarea>
+        </div>
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="reasonScheduleEdit" class="fw-bold">Call Center EMP Notes</label>
+            <textarea name="reasonScheduleEdit" id="" rows="3" maxlength="500" placeholder="Enter notes" class="bdr2 p-2"></textarea>
+        </div>
+        <button type="button" id="refundSubmit" class="btn updateBtn1 refundUp w-100">Update</button>
+    </form>
+</div>
+
+
+
+<script>
+    var per, balance, total;
+    $(document).on("click", "#calculate", function () {
+        per = parseInt($("#refundamount").val());
+        balance = parseInt($("#inbalance").html());
+        if (per > 100) {
+            alert("buddhi che!!");
+        }
+        else {
+
+        console.log($("#inbalance").html());
+        total = parseInt(balance * (per / 100));
+        console.log(total);
+        console.log(per);
+            console.log(balance);
+            $("#printrfnd").val(total);
+        }
+    });
+
+    $(document).on('click', '#refundSubmit', function () {
+            var book = {};
+            book.ServiceRequestId = parseInt(refundID);
+            book.Comments = $("#cmt1").val();
+            book.RefundedAmount = parseInt(total);
+            console.log(book);
+            console.log("id ser req"+refundID);
+
+             $.ajax({
+                    url: '@Url.Action("refundUpdateChanges", "Starting")',
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(book),
+
+                    success: function (resp) {
+                        alert("Data has been added successfully.");
+                        location.reload();
+                    },
+                    error: function (err) {
+                        alert("Error while inserting data");
+                    }
+
+                });
+        });
+</script>
