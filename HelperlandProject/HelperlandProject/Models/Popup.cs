@@ -11,6 +11,9 @@ namespace HelperlandProject.Models
         public int ServiceRequestId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int usertypeid { get; set; }
+        public string spFirstName { get; set; }
+        public string spLastName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string City { get; set; }

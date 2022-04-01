@@ -19,6 +19,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/ServiceRequests.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <style>
+        .updateBtn1 , .updateBtn {
+            color: white;
+            background-color: #1fb6ff;
+        }
+    </style>
 </head>
 
 <body class="p-0">
@@ -217,7 +223,7 @@
                                         <img src="~/images/cap.png" alt="" height="20" width="30" class="rounded-circle">
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <p class="mb-0">Lyum Watson</p>
+                                        <p class="mb-0">@i.spFirstName @i.spLastName</p>
                                         <div class="d-flex align-items-center">
                                             @*<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
                                 <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
@@ -1058,7 +1064,7 @@
    
         var minDate, maxDate;
         $(document).on('click', ".searchBtn", function () {
-            console.log("mindate" + minDate);            console.log("maxdate" + maxDate);            // Custom filtering function which will search data in column four between two values            $.fn.dataTable.ext.search.push(                function (settings, data, dataIndex) {                    minDate = $('#min').val();                    maxDate = $('#max').val();                    if (minDate == null || minDate == '') {                        minDate = "2000/01/01";                    }                    if (maxDate == null || maxDate == '') {                        maxDate = "9999/01/01";                    }                    var min = new Date(minDate);                    var max = new Date(maxDate);                    var date = new Date(data[1]);                    var tab = $('#tab1 tr').length;                    console.log("table length" + tab);                    console.log("min" + min);                    console.log("min" + max);                    console.log("chlae che");                    if (                        (min === null && max === null) ||                        (min === null && date <= max) ||                        (min <= date && max === null) ||                        (min <= date && date <= max)                    ) {                        return true;                    }                    return false;                }            );
+            console.log("mindate" + minDate);            console.log("maxdate" + maxDate);            // Custom filtering function which will search data in column four between two values            $.fn.dataTable.ext.search.push(                function (settings, data, dataIndex) {                    minDate = $('#min').val();                    maxDate = $('#max').val();                    if (minDate == null || minDate == '') {                        minDate = "2000/01/01";                    }                    if (maxDate == null || maxDate == '') {                        maxDate = "9999/01/01";                    }                    var min = new Date(minDate);                    var max = new Date(maxDate);                    var date = new Date(data[1]);                    var tab = $('#tab1 tr').length;                    console.log("table length" + tab);                    console.log("min" + min);                    console.log("min" + max);                                        if (                        (min === null && max === null) ||                        (min === null && date <= max) ||                        (min <= date && max === null) ||                        (min <= date && date <= max)                    ) {                        return true;                    }                    return false;                }            );
 
         table.column(0).search($("#ser").val()).draw();
         table.column(4).search($("#status option:selected").val()).draw();
@@ -1074,6 +1080,7 @@
             x = $(this).attr("srid");
             console.log(x);
             console.log('hie');
+
 
               $.ajax({
                 url: '@Url.Action("_editreschedule", "Starting")',
@@ -1105,8 +1112,11 @@
             y.PostalCode = $("#s4").val();
             y.City = $("#s5").val();
             console.log(y);
-
-             $.ajax({
+            if (y.AddressLine1 == "" || y.AddressLine2 == "" || y.PostalCode == "" || y.City == "" || y.Date == "") {
+                alert('You cannot leave empty values!')
+            }
+            else {
+                $.ajax({
                     url: '@Url.Action("editresUpdate", "Starting")',
                     type: 'post',
                     dataType: 'json',
@@ -1122,6 +1132,7 @@
                     }
 
                 });
+            }
         });
     </script>
     <script>

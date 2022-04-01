@@ -417,7 +417,7 @@
                                     </div>
                                     <hr class="mt-3 mb-3 lne">
                                     <div class="d-flex justify-content-end">
-                                        <button type="submit" class="greenBtn2 my-2 text-light rounded-pill fw-bolder justify-content-end" id="completeBooking">
+                                        <button type="button" class="greenBtn2 my-2 text-light rounded-pill fw-bolder justify-content-end" id="completeBooking">
                                             Complete Booking
                                         </button>
                                         <button type="button" data-bs-target="#successModal" data-bs-toggle="modal" style="display:none" class="greenBtn2 my-2 text-light rounded-pill fw-bolder justify-content-end" id="completeBooking1">
@@ -539,10 +539,10 @@
                         </div>
                         <div class="text-center">
                             <h4 class="mb-2">Booking submitted successfully</h4>
-                            <p>Service id: 1234</p>
+                            <p>Service id: <span id="buttonSubmit"></span></p>
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn greenBtn text-white rounded-pill" data-bs-dismiss="modal" aria-label="Close" style="min-width: 60px;">Ok</button>
+                            <button type="submit" class="btn greenBtn text-white rounded-pill" data-bs-dismiss="modal" aria-label="Close" style="min-width: 60px;">Ok</button>
                         </div>
                     </div>
                 </div>
@@ -856,9 +856,13 @@
                 data: JSON.stringify(add),
 
                 success: function (resp) {
-                    $("#completeBooking1").trigger('click');
                     /*alert("Data has been added successfully.");*/
-                },
+                    $("#buttonSubmit").html(resp);
+                    $("#completeBooking1").trigger('click');
+                    $('#successModal').on('hidden.bs.modal', function () {                        location.reload();                    });                },
+
+                    
+               
                 error: function (err) {
                     alert("Error while inserting data");
                 }

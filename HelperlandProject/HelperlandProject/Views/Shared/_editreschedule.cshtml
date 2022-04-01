@@ -9,7 +9,7 @@
         <div class="col-sm-6">
             <div class="form-group d-flex flex-column">
                 <label for="editDateModal" class="control-label fw-bold">Date</label>
-                <input type="date" asp-for="ServiceStartDate" id="s1" class="ht bdr2">
+                <input type="date" asp-for="ServiceStartDate" id="s1" class="ht bdr2" >
             </div>
         </div>
         <div class="col-sm-6">
@@ -30,19 +30,19 @@
         <div class="col-sm-6 my-2">
             <div class="form-group d-flex flex-column">
                 <label for="streetNameModal" class="control-label bld">Street name</label>
-                <input type="text" asp-for="AddressLine1" id="s2" class="ht bdr2">
+                <input type="text" asp-for="AddressLine1" id="s2" class="ht bdr2" required>
             </div>
         </div>
         <div class="col-sm-6 my-2">
             <div class="form-group d-flex flex-column">
                 <label for="houseNumberEdit" class="control-label bld">House number</label>
-                <input type="text" asp-for="AddressLine2" id="s3" class="ht bdr2">
+                <input type="text" asp-for="AddressLine2" id="s3" class="ht bdr2" required>
             </div>
         </div>
         <div class="col-sm-6 my-2">
             <div class="form-group d-flex flex-column">
                 <label for="postalCodeEdit" class="control-label bld">Postal code</label>
-                <input type="text" asp-for="ZipCode" id="s4" class="ht bdr2">
+                <input type="text" asp-for="ZipCode" id="s4" class="ht bdr2" required>
             </div>
         </div>
         <div class="col-sm-6 my-2">
@@ -52,44 +52,11 @@
             </div>
         </div>
     </div>
-    <label for="" class="control-label fw-bold mb-2">Invoice Address</label>
-    <div class="row mb-3">
-        <div class="col-sm-6 my-2">
-            <div class="form-group d-flex flex-column">
-                <label for="streetNameModal" class="control-label bld">Street name</label>
-                <input type="text" name="streetNameModal" value="Koenigstrasse" class="ht bdr2">
-            </div>
-        </div>
-        <div class="col-sm-6 my-2">
-            <div class="form-group d-flex flex-column">
-                <label for="houseNumberEdit" class="control-label bld">House number</label>
-                <input type="text" name="houseNumberEdit" value="111" class="ht bdr2">
-            </div>
-        </div>
-        <div class="col-sm-6 my-2">
-            <div class="form-group d-flex flex-column">
-                <label for="postalCodeEdit" class="control-label bld">Postal code</label>
-                <input type="text" name="postalCodeEdit" value="99697" class="ht bdr2">
-            </div>
-        </div>
-        <div class="col-sm-6 my-2">
-            <div class="form-group d-flex flex-column">
-                <label for="cityEdit" class="control-label bld">City</label>
-                <select id="cityNames" name="cityNames" class="ht bdr2">
-                    <option value="TD" disabled selected>Tambach-Dietharz</option>
-                    <option value="delhi">Delhi</option>
-                    <option value="bangalore">Bangalore</option>
-                </select>
-            </div>
-        </div>
-    </div>
+    
     <div class="form-group d-flex flex-column mb-3">
         <label for="reasonScheduleEdit" class="fw-bold">Why do you want to reschedule service request?</label>
         <textarea name="reasonScheduleEdit" id="" rows="3" maxlength="500" placeholder="Why do you want to reschedule service request?" class="bdr2 p-2"></textarea>
     </div>
-    <div class="form-group d-flex flex-column mb-3">
-        <label for="reasonScheduleEdit" class="fw-bold">Call Center EMP Notes</label>
-        <textarea name="reasonScheduleEdit" id="" rows="3" maxlength="500" placeholder="Enter notes" class="bdr2 p-2"></textarea>
-    </div>
+    
     <button type="submit" class="btn updateBtn w-100" >Update</button>
 </form>

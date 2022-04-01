@@ -95,9 +95,9 @@
                         <select name="userrole" id="userrole" class="blockb1 gapp h-100 da">
                             <option value="" disabled selected>User Role</option>
                             <option value="admin">Admin</option>
-                            <option value="callcenter">Call Center</option>
+                            
                             <option value="customer">Customer</option>
-                            <option value="serviceprovider">Service Provicer</option>
+                            <option value="Service Provider">Service Provider</option>
                         </select>
                     </li>
                     <li>
@@ -165,7 +165,16 @@
                     {
                         <tr class="rowww">
                             <td scope="row">@i.FirstName @i.LastName</td>
-                            <td scope="row">Call Center</td>
+                            <td scope="row">
+                                @if (i.UserTypeId == 1)
+                {
+                    <p>Customer</p>
+                }
+                                else{ 
+    <p>Service Provider</p>
+}
+               
+                            </td>
                             <td scope="row">Inquiry Manager</td>
                             <td scope="row">@i.ZipCode</td>
                             <td scope="row">Berlin</td>

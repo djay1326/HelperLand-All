@@ -23,6 +23,29 @@
     <script type="text/javascript" src="~/js/cal.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
     <title>Service Provider-Upcoming Service</title>
+    <style>
+        #pagination-container {
+            float: right;
+        }
+
+            #pagination-container .page-link {
+                display: inline-block !important;
+            }
+
+            #pagination-container .current {
+                position: relative;
+                display: inline-block;
+                padding: 0.5rem 0.75rem;
+                margin-left: -1px;
+                line-height: 1.25;
+                border: 1px solid #dee2e6;
+            }
+
+                #pagination-container .current:not(.prev):not(.next) {
+                    color: #fff;
+                    background-color: #1A626E;
+                }
+    </style>
 </head>
 
 <body>
@@ -158,7 +181,7 @@
         </div>
         <!-- -------------------All Tables List------------------- -->
         <div class="whole_tables">
-            
+
             <!-- ...........MyRatings TABLE........ -->
             <div id="myRatings" class="d-block">
                 <div class="mb-3">
@@ -174,127 +197,97 @@
                     </div>
                     <div class="rating">
                         @foreach (var i in Model)
-                            {
-                        <div class="ratee d-flex flex-column">
-                            <div class="ratee1 d-flex p-2 m-2">
-                                <div class="d-flex ratee2 ">
-                                    <div class="d-flex flex-column mr-5">
-                                        <a class="text-decoration-none" href="#">@i.ServiceId</a>
-                                        <a href="" class="text-decoration-none font-weight-bold">@i.FirstName @i.LastName</a>
+                        {
+                            <div class="ratee d-flex flex-column">
+                                <div class="ratee1 d-flex p-2 m-2">
+                                    <div class="d-flex ratee2 ">
+                                        <div class="d-flex flex-column mr-5">
+                                            <a class="text-decoration-none" href="#">@i.ServiceId</a>
+                                            <a href="" class="text-decoration-none font-weight-bold">@i.FirstName @i.LastName</a>
+                                        </div>
+                                        <div class="datess">
+                                            <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none font-weight-bold">
+                                                <img src="~/images/calender.png" alt="" height="19" width="16">
+                                                <p class="m-0">@i.RatingDate</p>
+                                            </a>
+                                            <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none">
+                                                <img src="~/images/clock.png" alt="" height="19" width="16">
+                                                <p class="m-0">12:00 - 18:00</p>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="datess">
-                                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none font-weight-bold">
-                                            <img src="~/images/calender.png" alt="" height="19" width="16">
-                                            <p class="m-0">@i.RatingDate</p>
-                                        </a>
-                                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none">
-                                            <img src="~/images/clock.png" alt="" height="19" width="16">
-                                            <p class="m-0">12:00 - 18:00</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="al">
-                                    <p class="mb-0 font-weight-bold">ratings</p>
-                                    <div class="d-flex align-items-center">
-                                        @for (int j = 0; j < 5; j++)
-                                        {
-                                            if (j < ((int)i.Ratings))
+                                    <div class="al">
+                                        <p class="mb-0 font-weight-bold">ratings</p>
+                                        <div class="d-flex align-items-center">
+                                            @for (int j = 0; j < 5; j++)
                                             {
-                                                <img src="~/images/star1.png" alt=""> }
-                                            else
-                                            {
-                                                <img src="~/images/star2.png" alt="">}
-                                        }
-                                    </div>
-                                    </div>
-                                </div>
-                                    <div class="p-2">
-                                        <p class="mb-0 font-weight-bold m-2">@i.Comments</p>
+                                                if (j < ((int)i.Ratings))
+                                                {
+                                                    <img src="~/images/star1.png" alt=""> }
+                                                else
+                                                {
+                                                    <img src="~/images/star2.png" alt="">}
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                                }
-
-                                @*<div class="ratee d-flex flex-column">
-            <div class="ratee1 d-flex p-2 m-2">
-                <div class="d-flex ratee2 ">
-                    <div class="d-flex flex-column mr-5">
-                        <a class="text-decoration-none" href="#">323436</a>
-                        <a href="" class="text-decoration-none font-weight-bold">Gaurang patel</a>
-                    </div>
-                    <div class="datess">
-                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none font-weight-bold">
-                            <img src="~/images/calender.png" alt="" height="19" width="16">
-                            <p class="m-0">27/06/2019</p>
-                        </a>
-                        <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none">
-                            <img src="~/images/clock.png" alt="" height="19" width="16">
-                            <p class="m-0">12:00 - 18:00</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="al">
-                    <p class="mb-0 font-weight-bold">ratings</p>
-                    <div class="d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                            <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
-                            <path fill-rule="evenodd" fill="#D4D4D4" d="m8.823 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.823.6 6.529 5.578.658 6.98l4.454 3.84-1.335 5.78 5.046-3.735z" />
-                        </svg>
-                        <span class="ms-2">
-                            Very Good
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="p-2">
-                <p class="mb-0 font-weight-bold m-2">Customer Comment</p>
-            </div>
-        </div>*@
+                                <div class="p-2">
+                                    <p class="mb-0 font-weight-bold m-2">@i.Comments</p>
+                                </div>
                             </div>
+                        }
+
+                        @*<div class="ratee d-flex flex-column">
+                                <div class="ratee1 d-flex p-2 m-2">
+                                    <div class="d-flex ratee2 ">
+                                        <div class="d-flex flex-column mr-5">
+                                            <a class="text-decoration-none" href="#">323436</a>
+                                            <a href="" class="text-decoration-none font-weight-bold">Gaurang patel</a>
+                                        </div>
+                                        <div class="datess">
+                                            <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none font-weight-bold">
+                                                <img src="~/images/calender.png" alt="" height="19" width="16">
+                                                <p class="m-0">27/06/2019</p>
+                                            </a>
+                                            <a href="#servicesPop" data-toggle="modal" class="d-flex text-decoration-none">
+                                                <img src="~/images/clock.png" alt="" height="19" width="16">
+                                                <p class="m-0">12:00 - 18:00</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="al">
+                                        <p class="mb-0 font-weight-bold">ratings</p>
+                                        <div class="d-flex align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="mr-1">
+                                                <path fill-rule="evenodd" fill="#D4D4D4" d="m8.823 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.823.6 6.529 5.578.658 6.98l4.454 3.84-1.335 5.78 5.046-3.735z" />
+                                            </svg>
+                                            <span class="ms-2">
+                                                Very Good
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <p class="mb-0 font-weight-bold m-2">Customer Comment</p>
+                                </div>
+                            </div>*@
+                    </div>
                 </div>
-                @*<div class="d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="show-entries">
-                        <div class="firstPart">
-                            <span>Show&nbsp;&nbsp;</span>
-                            <select class="table-dropdown" name="table-rows" id="table-rows">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                            <span>&nbsp;&nbsp;entries&nbsp;</span>
-                            <span>Total Record: 5</span>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-wrap gap-1 secondPart">
-                        <div class="page-round mr-1">
-                            <img src="~/images/group-100.png" alt="">
-                        </div>
-                        <div class="page-round mr-1">
-                            <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
-                        </div>
-                        <div class="page-round-select mr-1">1</div>
-                        <div class="page-round mr-1">2</div>
-                        <div class="page-round page-round-reverse mr-1">
-                            <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
-                        </div>
-                        <div class="page-round page-round-reverse">
-                            <img src="~/images/group-100.png" alt="">
-                        </div>
-                    </div>
-                </div>*@
-            </div>                 
-            
+            </div>
+                <div id="pagination-container"></div>
+
         </div>
     </div>
 
@@ -458,36 +451,31 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript">
-        $('#tab1').DataTable({
-            "aaSorting": [],
-            columnDefs: [{
-                orderable: false,
-                targets: [1, 3]
-            }]
-        });
-        $('#tab2').DataTable({
-            "aaSorting": [],
-            columnDefs: [{
-                orderable: false,
-                targets: [1, 3, 5]
-            }]
-        });
-        $('#tab3').DataTable({
-            "aaSorting": [],
-            columnDefs: [{
-                orderable: false,
-                targets: [4]
-            }]
-        });
-        $('#tab4').DataTable({
-            "aaSorting": [],
-            columnDefs: [{
-                orderable: false,
-                targets: [1, 2]
-            }]
+   
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.4/jquery.simplePagination.min.js"></script>
+    
+    <script>
+
+
+
+        var items = $("#myRatings .ratee");
+        var numItems = items.length;
+        var perPage = 1;
+
+        //items.slice(perPage).hide();
+        items.slice(perPage).hide();
+        $('#pagination-container').pagination({
+            items: numItems,
+            itemsOnPage: perPage,
+            prevText: "Prev",
+            nextText: "Next",
+            onPageClick: function (pageNumber) {
+                var showFrom = perPage * (pageNumber - 1);
+                var showTo = showFrom + perPage;
+                items.hide().slice(showFrom, showTo).show();
+            }
         });
     </script>
 </body>

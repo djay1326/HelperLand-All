@@ -214,9 +214,9 @@ label {
 .bld{
     font-weight: 550;
 }
-.updateBtn1 {
-  color: white;
-  background-color: #1fb6ff;
+.updateBtn1 .updateBtn {
+    color: white;
+    background-color: #1fb6ff;
 }
 .refundUp {
     color: white;

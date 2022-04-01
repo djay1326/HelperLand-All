@@ -286,8 +286,7 @@ namespace HelperlandProject.Controllers
             add.ServiceId = 1000 + add.ServiceRequestId;
             _DbContext.ServiceRequest.Update(add);
             _DbContext.SaveChanges();
-            string message = "true";
-            return message;
+            return add.ServiceId.ToString();
 
         }
 
@@ -312,9 +311,25 @@ namespace HelperlandProject.Controllers
         public IActionResult UpcomingSeventh()
         {
             var ty = (int)HttpContext.Session.GetInt32("userid");
-            List<ServiceRequest> wt = _DbContext.ServiceRequest.Where(x => x.UserId == ty && x.Status ==null).ToList();
+            //List<ServiceRequest> wt = _DbContext.ServiceRequest.Where(x => x.UserId == ty && x.Status ==null).ToList();
+            var query = from ServiceRequest in _DbContext.ServiceRequest
+                        join User in _DbContext.Userr
+                        on ServiceRequest.ServiceProviderId equals User.UserId into abc
+                        from rate in abc.DefaultIfEmpty()
+                        where ServiceRequest.UserId == ty && (ServiceRequest.Status == null || ServiceRequest.Status == 2) && ServiceRequest.ServiceStartDate > DateTime.Now
+                        select new Popup
+                        {
+                            FirstName = rate.FirstName,
+                            LastName = rate.LastName,
+                            ServiceId = ServiceRequest.ServiceId,
+                            ServiceStartDate = ServiceRequest.ServiceStartDate,
+                            SubTotal = ServiceRequest.SubTotal,
+                            ServiceRequestId = ServiceRequest.ServiceRequestId,
+                            ServiceProviderId = ServiceRequest.ServiceProviderId
+                        };
 
-            return View(wt);
+            return View(query);
+            
         }
 
         public IActionResult settingsSeven()
@@ -376,7 +391,10 @@ namespace HelperlandProject.Controllers
                              ServiceRequestId = ServiceRequest.ServiceRequestId,
                              ServiceStartDate = ServiceRequest.ServiceStartDate,
                              SubTotal = ServiceRequest.SubTotal,
-                             AddressLine1 = ServiceRequestAddress.AddressLine1,
+                             ServiceHours = ServiceRequest.ServiceHours,
+                             ServiceId = ServiceRequest.ServiceId,
+                             Mobile = ServiceRequestAddress.Mobile,
+                             AddressLine1 = ServiceRequestAddress.AddressLine1
                          }).Single();
 
 
@@ -617,6 +635,7 @@ namespace HelperlandProject.Controllers
             ServiceRequest srt = _DbContext.ServiceRequest.Where(x => x.ServiceRequestId == i).FirstOrDefault();
             srt.ServiceProviderId = null;
             srt.SpacceptedDate = null;
+            srt.Status = null;
             _DbContext.ServiceRequest.Update(srt);
             _DbContext.SaveChanges();
             return "true";
@@ -801,33 +820,45 @@ namespace HelperlandProject.Controllers
 
         public IActionResult userManagement()
         {
-            List<Userr> u = _DbContext.Userr.ToList();
-            return View(u);
+            List<Userr> x = _DbContext.Userr.Where(x => x.UserTypeId != 3).ToList();
+            return View(x);
         }
 
         public IActionResult serviceRequest()
         {
 
-            var query = (from sr in _DbContext.ServiceRequest
-                        join sra in _DbContext.ServiceRequestAddress
-                        on sr.ServiceRequestId equals sra.ServiceRequestId
-                        join rt in _DbContext.Rating
-                        on sr.ServiceRequestId equals rt.ServiceRequestId
-                        into rate from rt in rate.DefaultIfEmpty()
-                        join ur in _DbContext.Userr
-                        on sr.UserId equals ur.UserId
+            var query = from ServiceRequest in _DbContext.ServiceRequest
+                        join ServiceRequestAddress in _DbContext.ServiceRequestAddress
+                        on ServiceRequest.ServiceRequestId equals ServiceRequestAddress.ServiceRequestId
+                        join user in _DbContext.Userr
+                        on ServiceRequest.UserId equals user.UserId
+                        join Rating in _DbContext.Rating
+                        on ServiceRequest.ServiceRequestId equals Rating.ServiceRequestId into abc
+                        from Rating in abc.DefaultIfEmpty()
+                        join spuser in _DbContext.Userr
+                        on ServiceRequest.ServiceProviderId equals spuser.UserId into xyz
+                        from spuser in xyz.DefaultIfEmpty()
                         select new Popup
                         {
-                            ServiceId = sr.ServiceId,
-                            ServiceRequestId = sr.ServiceRequestId,
-                            ServiceStartDate = sr.ServiceStartDate,
-                            AddressLine1 = sra.AddressLine1,
-                            AddressLine2 = sra.AddressLine2,
-                            Ratings = rt==null ? 0 : rt.Ratings,
-                            FirstName = ur.FirstName,
-                            LastName = ur.LastName,
-                            Status = sr.Status
-                        }).ToList();
+                            ServiceRequestId = ServiceRequest.ServiceRequestId,
+                            ServiceId = ServiceRequest.ServiceId,
+                            ServiceHours = ServiceRequest.ServiceHours,
+                            ServiceStartDate = ServiceRequest.ServiceStartDate,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Comments = ServiceRequest.Comments,
+                            AddressLine1 = ServiceRequestAddress.AddressLine1,
+                            AddressLine2 = ServiceRequestAddress.AddressLine2,
+                            ZipCode = ServiceRequest.ZipCode,
+                            SubTotal = ServiceRequest.SubTotal,
+                            City = ServiceRequestAddress.City,
+                            Ratings = Rating == null ? 0 : Rating.Ratings,
+                            Status = ServiceRequest.Status,
+                            spFirstName = spuser == null ? "" : spuser.FirstName,
+                            spLastName = spuser == null ? "" : spuser.LastName,
+                            usertypeid = user.UserTypeId
+                        };
+
             return View(query);
         }
 

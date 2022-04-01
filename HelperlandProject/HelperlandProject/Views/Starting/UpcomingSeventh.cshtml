@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<HelperlandProject.Models.ServiceRequest>
+@model IEnumerable<HelperlandProject.Models.Popup>
 @{
     Layout = null;
     var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
@@ -195,32 +195,20 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="d-flex">
-                                        <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
-                                            <img src="~/images/cap.png" alt="" height="20" width="30">
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0 aa">Lyum Watson</p>
-                                            <div class="d-flex align-items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                                    <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <p class="mb-0 aa">4</p>
+                                    @if (item.ServiceProviderId != null)
+                                    {
+                                        <div class="d-flex">
+                                            <div class="circlee rounded-circle d-flex align-items-center justify-content-center mr-3">
+                                                <img src="~/images/cap.png" alt="" height="20" width="30">
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <p class="mb-0 aa">@item.FirstName @item.LastName</p>
+
                                             </div>
                                         </div>
-                                    </div>
+                                    }
+                                    
+
                                 </td>
                                 <td>
                                     <p class="text-center paymentt">$@item.SubTotal</p>
