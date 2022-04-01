@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<HelperlandProject.Models.ServiceRequest>
+@model IEnumerable<HelperlandProject.Models.Popup>
 @{
     Layout = null;
     var x = HttpContextAccessor.HttpContext.Session.GetInt32("userid");
@@ -155,156 +155,41 @@
             <!-- Favourite Pros TABLE -->
             <div id="FavouriteProsTable" class="d-block">
                 <div class="favouriteProsBlock">
-                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
-                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
-                            <img src="~/images/cap.png">
-                        </div>
-                        <p class="mb-3">Cust1 Cust1</p>
-                        <div class="d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <span>3.02</span>
-                        </div>
-                        <p>1 Cleanings</p>
-                        <div class="text-center d-flex flex-row">
-                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
+                    @foreach (var i in Model)
+                    {
+                        <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
+                            <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
+                                <img src="~/images/cap.png">
+                            </div>
+                            <p class="mb-3">@i.FirstName @i.LastName</p>
+                            <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
+                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                                </svg>
+                                <span>3.02</span>
+                            </div>
+                            <p>1 Cleanings</p>
+                            <div class="text-center d-flex flex-row">
+                                <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
                                 mr-1">Remove</div>
-                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
+                                <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
-                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
-                            <img src="~/images/cap.png">
-                        </div>
-                        <p class="mb-3">Cust1 Cust1</p>
-                        <div class="d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <span>3.02</span>
-                        </div>
-                        <p>1 Cleanings</p>
-                        <div class="text-center d-flex flex-row">
-                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
-                                mr-1">Remove</div>
-                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
-                        </div>
-                    </div>
-                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
-                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
-                            <img src="~/images/cap.png">
-                        </div>
-                        <p class="mb-3">Cust1 Cust1</p>
-                        <div class="d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <span>3.02</span>
-                        </div>
-                        <p>1 Cleanings</p>
-                        <div class="text-center d-flex flex-row">
-                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
-                                mr-1">Remove</div>
-                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
-                        </div>
-                    </div>
-                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
-                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
-                            <img src="~/images/cap.png">
-                        </div>
-                        <p class="mb-3">Cust1 Cust1</p>
-                        <div class="d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <span>3.02</span>
-                        </div>
-                        <p>1 Cleanings</p>
-                        <div class="text-center d-flex flex-row">
-                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
-                                mr-1">Remove</div>
-                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
-                        </div>
-                    </div>
-                    <div class="favouriteProBlockItems col-sm-12 d-flex align-items-center justify-content-center flex-column">
-                        <div class="dataOfCust mb-3 rounded-circle d-flex align-items-center justify-content-center">
-                            <img src="~/images/cap.png">
-                        </div>
-                        <p class="mb-3">Cust1 Cust1</p>
-                        <div class="d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16">
-                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                            </svg>
-                            <span>3.02</span>
-                        </div>
-                        <p>1 Cleanings</p>
-                        <div class="text-center d-flex flex-row">
-                            <div role="button" class="reschedule-btn rounded-pill text-light text-decoration-none d-flex
-                                mr-1">Remove</div>
-                            <div role="button" class="rounded-pill text-light d-flex text-decoration-none cancel-btn">Block</div>
-                        </div>
-                    </div>
+                    }
+
+
                 </div>
                 <div>
                     <div class="d-flex flex-wrap align-items-center justify-content-between">

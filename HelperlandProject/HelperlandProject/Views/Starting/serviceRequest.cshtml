@@ -184,31 +184,33 @@
                 <tbody>
                     @foreach (var i in Model)
                     {
-                        <tr class="rowww">
-                            <th scope="row">@i.ServiceId</th>
-                            <td href="#serviceDetails">
-                                <a href="#servicesPop" data-bs-toggle="modal" class="d-flex text-decoration-none align-items-center mb-1">
-                                    <img src="~/images/calender.png" alt="" height="19" width="16" class="me-1">
-                                    <p class="mb-0 ms-1 va fw-bold">@i.ServiceStartDate.ToString("yyyy/MM/dd")</p>
-                                </a>
-                                <a href="#" class="d-flex text-decoration-none">
-                                    <img src="~/images/clock.png" alt="" height="19" width="16" class="mt-1 me-1">
-                                    @*<p class="m-0 ml-1 va">12:00 - 18:00</p>*@
-                                </a>
-                            </td>
-                            <td>
-                                <span class="text-decoration-none va">
-                                    <p class="m-0">@i.FirstName @i.LastName</p>
-                                    <p class="m-0">
-                                        <img src="~/images/home.png" alt="" height="22" width="22">
+                    <tr class="rowww">
+                        <th scope="row">@i.ServiceId</th>
+                        <td href="#serviceDetails">
+                            <a href="#servicesPop" data-bs-toggle="modal" class="d-flex text-decoration-none align-items-center mb-1">
+                                <img src="~/images/calender.png" alt="" height="19" width="16" class="me-1">
+                                <p class="mb-0 ms-1 va fw-bold">@i.ServiceStartDate.ToString("yyyy/MM/dd")</p>
+                            </a>
+                            <a href="#" class="d-flex text-decoration-none">
+                                <img src="~/images/clock.png" alt="" height="19" width="16" class="mt-1 me-1">
+                                @*<p class="m-0 ml-1 va">12:00 - 18:00</p>*@
+                            </a>
+                        </td>
+                        <td>
+                            <span class="text-decoration-none va">
+                                <p class="m-0">@i.FirstName @i.LastName</p>
+                                <p class="m-0">
+                                    <img src="~/images/home.png" alt="" height="22" width="22">
 
-                                        <span>
+                                    <span>
 
-                                            @i.AddressLine1 @i.AddressLine2
-                                        </span>
-                                    </p>
-                                </span>
-                            </td>
+                                        @i.AddressLine1 @i.AddressLine2
+                                    </span>
+                                </p>
+                            </span>
+                        </td>
+                        @if (i.Status == 1)
+                        {
                             <td>
                                 <div class="d-flex">
                                     <div class="me-2 roundd d-flex align-items-center justify-content-center">
@@ -218,20 +220,20 @@
                                         <p class="mb-0">Lyum Watson</p>
                                         <div class="d-flex align-items-center">
                                             @*<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
-                                                    <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
-                                                    <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
-                                                </svg>*@
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
+                                <path fill-rule="evenodd" fill="#ECB91C" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" class="me-1">
+                                <path fill-rule="evenodd" fill="#d4d4d4" d="m8.176 12.865 5.045 3.735-1.334-5.78 4.453-3.84-5.871-1.402L8.176.6 5.882 5.578.11 6.98l4.355 3.84L3.13 16.6l5.046-3.735z" />
+                            </svg>*@
                                             @for (int j = 0; j < 5; j++)
                                             {
                                                 if (j < ((int)i.Ratings))
@@ -246,84 +248,89 @@
                                     </div>
                                 </div>
                             </td>
-                            @if (i.Status == 1)
-                            {
-                                <td scope="row" class="text-center">
-                                    <span class="completed">Completed</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                            &#8942
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><button class="dropdown-item refundedit" trid="@i.ServiceRequestId" type="button" id="refundPopup">Refund</button></li>
-                                            <li><button class="dropdown-item" type="button">Escalate</button></li>
-                                            <li><button class="dropdown-item" type="button">History Log</button></li>
-                                            <li><button class="dropdown-item" type="button">Download Invoice</button></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            }
-                            else @if (i.Status == 0)
-                       {
-                        <td scope="row" class="text-center">
-                            <span class="cancelled">Cancelled</span>
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    &#8942
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                        }
+                else
+                {
+                    <td></td>
+                }
+                        @if (i.Status == 1)
+                        {
+                            <td scope="row" class="text-center">
+                                <span class="completed">Completed</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        &#8942
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item refundedit" trid="@i.ServiceRequestId" type="button" id="refundPopup">Refund</button></li>
+                                        <li><button class="dropdown-item" type="button">Escalate</button></li>
+                                        <li><button class="dropdown-item" type="button">History Log</button></li>
+                                        <li><button class="dropdown-item" type="button">Download Invoice</button></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        }
+                        else @if (i.Status == 0)
+                   {
+                    <td scope="row" class="text-center">
+                        <span class="cancelled">Cancelled</span>
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                &#8942
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button">Edit</button></li>
 
-                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                </ul>
-                            </div>
-                        </td>
-                    }
-                    else@if (i.Status == 2)
-                    {
-                        <td scope="row" class="text-center">
-                            <span class="pending">Pending</span>
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    &#8942
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><button class="dropdown-item editt" type="button" href="#EditReschedule" srid="@i.ServiceRequestId" data-bs-toggle="modal">Edit & Reschedule</button></li>
-                                    <li><button class="dropdown-item refundedit" type="button" trid="@i.ServiceRequestId" id="refundPopup">Refund</button></li>
-                                    <li><button class="dropdown-item" type="button">Cancel</button></li>
-                                    <li><button class="dropdown-item" type="button">Change SP</button></li>
-                                    <li><button class="dropdown-item" type="button">Escalate</button></li>
-                                    <li><button class="dropdown-item" type="button">History Log</button></li>
-                                    <li><button class="dropdown-item" type="button">Download Invoice</button></li>
-                                </ul>
-                            </div>
-                        </td>
-                    }
-                    else
-                    {
-                        <td scope="row" class="text-center">
-                            <span class="new">New</span>
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    &#8942
-                                </button>
-                                <ul class="dropdown-menu">
-                                    @*<li><button class="dropdown-item" type="button">Edit</button></li>*@
-                                    <li><button class="dropdown-item editt" type="button" href="#EditReschedule" srid="@i.ServiceRequestId" data-bs-toggle="modal">Edit & Reschedule</button></li>
-                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                </ul>
-                            </div>
-                        </td>
-                    }
-                        </tr>
+                                <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                            </ul>
+                        </div>
+                    </td>
+                }
+                else@if (i.Status == 2)
+                        {
+                            <td scope="row" class="text-center">
+                                <span class="pending">Pending</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        &#8942
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item editt" type="button" href="#EditReschedule" srid="@i.ServiceRequestId" data-bs-toggle="modal">Edit & Reschedule</button></li>
+                                        <li><button class="dropdown-item refundedit" type="button" trid="@i.ServiceRequestId" id="refundPopup">Refund</button></li>
+                                        <li><button class="dropdown-item" type="button">Cancel</button></li>
+                                        <li><button class="dropdown-item" type="button">Change SP</button></li>
+                                        <li><button class="dropdown-item" type="button">Escalate</button></li>
+                                        <li><button class="dropdown-item" type="button">History Log</button></li>
+                                        <li><button class="dropdown-item" type="button">Download Invoice</button></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td scope="row" class="text-center">
+                                <span class="new">New</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropDownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        &#8942
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @*<li><button class="dropdown-item" type="button">Edit</button></li>*@
+                                        <li><button class="dropdown-item editt" type="button" href="#EditReschedule" srid="@i.ServiceRequestId" data-bs-toggle="modal">Edit & Reschedule</button></li>
+                                        <li><button class="dropdown-item" type="button">Deactivate</button></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        }
+                    </tr>
                     }
 
                     @*<tr class="rowww">
@@ -1048,10 +1055,10 @@
                 }]
             });
 
-    </script>
-    <script>
+   
+        var minDate, maxDate;
         $(document).on('click', ".searchBtn", function () {
-        var minDate, maxDate;        minDate = $('#min').val();        maxDate = $('#max').val();        if (minDate == null || minDate == '') {            minDate = "2000/01/01";        }        if (maxDate == null || maxDate == '') {            maxDate = "9999/01/01";        }        console.log(minDate);        console.log(maxDate);        // Custom filtering function which will search data in column four between two values        $.fn.dataTable.ext.search.push(            function (settings, data, dataIndex) {                var min = new Date(minDate);                var max = new Date(maxDate);                                var date = new Date(data[1]);                console.log(min);                console.log(max);                console.log(date);                if (                    (min === null && max === null) ||                    (min === null && date <= max) ||                    (min <= date && max === null) ||                    (min <= date && date <= max)                )                {                    return true;                }                return false;            }        );
+            console.log("mindate" + minDate);            console.log("maxdate" + maxDate);            // Custom filtering function which will search data in column four between two values            $.fn.dataTable.ext.search.push(                function (settings, data, dataIndex) {                    minDate = $('#min').val();                    maxDate = $('#max').val();                    if (minDate == null || minDate == '') {                        minDate = "2000/01/01";                    }                    if (maxDate == null || maxDate == '') {                        maxDate = "9999/01/01";                    }                    var min = new Date(minDate);                    var max = new Date(maxDate);                    var date = new Date(data[1]);                    var tab = $('#tab1 tr').length;                    console.log("table length" + tab);                    console.log("min" + min);                    console.log("min" + max);                    console.log("chlae che");                    if (                        (min === null && max === null) ||                        (min === null && date <= max) ||                        (min <= date && max === null) ||                        (min <= date && date <= max)                    ) {                        return true;                    }                    return false;                }            );
 
         table.column(0).search($("#ser").val()).draw();
         table.column(4).search($("#status option:selected").val()).draw();

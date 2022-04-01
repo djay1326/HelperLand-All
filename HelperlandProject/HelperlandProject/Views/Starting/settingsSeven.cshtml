@@ -198,129 +198,129 @@
                                         <label for="firstname">Mobile Number</label>
                                         <div class="d-flex">
                                             <input type="text" value="+91" disabled style="max-width: 52px;" class="ht bll pdd form-control">
-                                            <input type="text" name="mobilenumber" id="just4" asp-for="Mobile" placeholder="9848291932" class="ht bll pdd form-control">
+                                            <input type="text" name="mobilenumber" id="just4" asp-for="Mobile" placeholder="9848291932" minlength="10" maxlength="10" class="ht bll pdd form-control"  >
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-4">
                                     <label for="firstname">Date of Birth</label>
-                                    <input type="datetime-local"  id="just5" asp-for="DateOfBirth" class="ht bll pdd form-control">
+                                    <input type="datetime-local" id="just5" asp-for="DateOfBirth" class="ht bll pdd form-control">
                                 </div>
                                 @*<div class="col-md-4 mb-4">
-            <div class="form-group">
-                <div class="d-flex flex-column">
-                    <label for="birthdate">Date Of Birth</label>
-                    <div class="d-flex justify-content-between">
-                        <div class="d-inline-block w-100 mr-2">
-                            <select name="birthdate" class="ht bll pdd w-100">
-                                <option value="" class="font-weight-bold">Day</option>
-                                <option value="01">01</option>
-                                <option value="02">02</option>
-                                <option value="03" selected>03</option>
-                                <option value="04">04</option>
-                                <option value="05">05</option>
-                                <option value="06">06</option>
-                                <option value="07">07</option>
-                                <option value="08">08</option>
-                                <option value="09">09</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                                <option value="27">27</option>
-                                <option value="28">28</option>
-                                <option value="29">29</option>
-                                <option value="30">30</option>
-                                <option value="31">31</option>
-                            </select>
-                        </div>
-                        <div class="d-inline-block w-100 mr-2">
-                            <select name="birthmonth" class="ht bll pdd w-100">
-                                <option value="" class="font-weight-bold">Month</option>
-                                <option value="january">January</option>
-                                <option value="february">February</option>
-                                <option value="march" selected>March</option>
-                                <option value="april">April</option>
-                                <option value="may">May</option>
-                                <option value="june">June</option>
-                                <option value="july">July</option>
-                                <option value="august">August</option>
-                                <option value="september">September</option>
-                                <option value="october">October</option>
-                                <option value="november">November</option>
-                                <option value="december">December</option>
-                            </select>
-                        </div>
-                        <div class="d-inline-block w-100">
-                            <select name="birthyear" class="ht bll pdd w-100">
-                                <option value="" class="font-weight-bold">Year</option>
-                                <option value="2022">2022</option>
-                                <option value="2021" selected>2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                                <option value="2009">2009</option>
-                                <option value="2008">2008</option>
-                                <option value="2007">2007</option>
-                                <option value="2006">2006</option>
-                                <option value="2005">2005</option>
-                                <option value="2004">2004</option>
-                                <option value="2003">2003</option>
-                                <option value="2002">2002</option>
-                                <option value="2001">2001</option>
-                                <option value="2000">2000</option>
-                                <option value="1999">1999</option>
-                                <option value="1998">1998</option>
-                                <option value="1997">1997</option>
-                                <option value="1996">1996</option>
-                                <option value="1995">1995</option>
-                                <option value="1994">1994</option>
-                                <option value="1993">1993</option>
-                                <option value="1992">1992</option>
-                                <option value="1991">1991</option>
-                                <option value="1990">1990</option>
-                                <option value="1989">1989</option>
-                                <option value="1988">1988</option>
-                                <option value="1987">1987</option>
-                                <option value="1986">1986</option>
-                                <option value="1985">1985</option>
-                                <option value="1984">1984</option>
-                                <option value="1983">1983</option>
-                                <option value="1982">1982</option>
-                                <option value="1981">1981</option>
-                                <option value="1980">1980</option>
-                                <option value="1979">1979</option>
-                                <option value="1978">1978</option>
-                                <option value="1977">1977</option>
-                                <option value="1976">1976</option>
-                                <option value="1975">1975</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
+                                        <div class="form-group">
+                                            <div class="d-flex flex-column">
+                                                <label for="birthdate">Date Of Birth</label>
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-inline-block w-100 mr-2">
+                                                        <select name="birthdate" class="ht bll pdd w-100">
+                                                            <option value="" class="font-weight-bold">Day</option>
+                                                            <option value="01">01</option>
+                                                            <option value="02">02</option>
+                                                            <option value="03" selected>03</option>
+                                                            <option value="04">04</option>
+                                                            <option value="05">05</option>
+                                                            <option value="06">06</option>
+                                                            <option value="07">07</option>
+                                                            <option value="08">08</option>
+                                                            <option value="09">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="14">14</option>
+                                                            <option value="15">15</option>
+                                                            <option value="16">16</option>
+                                                            <option value="17">17</option>
+                                                            <option value="18">18</option>
+                                                            <option value="19">19</option>
+                                                            <option value="20">20</option>
+                                                            <option value="21">21</option>
+                                                            <option value="22">22</option>
+                                                            <option value="23">23</option>
+                                                            <option value="24">24</option>
+                                                            <option value="25">25</option>
+                                                            <option value="26">26</option>
+                                                            <option value="27">27</option>
+                                                            <option value="28">28</option>
+                                                            <option value="29">29</option>
+                                                            <option value="30">30</option>
+                                                            <option value="31">31</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block w-100 mr-2">
+                                                        <select name="birthmonth" class="ht bll pdd w-100">
+                                                            <option value="" class="font-weight-bold">Month</option>
+                                                            <option value="january">January</option>
+                                                            <option value="february">February</option>
+                                                            <option value="march" selected>March</option>
+                                                            <option value="april">April</option>
+                                                            <option value="may">May</option>
+                                                            <option value="june">June</option>
+                                                            <option value="july">July</option>
+                                                            <option value="august">August</option>
+                                                            <option value="september">September</option>
+                                                            <option value="october">October</option>
+                                                            <option value="november">November</option>
+                                                            <option value="december">December</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block w-100">
+                                                        <select name="birthyear" class="ht bll pdd w-100">
+                                                            <option value="" class="font-weight-bold">Year</option>
+                                                            <option value="2022">2022</option>
+                                                            <option value="2021" selected>2021</option>
+                                                            <option value="2020">2020</option>
+                                                            <option value="2019">2019</option>
+                                                            <option value="2018">2018</option>
+                                                            <option value="2017">2017</option>
+                                                            <option value="2016">2016</option>
+                                                            <option value="2015">2015</option>
+                                                            <option value="2014">2014</option>
+                                                            <option value="2013">2013</option>
+                                                            <option value="2012">2012</option>
+                                                            <option value="2011">2011</option>
+                                                            <option value="2010">2010</option>
+                                                            <option value="2009">2009</option>
+                                                            <option value="2008">2008</option>
+                                                            <option value="2007">2007</option>
+                                                            <option value="2006">2006</option>
+                                                            <option value="2005">2005</option>
+                                                            <option value="2004">2004</option>
+                                                            <option value="2003">2003</option>
+                                                            <option value="2002">2002</option>
+                                                            <option value="2001">2001</option>
+                                                            <option value="2000">2000</option>
+                                                            <option value="1999">1999</option>
+                                                            <option value="1998">1998</option>
+                                                            <option value="1997">1997</option>
+                                                            <option value="1996">1996</option>
+                                                            <option value="1995">1995</option>
+                                                            <option value="1994">1994</option>
+                                                            <option value="1993">1993</option>
+                                                            <option value="1992">1992</option>
+                                                            <option value="1991">1991</option>
+                                                            <option value="1990">1990</option>
+                                                            <option value="1989">1989</option>
+                                                            <option value="1988">1988</option>
+                                                            <option value="1987">1987</option>
+                                                            <option value="1986">1986</option>
+                                                            <option value="1985">1985</option>
+                                                            <option value="1984">1984</option>
+                                                            <option value="1983">1983</option>
+                                                            <option value="1982">1982</option>
+                                                            <option value="1981">1981</option>
+                                                            <option value="1980">1980</option>
+                                                            <option value="1979">1979</option>
+                                                            <option value="1978">1978</option>
+                                                            <option value="1977">1977</option>
+                                                            <option value="1976">1976</option>
+                                                            <option value="1975">1975</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
                             </div>
                         </form>
                         <hr>
@@ -635,6 +635,9 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -669,10 +672,13 @@
             test.LastName = ($("#just2").val());
             test.Mobile = ($("#just4").val());
             test.DateOfBirth = ($("#just5").val());
-              console.log(test);
-              console.log($.type(test));
 
-            $.ajax
+            if (test.FirstName == "" || test.LastName == "" || test.Mobile == "" || test.DateOfBirth == "") {
+                alert("Cannot insert null values");
+            }
+            else
+            {
+                $.ajax
               ({
                 url: '@Url.Action("detailsTab", "Starting")',
                   type: 'post',
@@ -681,7 +687,7 @@
                   data: JSON.stringify(test),
                   success: function (resp) {
 
-                      alert('Changes done');
+                      alert('Data has been updated!');
                       location.reload();
                     console.log(resp);
 
@@ -692,6 +698,9 @@
                 }
 
             });
+            }
+
+
 
         });
 
@@ -720,7 +729,7 @@
 
                     success: function (resp) {
                         if (resp) {
-                            
+
                             location.reload();
                             alert("Password changed");
                         }

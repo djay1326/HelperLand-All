@@ -333,6 +333,31 @@ namespace HelperlandProject.Controllers
 
         public IActionResult favSeven()
         {
+            var a = HttpContext.Session.GetInt32("userid");
+            if (a != null)
+            {
+                var query = (from user in _DbContext.Userr
+                             join FavoriteAndBlocked in _DbContext.FavoriteAndBlocked
+                             on user.UserId equals FavoriteAndBlocked.UserId
+                             where FavoriteAndBlocked.TargetUserId == a
+                             select new Popup
+                             {
+                                 Id = FavoriteAndBlocked.Id,
+                                 FirstName = user.FirstName,
+                                 LastName = user.LastName,
+                                 IsBlocked = FavoriteAndBlocked.IsBlocked,
+                                 UserId = user.UserId,
+                                 Ratings = (from Rating in _DbContext.Rating where Rating.RatingTo.Equals(user.UserId) select Rating.Ratings).Average(),
+                                 //totalconunt = (from Rating in _DbContext.Rating where Rating.RatingTo.Equals(user.UserId) select Rating.Ratings).Count()
+                             }).ToList();
+                return View(query);
+
+            }
+            else
+            {
+                TempData["error"] = "please login first";
+                return RedirectToAction("Index");
+            }
             return View();
         }
 
